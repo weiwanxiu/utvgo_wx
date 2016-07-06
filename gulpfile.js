@@ -14,11 +14,11 @@ var base64 = require('gulp-base64');
 var runSequence=require('run-sequence');//按指定顺序运行任务
 
 var res = {
-	lessFiles : ['res/less/*/*.*']
+	lessFiles : ['res/less/**.*','res/less/*/*.*']
 	,jsFiles : ['res/js/*/*.js']
 	,jsLib : ['res/js/lib/*/*.js']
 	,jsOwn : ['res/js/main.js','res/js/about.js'] //合并js文件时按此数组顺序
-	,imgFiles : ['res/images/*/*.*','res/images/*/*.*']
+	,imgFiles : ['res/images/**.*','res/images/*/*.*']
 };
 
 //对于img,生成rev-manifest.json文件
@@ -44,7 +44,7 @@ gulp.task('css-task',function(){
 
 //base64 应用于css
 gulp.task('css-base64', function () {
-	return gulp.src('./res/temp/rev-less/*/*.css')
+	return gulp.src('./res/temp/rev-less/**.css')
 		.pipe(base64({
 			baseDir: 'res/images',
 			extensions: ['svg', 'png', /\.jpg#datauri$/i],//匹配
@@ -58,13 +58,13 @@ gulp.task('css-base64', function () {
 
 //将图片md5应用于css 图片路径里
 gulp.task('rev-img-css',function(){
-	return gulp.src(['res/temp/rev-img/*.json','./res/temp/css-base64/*/*.css'])
+	return gulp.src(['res/temp/rev-img/*.json','./res/temp/css-base64/**.css'])
 		.pipe(revCollector())
 		.pipe(gulp.dest('./res/temp/css-img'))
 	;
 });
 gulp.task('rev-css-manifest',function(){
-	return gulp.src(['./res/temp/css-img/*/*.css'])
+	return gulp.src(['./res/temp/css-img/**.css'])
 		.pipe(gulp.dest('./dest/res/css'))
 		.pipe(rev())//文件名加md5后缀
 		.pipe(rev.manifest())//生成一个rev-manifest.json
