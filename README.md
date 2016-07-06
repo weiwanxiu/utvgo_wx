@@ -48,5 +48,8 @@ npm install
 
 
 
+注意：css less js images 构建不能自动嵌套文件夹
+
+
 
 
