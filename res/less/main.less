@@ -1,5 +1,41 @@
 
 
-body{
+body,html{
+	height: 100%;
+	background-color: #e7e7e7;
+}
+
+#main{
+	height: 100%;
+	position: relative;
+	z-index: 1;
+	background-color: #ccc;
+	left: 0%;
+	transform: translateX(0px);
+	transition: left 0.3s;
 	
+}
+#sideMenu{
+	height: 100%;
+	width: 75%;
+	position: absolute;
+	z-index: 0;
+	top: 0px;
+	left:-75%;
+	background-color: red;
+	transition: left 0.3s;
+
+}
+#main.main-on{
+	left: 75%;
+}
+#sideMenu.sideMenu-on{
+	left: 0%;
+}
+p{
+	line-height: 50px;
+}
+button{
+	padding: 30px;
+	color: green;
 }

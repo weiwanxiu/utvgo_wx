@@ -36,6 +36,7 @@
 	
     <title>UTVGO</title>
     <link rel="stylesheet" href="./res/css/base.css" />
+    <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
     <style type="text/css">
 
@@ -45,23 +46,48 @@
     
     </script>
 </head>
-<body style="">
+<body style="" class="overflow-scroll-y">
+	<div id="sideMenu" class="overflow-scroll-y">
+		
+		<p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p>v<p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p>
+	</div>
+	<div id="main" class="overflow-scroll-y">
+		<div class="main-header"></div>
+		<button id="menuBt">menu</button>
+		<p>sldfjd sfd<br/></p>
+		<button onmousedown="alert('fuck');">fuck</button><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p>
+	</div>
 
-	<h1>UTVGO WX version</h1>
-	<h2>xo</h2>
 
 
+	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./res/js/lib/fx.js"></script>
+	<script type="text/javascript" src="./res/js/lib/fx_methods.js"></script>
+	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
 
-<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
-<script type="text/javascript" src="./res/js/lib/fx.js"></script>
-<script type="text/javascript" src="./res/js/lib/fx_methods.js"></script>
-<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
+	<script type="text/javascript" src="./res/js/main.js"></script>
 
-<script type="text/javascript" src="./res/js/main.js"></script>
+	<script type="text/javascript">
+		$('#menuBt').tap(function(e){
+			if($('#sideMenu').hasClass('sideMenu-on')){
+				$('#sideMenu').removeClass('sideMenu-on');
+				$('#main').removeClass('main-on');
+			}else{
+				$('#sideMenu').addClass('sideMenu-on');
+				$('#main').addClass('main-on');
+			}
+		});
+		$('#main').on('touchstart',function(e){
+			if($('#sideMenu').hasClass('sideMenu-on')&&e.target.id!='menuBt'){
+				$('#sideMenu').removeClass('sideMenu-on');
+				$('#main').removeClass('main-on');
+				e.stopPropagation();
+				e.preventDefault();
+				e.stopImmediatePropagation();
+			}
+		});
 
-<script type="text/javascript">
-
-</script>
+	</script>
 </body>
 
 

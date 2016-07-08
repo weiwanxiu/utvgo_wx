@@ -1,0 +1,1 @@
+#main,#sideMenu{height:100%;transition:left .3s}body,html{height:100%;background-color:#e7e7e7}#main{position:relative;z-index:1;background-color:#ccc;left:0;transform:translateX(0)}#sideMenu{width:75%;position:absolute;z-index:0;top:0;left:-75%;background-color:red}#main.main-on{left:75%}#sideMenu.sideMenu-on{left:0}p{line-height:50px}button{padding:30px;color:green}

@@ -36,7 +36,8 @@
 	
     <title>UTVGO</title>
     <link rel="stylesheet" href="./res/css/base.css?v=78ea69fb39" />
-    <link rel="stylesheet" href="./res/css/main.css?v=d41d8cd98f" />
+    <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
+    <link rel="stylesheet" href="./res/css/main.css?v=9559c8c9e5" />
     <style type="text/css">
 
     </style>
@@ -45,23 +46,48 @@
     
     </script>
 </head>
-<body style="">
+<body style="" class="overflow-scroll-y">
+	<div id="sideMenu" class="overflow-scroll-y">
+		
+		<p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p>v<p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p>
+	</div>
+	<div id="main" class="overflow-scroll-y">
+		<div class="main-header"></div>
+		<button id="menuBt">menu</button>
+		<p>sldfjd sfd<br/></p>
+		<button onmousedown="alert('fuck');">fuck</button><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p><p>sldfjd sfd<br/></p>
+	</div>
 
-	<h1>UTVGO WX version</h1>
-	<h2>xo</h2>
 
 
+	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
+	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
+	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
+	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
 
-<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
-<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
-<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
-<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
+	<script type="text/javascript" src="./res/js/main.js?v=d41d8cd98f"></script>
 
-<script type="text/javascript" src="./res/js/main.js?v=d41d8cd98f"></script>
+	<script type="text/javascript">
+		$('#menuBt').tap(function(e){
+			if($('#sideMenu').hasClass('sideMenu-on')){
+				$('#sideMenu').removeClass('sideMenu-on');
+				$('#main').removeClass('main-on');
+			}else{
+				$('#sideMenu').addClass('sideMenu-on');
+				$('#main').addClass('main-on');
+			}
+		});
+		$('#main').on('touchstart',function(e){
+			if($('#sideMenu').hasClass('sideMenu-on')&&e.target.id!='menuBt'){
+				$('#sideMenu').removeClass('sideMenu-on');
+				$('#main').removeClass('main-on');
+				e.stopPropagation();
+				e.preventDefault();
+				e.stopImmediatePropagation();
+			}
+		});
 
-<script type="text/javascript">
-
-</script>
+	</script>
 </body>
 
 

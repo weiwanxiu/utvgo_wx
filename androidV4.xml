@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClientInterface>
+		
+		<!-- 注册协议 -->
+		<Agreement>/download/xieyiWap.jsp</Agreement>
+		
+		<!-- 用户登录 -->
+		<Login>/interfaces/utvgoUser_login.action</Login>
+		<!-- 用户扫描登录 -->
+		<ScanLogin>/interfaces/utvgoUser_scanLoginV1.action</ScanLogin>
+		<!-- 新注册接口 -->
+		<UserRegister>/interfaces/utvgoUser_userRegister.action</UserRegister>
+		<!-- 通过UserID获取用户信息 -->
+		<GetUserInfo>/interfaces/utvgoUser_lookupUser.action</GetUserInfo>
+		<!-- 用户登录成功保存相关信息 -->
+		<SaveUserTokenString>/interfaces/utvgoUser_saveToken.action</SaveUserTokenString>
+		<!-- 用户重置密码 -->
+		<UserResetPsw>/interfaces/utvgoUser_userResetPsw.action</UserResetPsw>
+		<!-- 用户修改密码 -->
+		<UserUpdatePsw>/interfaces/utvgoUser_userUpdatePsw.action</UserUpdatePsw>
+		<!-- 用户清空登录设备标记信息 -->
+		<UserClearLoginFlagInfo>/interfaces/utvgoUser_clearLoginFlagInfo.action</UserClearLoginFlagInfo>
+		<!--绑定智能卡号 addBy zhangbin 20159030-->
+		<bindKeyNoUser>/interfaces/utvgoUser_bindKeyNoUser.action</bindKeyNoUser>
+		<!--解绑智能卡号  addBy zhangbin 20159030-->
+		<unBindKeyNOUser>/interfaces/utvgoUser_unBindKeyNOUser.action</unBindKeyNOUser>
+		<!--完善用 户信息 addBy zhangbin 20159030-->
+		<updateUnitedUserInfo>/interfaces/utvgoUser_updateUnitedUserInfo.action</updateUnitedUserInfo>
+		<!--扫描注册接口 addBy zhangbin 20160108-->
+		<registerAndBindUser>/interfaces/utvgoUser_registerAndBindUser.action</registerAndBindUser>
+		
+		<!-- 获取推荐关键字列表 -->
+		<GetRecommendKeywords>/appAPI/GetKeywordJson.jsp</GetRecommendKeywords>
+		<!-- 获取关键字搜索视频别表 -->
+		<GetKeywordSearchList>/appAPI/GetJsonSearchData.jsp</GetKeywordSearchList>
+		<!-- 输入关键字时候,获取相关下拉视频列表 -->
+		<GetKeywordRelatedList>/appAPI/GetJsonSearchListData.jsp</GetKeywordRelatedList>
+		
+		<!-- 推荐视频列表 -->
+		<GetRecommendList>/appAPI/GetJsonRandData.jsp</GetRecommendList>
+		
+		<!-- 直播页 -->
+		<GetChannelList>/interfaces/tvShow_listTv.action</GetChannelList>
+		<!-- 直播汇聚频道列表 -->
+		<GetTvCollectList>/interfaces/tvShow_listTvCollectList.action</GetTvCollectList>
+		<!-- 节目预告列表 -->
+		<GetChannelPromo>/interfaces/tvShow_listTvShow.action</GetChannelPromo>
+		<!-- 节目回放 -->
+		<GetChannelPlayBack>/interfaces/tvShow_listPlayBackTvShow.action</GetChannelPlayBack>
+		
+		<!-- 节目预约 -->
+		<GetUserOrderedList>/interfaces/tvShow_listOrderedTvShow.action</GetUserOrderedList>
+		<!-- 添加节目预约 -->
+		<UserAddOrder>/interfaces/tvShow_orderTvShow.action</UserAddOrder>
+		<!-- 删除节目预约 -->
+		<UserDeleteOrder>/interfaces/tvShow_deleteOrderedTvShow.action</UserDeleteOrder>
+		
+		<!-- 批量删除节目预约 -->
+		<UserBatchDeleteOrder>/interfaces/tvShow_batchDelete.action</UserBatchDeleteOrder>
+
+		<!-- 强档列表 -->
+		<GetQDList>/interfaces/qiangDang_getQDList.action</GetQDList>
+		<!-- 强档栏目视频列表 -->
+		<GetQDSubList>/interfaces/content_listQdContent.action</GetQDSubList>
+		<!-- 强档分页列表 -->
+		<GetQDPageList>/appAPI/GetJsonQDData.jsp</GetQDPageList>
+		
+		<!-- 各栏目关键字列表 -->
+		<GetFilterWordsList>/interfaces/getFilterWords_list.action</GetFilterWordsList>
+		<GetAllFilterWords>/appAPI/GetFilterWords.jsp</GetAllFilterWords>
+		
+		
+		<!--为ios返回JSONObject而定制的查询直播卫视分类-->
+		<GetFilterWordsNew>/appAPI/GetFilterWordsNew.jsp</GetFilterWordsNew>
+		
+		
+		<!-- 各个栏目视频列表 -->
+		<GetVideoList>/interfaces/content_listContent.action</GetVideoList>
+
+		<!-- 影视首页 -->
+		<YSHomePage>/interfaces/hdtvContent_index.action</YSHomePage>
+		<!---影视分类列表-->
+		<YSTypeList>/interfaces/hdtvContent_typeContext.action</YSTypeList>
+		<!-- 电影详情 -->
+		<YSSubMovieDetail>/interfaces/hdtvContent_dyDetail.action</YSSubMovieDetail>
+		<!-- 电视剧详情 -->
+		<YSSubTVDetail>/interfaces/hdtvContent_dsjDetail.action</YSSubTVDetail>
+		<!-- 电影列表 -->
+		<YSSubMovieList>/interfaces/hdtvContent_listDy.action</YSSubMovieList>
+		<!-- 电视剧列表 -->
+		<YSSubTVList>/interfaces/hdtvContent_listDsj.action</YSSubTVList>
+		
+		
+		<!-- 内容排行 -->
+		<RankingList>/interfaces/content_listSort.action</RankingList>
+		<!-- 强档排行 -->
+		<RankingQDList>/interfaces/qiangDang_listSort.action</RankingQDList>
+
+		<!-- 添加收藏 -->
+		<UserAddFavor>/interfaces/userCollect_manage.action</UserAddFavor>
+		<!-- 删除收藏 -->
+		<UserDeleteFavor>/interfaces/userCollect_batchDelete.action</UserDeleteFavor>
+		<!-- 获取收藏 -->
+		<GetUserFavorList>/interfaces/userCollect_list.action</GetUserFavorList>
+		<!-- 用户反馈 -->
+		<UserFeedback>/interfaces/userFeedback_SaveFeedback.action</UserFeedback>
+		
+		<!-- 视频应用列表 -->
+		<ConsocList>/interfaces/consoc_listConsoc.action</ConsocList>
+		<!-- 视频列表 -->
+		<ConsocSubList>/interfaces/consoc_listContent.action</ConsocSubList>
+		<!-- 播放视频时候获取视频综合信息(是否收藏,相关推荐) -->
+		<GetVideoExtraInfo>/interfaces/content_getExtraInfo.action</GetVideoExtraInfo>
+		<!-- 首页 -->
+		<HomePage>/interfaces/main_index.action</HomePage>
+		<!--判断内外网接口-->
+		<InnerOrOutNetWork>/interfaces/main_innerOrOutNetWork.action</InnerOrOutNetWork>
+		
+		<!-- 获取多集信息 -->
+		<GetMediaCollection>/interfaces/content_listContentTvs.action</GetMediaCollection>
+		
+		<!-- 获取推送频道信息 -->
+		<GetPushChannelList>/interfaces/pushChannel_listPushChannel.action</GetPushChannelList>
+		<!--拉频功能-->
+		<GetPushVideoUrl>/interfaces/pushChannel_getPushVideoUrl.action</GetPushVideoUrl>
+		
+		<!-- 直播类型信息 -->
+		<GetTvFilterWords>/interfaces/tvShow_getTvFilterWords.action</GetTvFilterWords>
+		
+		
+		<!-- 互联天地首页频道链接信息 -->
+		<GetUTVGOChannel>/interfaces/getTVGOChannel_list.action</GetUTVGOChannel>
+		
+		<!-- 获取广播电台信息列表 -->
+		<GetRadioList>/interfaces/getRadio_list.action</GetRadioList>
+		
+		<!-- 获取广播电台信息和节目单-->
+		<GetRadioDetailInfo>/interfaces/getRadio_detailInfo.action</GetRadioDetailInfo>
+		
+		<!-- 增加视频内容点击数  -->
+		<IncreaseContentClicks>/interfaces/content_increaseClicks.action</IncreaseContentClicks>
+		
+		<!-- UTVGO订单业务信息列表 -->
+		<GetUTVGOOrderList>/interfaces/utvgoOrder_getOrderList.action</GetUTVGOOrderList>
+		
+		<!-- 根据频道ID和类型ID获取影视内容列表 -->
+		<YSContentList>/interfaces/hdtvContent_listChannelData.action</YSContentList>
+		
+		<!-- 获得某个电视剧,动漫,音乐的详情 -->
+		<GetContentDetail>/interfaces/content_getContentDetail.action</GetContentDetail>
+		
+		<!-- 获取影视明细 -->
+		<YSContentDetail>/interfaces/hdtvContent_getHdtvContentDetail.action</YSContentDetail>
+		
+		<!-- 搜索接口 -->
+		<SearchContentList>/interfaces/searchData_list.action</SearchContentList>
+
+		<!--搜索关键字相关内容列表  -->
+		<SearchKeywordRelatedList>/interfaces/searchRelated_list.action</SearchKeywordRelatedList>
+		
+		<!-- 搜索热点关键字列表 -->
+		<SearchHotKeyword>/interfaces/searchHotKeyword_list.action</SearchHotKeyword>
+		
+		<!-- 客户端下载安装数据统计接口 -->
+		<ClientStatistics>/interfaces/clientStatistics_add.action</ClientStatistics>
+		
+		<!-- utvgo帮助连接 -->
+		<UtvgoHelper>/interfaces/consoc_listContent.action?supplierId=25</UtvgoHelper>
+		
+		<!-- utvgo诚毅订购接口 -->
+		<UtvgoOnlineOrder>/groovy/onlineOrderProduct.groovy</UtvgoOnlineOrder>
+		
+		<!-- 贺卡查询我的好友接口 -->
+		<SmartGetFriends>/interfaces/smartGateway_getMyFriends.action</SmartGetFriends>
+		
+		<!-- 获取贺卡列表接口 -->
+		<SmartGetCardList>/interfaces/smartGateway_getCardList.action</SmartGetCardList>
+		
+		<!-- 贺卡新增好友接口 -->
+		<SmartAddFriend>/interfaces/smartGateway_addMyFriend.action</SmartAddFriend>
+		
+		<!-- 贺卡删除好友接口 -->
+		<SmartDeleteFriend>/interfaces/smartGateway_deleteMyFriend.action</SmartDeleteFriend>
+		
+		<!-- 贺卡类型列表接口 -->
+		<SmartGetCardCategories>/interfaces/smartGateway_getCardCategoryList.action</SmartGetCardCategories>
+		
+		<!-- 贺卡查询用户信息接口 -->
+		<SmartSearchUserInfo>/interfaces/smartGateway_search.action</SmartSearchUserInfo>
+		
+		<!-- 批量发送贺卡接口 -->
+		<SmartSendCard>/interfaces/smartGateway_sendCard.action</SmartSendCard>
+		
+		<!-- 批量删除贺卡接口 -->
+		<SmartBatchDeleteCards>/interfaces/smartGateway_batchDeleteCards.action</SmartBatchDeleteCards>
+		
+		<!-- 查询贺卡数接口 -->
+		<SmartGetCardCounts>/interfaces/smartGateway_getCardCounts.action</SmartGetCardCounts>
+		
+		<!-- 查询姓氏称谓接口 -->
+		<SmartGetSurnameList>/interfaces/smartGateway_getSurnameList.action</SmartGetSurnameList>		
+		
+		<!-- 查询用户订购信息接口 -->
+		<SmartGetUserOrderInfo>/interfaces/smartGateway_getUserOrderInfo.action</SmartGetUserOrderInfo>
+		
+		<!-- 查询贺卡明细接口 -->
+		<SmartGetCardDetailInfo>/interfaces/smartGateway_getCardDetail.action</SmartGetCardDetailInfo>
+		
+		<!--卖座网加密字符串-->
+		<MaiZuoSign>/interfaces/maizuo_sign.action</MaiZuoSign>
+		
+		<!--根据频道id查询该频道下面类型-->
+		<GetTypeJson>/appAPI/GetTypeJson.jsp</GetTypeJson>
+		
+		<!--修改贺卡为已读 接口 -->
+		<UpdateReceivedCardStatus>/interfaces/smartGateway_updateReceivedCardStatus.action</UpdateReceivedCardStatus>
+		
+		
+		<!--修改贺卡为已读 接口 -->
+		<BatchOrdertoFSDP>/interfaces/maizuo_batchSendOrderToFSDP.action</BatchOrdertoFSDP>
+		
+		
+		
+		
+</ClientInterface>
