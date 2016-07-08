@@ -15,8 +15,8 @@ var runSequence=require('run-sequence');//按指定顺序运行任务
 
 var res = {
 	lessFiles : ['res/less/**.*','res/less/*/*.*']
-	,jsFiles : ['res/js/*/*.js']
-	,jsLib : ['res/js/lib/*/*.js']
+	,jsFiles : ['res/js/**.js']
+	,jsLib : ['res/js/lib/**.js']
 	,jsOwn : ['res/js/main.js','res/js/about.js'] //合并js文件时按此数组顺序
 	,imgFiles : ['res/images/**.*','res/images/*/*.*']
 };
@@ -90,7 +90,7 @@ gulp.task('rev-img-html',function(){
 
 //检测js
 gulp.task('lint',function(){
-	return gulp.src(res.jsOwn)
+	return gulp.src(res.jsFiles)
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
 		//.pipe(notify({message:'lint task ok'}))
@@ -99,7 +99,7 @@ gulp.task('lint',function(){
 //压缩js库
 gulp.task('js-lib',function(){
 	return gulp.src(res.jsLib)
-		.pipe(rename({suffix:'.min'}))
+		//.pipe(rename({suffix:'.min'}))
 		.pipe(uglify())
 		.pipe(gulp.dest('./dest/res/js/lib'))
 		.pipe(rev())
@@ -117,10 +117,10 @@ gulp.task('res-js-lib',function(){
 })
 //合并压缩项目的js
 gulp.task('js-own',function(){
-	return gulp.src(res.jsOwn)
-		.pipe(concat('all.js'))
-		.pipe(gulp.dest('./dest/res/js'))
-		.pipe(rename({suffix:'.min'}))
+	return gulp.src(res.jsFiles)
+		//.pipe(concat('all.js'))
+		//.pipe(gulp.dest('./dest/res/js'))
+		//.pipe(rename({suffix:'.min'}))
 		.pipe(uglify())
 		.pipe(gulp.dest('./dest/res/js'))
 		.pipe(rev())

@@ -1,0 +1,11 @@
+接口列表：
+http://app.utvgo.com:8099/utvgoClient/interfaces/clientInterface_getInterfaceList.action?
+
+clientType=androidphone&version=4.0.1
+
+
+
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/clientInterface_getInterfaceList.action?
+
+clientType=iPhone&version=2.8

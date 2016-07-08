@@ -151,17 +151,6 @@ a:active{
 @cl33:#333333;
 @cl00:#000000;
 
-@cl2c:#2c2c2c;
-@cl86:#868686;
-@cl37:#373737;
-
-@clyellow:#ff9800;
-@clyellow1:#f39800;
-@clyellow2:#f39022;
-@clyellow3:#f39900;
-@clyellow4:#f39601;
-@clb4:#b4b5b0;
-
 
 
 html, body {
@@ -205,42 +194,12 @@ html, body {
 .cl-red1{
   color: @clred3;
 }
-.cl-yellow{
-  color: @clyellow;
-}
-.cl-yellow1{
-  color: @clyellow4;
-}
-.cl-2c{
-  color: @cl2c;
-}
-.cl-86{
-  color: @cl86;
-}
-.cl-37{
-  color: @cl37;
-}
 
 .bgcl-red{
   background-color: @clred1;
 }
 .bgcl-red1{
   background-color: @clred3;
-}
-.bgcl-yellow{
-  background-color: @clyellow;
-}
-.bgcl-yellow1{
-  background-color: @clyellow4;
-}
-.bgcl-2c{
-  background-color: @cl2c;
-}
-.bgcl-86{
-  background-color: @cl86;
-}
-.bgcl-37{
-  background-color: @cl37;
 }
 
 
@@ -325,6 +284,26 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
+
+/**原生滚动，安卓4.0以上，ios6.0以上**/
+.overflow-scroll{
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}
+.overflow-scroll-y{
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}
+.overflow-scroll-x{
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}
+
 /**多余文字点点点**/
 .ellipsis{
   overflow:hidden;
@@ -400,4 +379,6 @@ top:10px;
 left:8px;
 overflow: hidden;
 }
+
+
 
