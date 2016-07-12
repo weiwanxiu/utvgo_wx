@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	
+    <title>UTVGO</title>
+    <link rel="stylesheet" href="./res/css/base.css?v=c9dc7caeae" />
+    <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
+    <link rel="stylesheet" href="./res/css/main.css?v=ca2e793ac4" />
+    <style type="text/css">
+		html,body{
+			background-color: #fff;
+			height: auto;
+		}
+    </style>
+    <script type="text/javascript">
+    
+    </script>
+</head>
+<body style="" class="overflow-scroll-y">
+	
+	<div id="dyDetailTop" class="clearfix dyDetail-top">
+		<!-- <div class="dyDetailTop-img"><img src="./res/images/3.jpg?v=e4a168b45e" /></div>
+		<div class="dyDetail-top-text">
+			<table>
+				<tbody>
+					<tr>
+						<td class="dyDetail-top-item-name">年份：</td>
+						<td>2015</td>
+					</tr>
+					<tr>
+						<td class="dyDetail-top-item-name">类型：</td>
+						<td>家庭剧；言情据，都市据</td>
+					</tr>
+					<tr>
+						<td class="dyDetail-top-item-name">主演：</td>
+						<td>李克勤、习大大、彭丽媛、成龙</td>
+					</tr>
+					<tr>
+						<td class="dyDetail-top-item-name">导演：</td>
+						<td>谢文东</td>
+					</tr>
+					<tr>
+						<td class="dyDetail-top-item-name">语言：</td>
+						<td>英语</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+	</div>
+	<div id="dySourceBar" class="dySourceBar">
+		<!-- <div style="padding-bottom: 10px;">播放来源:</div>
+		<div class="clearfix">
+			<a href="#" class="sourceItem">PPTV</a>
+			<a href="#" class="sourceItem">PPTV</a>
+			<a href="#" class="sourceItem">PPTV</a>
+		</div> -->
+	</div>
+	<div class="detailTabBox">
+		<!-- <div class="detailTabBar col2 clearfix">
+			<div class="detailTabItem on">
+				<span class="detailTab-text">猜你喜欢</span>
+			</div>
+			<div class="detailTabItem">
+				<span class="detailTab-text">简介</span>
+			</div>
+		</div>
+		<div class="detailTabItemContent indexContentBox">
+			<div class="rmdy-item">
+				<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
+				<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
+			</div>
+		</div>
+		<div class="detailTabItemContent">
+			<div class="detail-profile">
+			《山炮进城》讲述的是几个农村人进城奋斗的故事，人人都有一部血泪史，其实也是一部励志史
+			</div>
+		</div> -->
+	</div>
+
+	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
+	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
+	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
+	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
+
+	<script type="text/javascript" src="./res/js/main.js?v=4d12eb960b"></script>
+	<script type="text/javascript">
+	var urlParaObj=getUrlPara();//contentId=31996
+	var contentId=urlParaObj.contentId||0;
+	var type=urlParaObj.type||'dy';
+
+	function getdata(){
+		$.ajax({
+		  type: 'GET',
+		  url: serverAddress+'/utvgoClient/interfaces/hdtvContent_'+type+'Detail.action',
+		  // data to be added to query string:
+		  data: {contentId:contentId},
+		  // type of data we are expecting in return:
+		  dataType: 'json',
+		  success: function(data){
+		  	if(data.status!=0){
+		  		alert(data.result);
+		  		return;
+		  	}
+		    renderDetailTop(data);
+
+		    renderDetailTab(data);
+		  },
+		  error: function(xhr, type){
+		    alert('network error!');
+		  }
+		});
+	}
+	getdata();
+	function renderDetailTop(data){
+		document.title=data.result.content.name;
+		var s='<div class="dyDetailTop-img"><img src="'+data.result.content.imageAddress+'" /></div> <div class="dyDetail-top-text"> <table> <tbody> <tr> <td class="dyDetail-top-item-name">年份：</td> <td>'+data.result.content.playTime+'</td> </tr> <tr> <td class="dyDetail-top-item-name">类型：</td> <td>家庭剧；'+data.result.content.type+'</td> </tr> <tr> <td class="dyDetail-top-item-name">主演：</td> <td>'+data.result.content.player+'</td> </tr> <tr> <td class="dyDetail-top-item-name">导演：</td> <td>'+data.result.content.director+'</td> </tr> <tr> <td class="dyDetail-top-item-name">语言：</td> <td>'+data.result.content.language+'</td> </tr> </tbody> </table> </div>';
+
+		$('#dyDetailTop').html(s);
+		s='';
+		if(type=='dy'){
+			var items=data.result.content.urls||[];
+			for(var i=0,len=items.length;i<len;i++){
+				s+='<a href="'+items[i].playUrl+'" class="sourceItem">'+items[i].provider+'</a>'
+			}
+		}
+		if(type=='dsj'){
+			var items=data.result.suppliers||[];
+			for(var i=0,len=items.length;i<len;i++){
+				s+='<a href="'+items[i].urls[0]+'" class="sourceItem">'+items[i].supplier+'</a>'
+			}
+		}
+		var ss='<div style="padding-bottom: 10px;">播放来源:</div> <div class="clearfix"> '+s+' </div>';
+		$('#dySourceBar').html(ss);
+	}
+	function renderDetailTab(data){
+		var col=2;
+		var s='';
+		if(type=='dy'){
+			col=2;
+			s+='<div class="detailTabBar col'+col+' clearfix"> <div class="detailTabItem"> <span class="detailTab-text">猜你喜欢</span> </div> <div class="detailTabItem"> <span class="detailTab-text">简介</span> </div> </div>';
+			var lkList='';
+			var items=data.result.relatives||[];
+			for(var i=0,len=items.length;i<len;i++){
+				lkList+='<div class="rmdy-item"> <a href="./dyDetail.html?contentId='+items[i].id+'&type='+type+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
+			}
+			s+='<div class="detailTabItemContent indexContentBox">'+lkList+'</div>';
+			s+='<div class="detailTabItemContent"> <div class="detail-profile"> <p>'+data.result.content.remark.replace('\r\n','</p><p>')+'</p></div> </div>'
+		}
+
+		if(type=='dsj'){
+			col=3;
+			s+='<div class="detailTabBar col'+col+' clearfix"> <div class="detailTabItem"> <span class="detailTab-text">选集</span> </div> <div class="detailTabItem"> <span class="detailTab-text">猜你喜欢</span> </div> <div class="detailTabItem"> <span class="detailTab-text">简介</span> </div> </div>';
+			var jiList='';
+			var items=data.result.suppliers[0]||[];
+			for(var i=0,len=items.urls.length;i<len;i++){
+				jiList+='<a href="'+items.urls[i]+'" class="detail-jiList-item">'+items.numbers[i]+'</a>';
+			}
+			s+='<div class="detailTabItemContent detail-jiList clearfix">'+jiList+'</div>';
+
+			var lkList='';
+			var items=data.result.relatives||[];
+			for(var i=0,len=items.length;i<len;i++){
+				lkList+='<div class="rmdy-item"> <a href="./dyDetail.html?contentId='+items[i].id+'&type='+type+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
+			}
+			s+='<div class="detailTabItemContent indexContentBox">'+lkList+'</div>';
+			s+='<div class="detailTabItemContent"> <div class="detail-profile"> <p>'+data.result.content.remark.replace('\r\n','</p><p>')+'</p></div> </div>'
+		}
+		$('.detailTabBox').each(function(i,n){
+			$(n).html(s);
+		});
+
+		detailTabInitShow();
+	}
+
+	</script>
+</body>
+
+
+</html>

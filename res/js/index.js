@@ -53,7 +53,7 @@ function renderTopBanner(data){
 	var s='';
 	var items=data.result.headPics;
     for(var i=0,len=items.length;i<len;i++){
-    	s+='<li class="swiper-slide"> <a href="#"><img src="'+items[i].bigImg+'" /></a> </li>';
+    	s+='<li class="swiper-slide"> <a href="./dyDetail.html?type='+items[i].extra.type+'&contentId='+items[i].extra.id+'"><img src="'+items[i].bigImg+'" /></a> </li>';
 
     }
     $('#scrollerIndexTopBanner').append(s);
@@ -81,7 +81,7 @@ function renderDy(data){
 	var s='';
 	var items=data.result.ys;
     for(var i=0,len=items.length;i<len;i++){
-    	s+='<div class="rmdy-item"> <a href="#" class="rmdy-item-link"><img src="'+items[i].extra.img+'" /> <p class="rdzx-text ellipsis">'+items[i].extra.name+'</p></a> </div>';
+    	s+='<div class="rmdy-item"> <a href="./dyDetail.html?type=dy&contentId='+items[i].extra.id+'" class="rmdy-item-link"><img src="'+items[i].extra.img+'" /> <p class="rdzx-text ellipsis">'+items[i].extra.name+'</p></a> </div>';
     }
     $('#rmdyContent').append(s);
 

@@ -216,12 +216,10 @@ body,html{
 	line-height: 16px;
 	position: absolute;
 	width: 100%;
-	overflow: hidden;
 	bottom: 0px;
 	left: 0px;
 	background-color: rgba(0,0,0,0.4);
 	padding: 2px 4px;
-    height: 36px;
 }
 
 .zb-item{
@@ -292,11 +290,11 @@ body,html{
     padding-right: 4px;
     float: left;
 }
-#rmdyContent div.rmdy-item:nth-child(3n-1){
+.indexContentBox div.rmdy-item:nth-child(3n-1){
 	padding-right: 7px;
     padding-left: 7px;
 }
-#rmdyContent div.rmdy-item:nth-child(3n+0){
+.indexContentBox div.rmdy-item:nth-child(3n+0){
 	padding-right: 10px;
     padding-left: 4px;
 }
@@ -305,10 +303,8 @@ body,html{
     position: relative;
     min-height: 109px;
 }
-#rmdyContent .rdzx-text{
-	height: 30px;
-	line-height: 30px;
-	overflow: hidden;
+.indexContentBox .rdzx-text{
+	
 }
 
 
@@ -334,3 +330,113 @@ body,html{
 	line-height: 22px;
 }
 
+#dyDetailTop{
+	
+}
+.dyDetail-top{
+	color:#666;
+	padding-top: 10px;
+}
+.dyDetail-top-text{
+	line-height: 18px;
+	float: right;
+	width: 60%;
+	padding-right: 10px;
+}
+.dyDetail-top-text table{
+	width: 100%;
+}
+.dyDetail-top-text td{
+	text-align: left;
+	vertical-align: top;
+    padding-bottom: 4px;
+}
+.dyDetail-top-item-name{
+	width: 24%;	
+}
+.dyDetailTop-img{
+	float: left;
+	text-align: center;
+	padding: 0px 10px;
+	width: 40%;
+}
+@media (min-width:375px){
+	.dyDetail-top-text{
+		line-height: 22px;
+	}
+	.dyDetail-top{
+		font-size: 15px;
+	}
+}
+.dySourceBar{
+	padding: 10px;
+	padding-bottom: 18px;
+}
+.sourceItem{
+	padding: 5px 12px;
+	background-color: #e7e7e7;
+	border-radius: 4px;
+	float: left;
+	margin-right: 10px;
+	display: block;
+}
+
+.detailTabBar{
+	background-color: #e7e7e7;
+	height: 34px;
+	line-height: 32px;
+}
+.detailTabBar.col2 .detailTabItem{
+	width: 50%;
+	text-align: center;
+	float: left;
+}
+.detailTabBar.col3 .detailTabItem{
+	width: 33.3333%;
+	text-align: center;
+	float: left;
+}
+.detailTab-text{
+	display: inline-block;
+	height: 100%;
+	border-bottom: 0px #ff9800 solid;
+	font-size: 14px;
+}
+.detailTabItem.on .detailTab-text{
+	color: #ff9800;
+	border-width: 2px;	
+}
+.detailTabItemContent{
+	display: none;
+}
+.detailTabItemContent.on{
+	display: block;
+}
+.detail-profile{
+	padding: 15px;
+	line-height: 20px;
+	color: #666;
+	text-indent: 26px;
+}
+.detail-jiList-item{
+	background-color: #e7e7e7;
+	border-radius: 6px;
+	width: 40px;
+	height: 40px;
+	color: #333;
+	font-size: 14px;
+	text-align: center;
+	line-height: 40px;
+	float: left;
+	margin: 10px;
+	margin-bottom: 0;
+    margin-right: 0;
+    display: block;
+}
+.detail-jiList{
+	padding-bottom: 10px;
+}
+.detail-jiList-item:active{
+	background-color: #ff9800;
+	color: #fff;
+}

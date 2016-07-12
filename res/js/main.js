@@ -1,6 +1,6 @@
 //基础配置
 //http://120.31.66.15:8080/
-var hostName='http://120.31.66.15';//http://app.utvgo.com:8099/utvgoClient/interfaces/main_index.action
+var hostName='http://app.utvgo.com';//http://120.31.66.15';//http://app.utvgo.com:8099/utvgoClient/interfaces/main_index.action
 var hostPort=8080;
 var serverAddress=hostName+':'+hostPort;
 
@@ -80,7 +80,23 @@ el.getSize();//{width:33,height:332}
 
 
 
-
+function getUrlPara(href,rem){
+	var url = href||window.location.href //获取url
+		,request = {}
+		,str=''
+		,remStr = rem || '?' 
+		,index = url.indexOf(remStr)
+	;
+   if (index != -1) {
+   	  url=url.slice(index);
+      str = url.substr(1);
+      strs = str.split("&");
+      for(var i = 0; i < strs.length; i ++) {
+         request[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+      }
+   }
+   return request;
+}
 
 
 
@@ -121,4 +137,21 @@ el.getSize();//{width:33,height:332}
 })();
 
 
+
+/**detail tab**/
+function detailTabInitShow(){
+
+	$('.detailTabItem').on('tap',function(e){
+		var i=$(this).index();
+		//console.log(i);
+		$('.detailTabItem.on').removeClass('on');
+		$(this).addClass('on');
+		$('.detailTabItemContent.on').removeClass('on');
+		$('.detailTabItemContent').eq(i).addClass('on');
+	});
+
+	$('.detailTabItem.on').removeClass('on');
+	$('.detailTabItem').eq(0).addClass('on');
+	$('.detailTabItemContent').eq(0).addClass('on');
+}
 
