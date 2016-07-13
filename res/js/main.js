@@ -6,7 +6,7 @@ var serverAddress=hostName+':'+hostPort;
 
 
 
-
+var userId=1517; //用户帐号 用于测试
 
 
 
@@ -92,14 +92,21 @@ function getUrlPara(href,rem){
       str = url.substr(1);
       strs = str.split("&");
       for(var i = 0; i < strs.length; i ++) {
-         request[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+         request[strs[i].split("=")[0]]=decodeURIComponent(strs[i].split("=")[1]);
       }
    }
    return request;
 }
 
 
-
+function isWeiXin(){ 
+	var ua = window.navigator.userAgent.toLowerCase(); 
+	if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+		return true; 
+	}else{ 
+		return false; 
+	} 
+} 
 
 
 

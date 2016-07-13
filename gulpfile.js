@@ -47,14 +47,14 @@ gulp.task('css-base64', function () {
 	return gulp.src('./res/temp/rev-less/**.css')
 		.pipe(base64({
 			baseDir: 'res/images',
-			extensions: ['svg', 'png', /\.jpg#datauri$/i],//匹配
+			extensions: ['svg', 'png','gif', /\.jpg#datauri$/i],//匹配
 			exclude:    [/\.utvgo\.(com|net)/, '--live.jpg'],//不匹配
 			maxImageSize: 4*1024, // bytes
 			debug: true
 		}))
 		.pipe(gulp.dest('./res/temp/css-base64'))
 	;
-})
+});
 
 //将图片md5应用于css 图片路径里
 gulp.task('rev-img-css',function(){
@@ -79,9 +79,23 @@ gulp.task('rev-css',function(){
 		.pipe(gulp.dest('./res/temp/css-html'))
 	;
 });
+//base64 应用于html
+gulp.task('html-base64', function () {
+	return gulp.src('./res/temp/css-html/**.html')
+		.pipe(base64({
+			baseDir: 'res/images',
+			extensions: ['svg', 'png','gif', /\.jpg#datauri$/i],//匹配
+			exclude:    [/\.utvgo\.(com|net)/, '--live.jpg'],//不匹配
+			maxImageSize: 4*1024, // bytes
+			debug: true
+		}))
+		.pipe(gulp.dest('./res/temp/html-base64'))
+	;
+});
+
 //将img 文件md5 应用于html的img路径里
 gulp.task('rev-img-html',function(){
-	return gulp.src(['res/temp/rev-img/*.json','./res/temp/css-html/*.html'])
+	return gulp.src(['res/temp/rev-img/*.json','./res/temp/html-base64/*.html'])
 		.pipe(revCollector())
 		.pipe(gulp.dest('./res/temp/img-html'))
 	;
@@ -150,6 +164,7 @@ gulp.task('build',function(){
 		,'rev-img-css'
 		,'rev-css-manifest'
 		,'rev-css'
+		,'html-base64'
 		,'rev-img-html'
 		//,'lint'
 		,'js-lib'
@@ -165,7 +180,7 @@ gulp.task('build',function(){
 
 gulp.task('auto', function() {
 
-	gulp.watch(res.lessFiles, ['css-task']);
+	gulp.watch(['res/less/**.*','res/less/*/*.*','*.html','res/js/*/*.*','res/js/**.*','res./images/**.*'], ['build']);
 
 
 

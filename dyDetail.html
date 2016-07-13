@@ -27,7 +27,7 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>UTVGO</title>
+    <title></title>
     <link rel="stylesheet" href="./res/css/base.css" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
@@ -168,7 +168,7 @@
 			for(var i=0,len=items.length;i<len;i++){
 				lkList+='<div class="rmdy-item"> <a href="./dyDetail.html?contentId='+items[i].id+'&type='+type+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
 			}
-			s+='<div class="detailTabItemContent indexContentBox">'+lkList+'</div>';
+			s+='<div class="detailTabItemContent indexContentBox clearfix">'+lkList+'</div>';
 			s+='<div class="detailTabItemContent"> <div class="detail-profile"> <p>'+data.result.content.remark.replace('\r\n','</p><p>')+'</p></div> </div>'
 		}
 
@@ -187,7 +187,7 @@
 			for(var i=0,len=items.length;i<len;i++){
 				lkList+='<div class="rmdy-item"> <a href="./dyDetail.html?contentId='+items[i].id+'&type='+type+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
 			}
-			s+='<div class="detailTabItemContent indexContentBox">'+lkList+'</div>';
+			s+='<div class="detailTabItemContent indexContentBox clearfix">'+lkList+'</div>';
 			s+='<div class="detailTabItemContent"> <div class="detail-profile"> <p>'+data.result.content.remark.replace('\r\n','</p><p>')+'</p></div> </div>'
 		}
 		$('.detailTabBox').each(function(i,n){

@@ -27,10 +27,10 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>UTVGO</title>
+    <title></title>
     <link rel="stylesheet" href="./res/css/base.css?v=c9dc7caeae" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=ca2e793ac4" />
+    <link rel="stylesheet" href="./res/css/main.css?v=3f48b4c252" />
     <style type="text/css">
 		html,body{
 			background-color: #fff;
@@ -107,7 +107,7 @@
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
 
-	<script type="text/javascript" src="./res/js/main.js?v=4d12eb960b"></script>
+	<script type="text/javascript" src="./res/js/main.js?v=c113dcd932"></script>
 	<script type="text/javascript">
 	var urlParaObj=getUrlPara();//contentId=31996
 	var contentId=urlParaObj.contentId||0;
@@ -168,7 +168,7 @@
 			for(var i=0,len=items.length;i<len;i++){
 				lkList+='<div class="rmdy-item"> <a href="./dyDetail.html?contentId='+items[i].id+'&type='+type+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
 			}
-			s+='<div class="detailTabItemContent indexContentBox">'+lkList+'</div>';
+			s+='<div class="detailTabItemContent indexContentBox clearfix">'+lkList+'</div>';
 			s+='<div class="detailTabItemContent"> <div class="detail-profile"> <p>'+data.result.content.remark.replace('\r\n','</p><p>')+'</p></div> </div>'
 		}
 
@@ -187,7 +187,7 @@
 			for(var i=0,len=items.length;i<len;i++){
 				lkList+='<div class="rmdy-item"> <a href="./dyDetail.html?contentId='+items[i].id+'&type='+type+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
 			}
-			s+='<div class="detailTabItemContent indexContentBox">'+lkList+'</div>';
+			s+='<div class="detailTabItemContent indexContentBox clearfix">'+lkList+'</div>';
 			s+='<div class="detailTabItemContent"> <div class="detail-profile"> <p>'+data.result.content.remark.replace('\r\n','</p><p>')+'</p></div> </div>'
 		}
 		$('.detailTabBox').each(function(i,n){
