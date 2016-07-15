@@ -64,7 +64,7 @@ function renderHots(data){
 	var s='';
 	var items=data.result.hots;
     for(var i=0,len=items.length;i<len;i++){
-    	s+='<div class="rdzx-item"> <a href="./play_sn.html?playName='+encodeURIComponent(items[i].extra.name)+'&playUrl='+encodeURIComponent(items[i].extra.playUrl)+'&playImg='+encodeURIComponent(items[i].extra.img)+'&contentId='+encodeURIComponent(items[i].extra.contentId)+'&col=2&type='+encodeURIComponent(items[i].type)+'" class="rdzx-item-link"><img src="'+items[i].bigImg+'" /> <p class="rdzx-text">'+items[i].name+'</p></a> </div>';
+    	s+='<div class="rdzx-item"> <a href="./play_sn.html?playName='+encodeURIComponent(items[i].extra.name)+'&playUrl='+encodeURIComponent(items[i].extra.playUrl)+'&playImg='+encodeURIComponent(items[i].extra.img)+'&contentId='+encodeURIComponent(items[i].extra.contentId)+'&col=2&type='+encodeURIComponent(items[i].type)+'&mediaNumber='+encodeURIComponent(items[i].extra.mediaNumber)+'" class="rdzx-item-link"><img src="'+items[i].bigImg+'" /> <p class="rdzx-text">'+items[i].name+'</p></a> </div>';
     }
     $('#rdzxContent').append(s);
 }

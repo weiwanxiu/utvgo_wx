@@ -69,47 +69,15 @@
 			<div class="detailTabItemContent detail-jiList clearfix">
 				<a href="#" class="detail-jiList-item">1</a>
 			</div>
-			<div class="detailTabItemContent indexContentBox clearfix">
-				<div class="rdzx-item">
+			<div id="likeListBox" class="detailTabItemContent indexContentBox clearfix">
+				<!-- <div class="rdzx-item">
 					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
 					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
-				<div class="rdzx-item">
-					<a href="#" class="rdzx-item-link"><img src="./res/images/2.png" />
-					<p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
-				</div>
+				</div> -->
 			</div>
-			<div class="detailTabItemContent">
+			<div id="videoIntroduceBox" class="detailTabItemContent">
 				<div class="detail-profile">
-				《山炮进城》讲述的是几个农村人进城奋斗的故事，人人都有一部血泪史，其实也是一部励志史
+				<p>《山炮进城》讲述的是几个农村人进城奋斗的故事，人人都有一部血泪史，其实也是一部励志史</p>
 				</div>
 			</div>
 		</div>
@@ -121,89 +89,7 @@
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
 
 	<script type="text/javascript" src="./res/js/main.js"></script>
-	<script type="text/javascript">
-	var urlParaObj=getUrlPara();//contentId=31996
-	var contentId=urlParaObj.contentId||0;
-	
-	var type=urlParaObj.type||'';
-	var col=urlParaObj.col||'2';//几列
-	var playUrl=urlParaObj.playUrl||'';
-	var playImg=urlParaObj.playImg||'';
-	var playName=urlParaObj.playName||'';
-
-	var playDataList=[];
-	var currentIndex=0;
-
-	function getLikeList(){
-		$.ajax({
-		  type: 'GET',
-		  url: serverAddress+'/utvgoClient/interfaces/content_getExtraInfo.action',
-		  // data to be added to query string:
-		  data: {contentId:contentId,userId:userId},
-		  // type of data we are expecting in return:
-		  dataType: 'json',
-		  success: function(data){
-		  	if(data.status!=0){
-		  		alert(data.result);
-		  		return;
-		  	}
-		    renderDetailTop(data);
-
-		    renderDetailTab(data);
-		  },
-		  error: function(xhr, type){
-		    alert('network error!');
-		  }
-		});
-	}
-	
-	function renderDetailTab(data){
-		var s='';
-		
-		$('.detailTabBox').each(function(i,n){
-			$(n).html(s);
-		});
-
-	}
-	detailTabInitShow();
-
-	function init(){
-
-		setVideoTitle(playName);
-		setVideoInfo(playUrl,playImg);
-	}
-	init();
-
-	$('.video-play-wrapper').one('touchstart',function(e){
-		$('.video-play-play-icon').hide();
-		$('.video-play-img').hide();
-		document.getElementById('videoView').play();
-	});
-	$('.video-top-bar-back').on('tap',function(e){
-		//alert('t');
-		window.history.back();
-	});
-	
-	function setVideoInfo(url,img){
-		if(playUrl){
-			document.getElementById('videoView').src=url;
-		}
-		if(img){
-			$('.video-play-img').css('background-image','url('+img+')');
-		}
-	}
-
-	function setVideoTitle(s){
-		document.title=s;
-		$('.video-play-title').html(s);
-	}
-	
-	if(isWeiXin()){
-		$('.video-top-bar').hide();
-		$('.video-play-wrapper').css('padding-top','0px');
-	}
-
-	</script>
+	<script type="text/javascript" src="./res/js/play_sn.js">	</script>
 </body>
 
 
