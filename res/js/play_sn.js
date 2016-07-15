@@ -1,4 +1,5 @@
 
+	
 	var urlParaObj=getUrlPara();//contentId=31996
 	var contentId=urlParaObj.contentId||0;
 	
@@ -45,6 +46,10 @@
 
 
 		$('#likeListBox').html(s);
+
+		$('#likeListBox .rdzx-item-link').on('tap',function(e){
+
+		});
 	}
 	function renderVideoIntroduce(s){
 		
