@@ -1,18 +1,30 @@
 
 	
-	var urlParaObj=getUrlPara();//contentId=31996
-	var contentId=urlParaObj.contentId||0;
 	
-	var type=urlParaObj.type||'';
-	var col=urlParaObj.col||'2';//几列
-	var playUrl=urlParaObj.playUrl||'';
-	var playImg=urlParaObj.playImg||'';
-	var playName=urlParaObj.playName||'';
-	var mediaNumber=urlParaObj.mediaNumber||1;
+	var urlParaObj=getUrlPara();//contentId=31996
+	var contentId=0;
+	
+	var type='';
+	var col='2';//几列
+	var playUrl='';
+	var playImg='';
+	var playName='';
+	var mediaNumber=1;
 
 	var playDataList=[];
 	var likeDataList=[];
 	var currentIndex=0;
+
+	function urlParaInit(url){
+		urlParaObj=getUrlPara(url||'');
+		type=urlParaObj.type||'';
+		col=urlParaObj.col||'2';//几列
+		playUrl=urlParaObj.playUrl||'';
+		playImg=urlParaObj.playImg||'';
+		playName=urlParaObj.playName||'';
+		mediaNumber=urlParaObj.mediaNumber||1;
+		contentId=urlParaObj.contentId||0;
+	}
 
 	function getLikeList(){
 		$.ajax({
@@ -48,7 +60,12 @@
 		$('#likeListBox').html(s);
 
 		$('#likeListBox .rdzx-item-link').on('tap',function(e){
-
+			//alert($(this).attr('data-href'));
+			urlParaInit($(this).attr('data-href'));
+			setVideoTitle(playName);
+			setVideoInfo(playUrl,playImg);
+			setVideoIntroduce(playName);
+			document.getElementById('videoView').play();
 		});
 	}
 	function renderVideoIntroduce(s){
@@ -58,22 +75,43 @@
 
 	function renderDetailTab(data){
 		var s='';
+		s+='<div class="detailTabBar col'+col+' clearfix">';
 		
+		if(col==3){
+			s+='<div class="detailTabItem on"> <span class="detailTab-text">选集</span> </div>';
+		};
+		
+		s+='<div class="detailTabItem"> <span class="detailTab-text">猜你喜欢</span> </div> <div class="detailTabItem"> <span class="detailTab-text">简介</span> </div>';
+
+		s+='</div>';
+
+		s+='<div class="detailTabContentBox overflow-scroll-y">';
+
+		if(col==3){
+			s+='<div class="detailTabItemContent detail-jiList clearfix"> <a href="#" class="detail-jiList-item">1</a> </div>';
+		}
+
+		s+='<div id="likeListBox" class="detailTabItemContent indexContentBox clearfix"> </div> <div id="videoIntroduceBox" class="detailTabItemContent"> </div>';
+
+		s+='</div>';
+
 		$('.detailTabBox').each(function(i,n){
 			$(n).html(s);
 		});
 
+		detailTabInitShow();
+
 	}
 
-	detailTabInitShow();
+	
 
 	function init(){
 
 		setVideoTitle(playName);
 		setVideoInfo(playUrl,playImg);
 		getLikeList();
+		setVideoIntroduce(playName);
 	}
-	init();
 
 	$('.video-play-wrapper').one('touchstart',function(e){
 		$('.video-play-play-icon').hide();
@@ -93,6 +131,10 @@
 			$('.video-play-img').css('background-image','url('+img+')');
 		}
 	}
+	function setVideoIntroduce(s){
+		var ss='<div class="detail-profile"> <p>'+s.replace('\r\n','</p><p>')+'</p></div>';
+		$('#videoIntroduceBox').html(ss);
+	}
 
 	function setVideoTitle(s){
 		document.title=s;
@@ -103,3 +145,8 @@
 		$('.video-top-bar').hide();
 		$('.video-play-wrapper').css('padding-top','0px');
 	}
+
+
+	urlParaInit();
+	renderDetailTab();
+	init();
