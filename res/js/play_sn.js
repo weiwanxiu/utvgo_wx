@@ -26,7 +26,7 @@
 		playName=urlParaObj.playName||'';
 		mediaNumber=urlParaObj.mediaNumber||1;
 		contentId=urlParaObj.contentId||0;
-
+		currentIndex=0;
 		if(col>2){
 			isDuoji=true;
 		}
