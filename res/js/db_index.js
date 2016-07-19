@@ -40,8 +40,11 @@ $.ajax({
         indexData=data;
         renderTopBanner(data);
         renderHots(data);
-        renderTVs(data);
+        hideLoading();
         renderDy(data);
+        renderJj(data);
+        renderRmdm(data);
+
         renderYyzq(data);
     },
     error: function(xhr, type){
@@ -69,32 +72,61 @@ function renderHots(data){
     $('#rdzxContent').append(s);
 }
 
-function renderTVs(data){
-    var s='';
-    var items=data.result.tvs;
-    for(var i=0,len=items.length;i<len;i++){
-        s+='<div class="zb-item"> <a href="./play_sn.html?playName='+encodeURIComponent(items[i].extra.showName)+'&playUrl='+encodeURIComponent('http://120.31.66.11:8080/hls/live-gdty-004/stream800/index.m3u8')+'&playImg='+encodeURIComponent('')+'&contentId='+encodeURIComponent(items[i].extra.id)+'&col=2&type='+encodeURIComponent(items[i].type)+'" class="zb-item-link clearfix"> <div class="zb-item-logo" style="background-image:url('+items[i].extra.img+');"></div> <div class="zb-item-text"> <p class="zb-item-name ellipsis">'+items[i].name+'</p> <p class="zb-item-now ellipsis">'+items[i].extra.showTime+' '+items[i].extra.showName+'</p> <p class="zb-item-next ellipsis">'+items[i].extra.nextShowTime+' '+items[i].extra.nextShowName+'</p> </div> <div class="zb-item-icon"></div>'+(items[i].extra.isOpen?'':'<div class="zb-nolimitTime-icon"></div>')+'</a> </div> ';
-    }
-    $('#zbContent').append(s);
-
-}
 function renderDy(data){
     var s='';
-    var items=data.result.ys;
+    var items=data.result.hotDys;
     for(var i=0,len=items.length;i<len;i++){
-        s+='<div class="rmdy-item"> <a href="./dyDetail.html?type=dy&contentId='+items[i].extra.id+'" class="rmdy-item-link"><img src="'+items[i].extra.img+'" /> <p class="rdzx-text ellipsis">'+items[i].extra.name+'</p></a> </div>';
+        s+='<div class="rmdy-item"> <a href="./dyDetail.html?type=dy&contentId='+items[i].id+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
     }
     $('#rmdyContent').append(s);
 
 }
+function renderJj(data){
+    var s='';
+    var items=data.result.hotDsjs;
+    for(var i=0,len=items.length;i<len;i++){
+        s+='<div class="rmdy-item"> <a href="./dyDetail.html?type=dsj&contentId='+items[i].id+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
+    }
+    $('#jjtjContent').append(s);
+
+}
+
+function renderRmdm(data){
+    var s='';
+    var items=data.result.hotComics;
+    for(var i=0,len=items.length;i<len;i++){
+        s+='<div class="rmdy-item"> <a href="./dyDetail.html?type=dsj&contentId='+items[i].id+'" class="rmdy-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text ellipsis">'+items[i].name+'</p></a> </div>';
+    }
+    $('#rmdmContent').append(s);
+
+}
+
 function renderYyzq(data){
     var s='';
-    var items=data.result.spList;
+    var items=data.result.zqs;
     for(var i=0,len=items.length;i<len;i++){
-        s+='<div class="yyzq-item"> <a href="#" class="yyzq-item-link"><img src="'+items[i].img+'" /> <p class="yyzq-text ellipsis">'+items[i].name+'</p></a></div>';
+        s+='<div class="rdzx-item"> <a data-href="./play_sn.html?playName='+encodeURIComponent(items[i].extra.name)+'&playUrl='+encodeURIComponent(items[i].extra.playUrl)+'&playImg='+encodeURIComponent(items[i].extra.img)+'&contentId='+encodeURIComponent(items[i].extra.contentId)+'&col='+(items[i].extra.mediaNumber>1 ? 3 : 2)+'&type='+encodeURIComponent(items[i].type)+'&mediaNumber='+encodeURIComponent(items[i].extra.mediaNumber)+'" class="rdzx-item-link"><img src="'+items[i].extra.img+'" /> <p class="rdzx-text ellipsis">'+items[i].extra.name+'</p></a></div>';
     }
     $('#yyzqContent').append(s);
+    $('#yyzqContent a.rdzx-item-link').on('tap',function(e){
+        var i=$(this).parent().index();
+        try{
+            localStorage.setItem('videoRemark',indexData.result.zqs[i].extra.remark);
+        }catch(err){}
+        
+        window.location.href=$(this).attr('data-href');
+    });
 }
+
+$('.db_more').on('tap',function(e){
+    if($(this).hasClass('on')){
+        $(this).removeClass('on');
+        $('.db-main-footer-more').removeClass('on');
+    }else{
+        $(this).addClass('on');
+        $('.db-main-footer-more').addClass('on');;
+    }
+});
 
 
 

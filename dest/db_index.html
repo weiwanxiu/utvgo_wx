@@ -27,10 +27,11 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="touch-fullscreen" content="yes"/>
 
-    <title>推荐</title>
-    <link rel="stylesheet" href="./res/css/base.css?v=bf3fa34721" />
+    <title>点播</title>
+    <link rel="stylesheet" href="./res/css/base.css?v=c511e5778e" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=3f48b4c252" />
+    <link rel="stylesheet" href="./res/css/main.css?v=078138d131" />
+    <link rel="stylesheet" href="./res/css/main-footer.css?v=d1b2f0c0ca" />
     <style type="text/css">
 
     </style>
@@ -45,7 +46,7 @@
         <div type="text" id="searchInput">请输入关键词</div>
     </div>
     <div class="sideMenu-list-wrapper clearfix">
-        <a href="#" class="menuItem">
+        <a href="index.html" class="menuItem">
             <img src="./res/images/home@2x.png?v=f2cc0e9f64">
             <p>推荐</p>
         </a>
@@ -148,26 +149,7 @@
         </div>
         <!-- 热点资讯 end -->
 
-        <!-- 直播 begin -->
-        <div class="rdzx-title">
-            <img src="./res/images/zbtj@3x.png?v=1783350cbb" class="title-icon">
-            <span style="color:#4ED651;">直播</span>
-            <a href="#" class="arrow-index"></a>
-        </div>
-        <div id="zbContent" class="indexContentBox">
-            <!-- <div class="zb-item">
-                <a href="#" class="zb-item-link clearfix">
-                    <div class="zb-item-logo" style="background-image:url();"></div>
-                    <div class="zb-item-text">
-                        <p class="zb-item-name ellipsis">佛山电视台</p>
-                        <p class="zb-item-now ellipsis">19:00 转播中央台新闻联播</p>
-                        <p class="zb-item-next ellipsis">财富前途</p>
-                    </div>
-                    <div class="zb-item-icon"></div>
-                </a>
-            </div> -->
-        </div>
-        <!-- 直播 end -->
+        
 
         <!-- 热门电影 start -->
         <div class="rdzx-title">
@@ -183,33 +165,128 @@
         </div>
         <!-- 热门电影 end -->
 
+        <!-- 热门剧集 start -->
+        <div class="rdzx-title">
+            <img src="./res/images/jjtj@3x.png?v=61b78862a3" class="title-icon">
+            <span style="color:#16BD89;">热门剧集</span>
+            <a href="#" class="arrow-index"></a>
+        </div>
+        <div id="jjtjContent" class="clearfix indexContentBox">
+            <!-- <div class="rmdy-item">
+                <a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
+                <p class="rdzx-text ellipsis">高考确定键三闾</p></a>
+            </div> -->
+        </div>
+        <!-- 热门剧集 end -->
+
+        <!-- 热门动漫 start -->
+        <div class="rdzx-title">
+            <img src="./res/images/rmdm@3x.png?v=1df4fb6673" class="title-icon">
+            <span style="">热门动漫</span>
+            <a href="#" class="arrow-index"></a>
+        </div>
+        <div id="rmdmContent" class="clearfix indexContentBox">
+            <!-- <div class="rmdy-item">
+                <a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
+                <p class="rdzx-text ellipsis">高考确定键三闾</p></a>
+            </div> -->
+        </div>
+        <!-- 热门动漫 end -->
+
         <!-- 应用专区 start -->
         <div class="rdzx-title">
             <img src="./res/images/yyzq@3x.png?v=3dfde95936" class="title-icon">
             <span style="color:#F5A612;">应用专区</span>
             <a href="#" class="arrow-index"></a>
         </div>
-        <div id="yyzqContent" class="clearfix indexContentBox">
-            <!-- <div class="yyzq-item">
-                <a href="#" class="yyzq-item-link"><img src="./res/images/4.png?v=3d3f1f5b81" />
-                <p class="yyzq-text ellipsis">定键三闾</p></a>
+        <div id="yyzqContent" class="clearfix dbIndexYyzqContent indexContentBox">
+            <!-- <div class="rdzx-item">
+                <a href="#" class="rdzx-item-link"><img src="./res/images/2.png?v=96218e9c75" />
+                <p class="rdzx-text">高考确定键三闾大夫代理费李赛凤斯蒂芬酸辣粉的</p></a>
             </div> -->
         </div>
         <!-- 应用专区 end -->
 
     </div>
+    <div class="db-main-footer">
+        <a href="#" class="footer-item db_hot on">
+            <div class="footer-item-img"></div>
+            <p>热门</p>
+        </a>
+        <a href="#" class="footer-item db_movie">
+            <div class="footer-item-img"></div>
+            <p>电影</p>
+        </a>
+        <a href="#" class="footer-item db_tv">
+            <div class="footer-item-img"></div>
+            <p>剧集</p>
+        </a>
+        <a href="#" class="footer-item db_grade">
+            <div class="footer-item-img"></div>
+            <p>强档</p>
+        </a>
+        <a href="#" class="footer-item db_more">
+            <div class="footer-item-img"></div>
+            <p>更多</p>
+        </a>
+    </div>
+    <div class="db-main-footer-more">
+        <div class="db-main-footer-more-box">
+            <a href="#" class="footer-item db_movie">
+                <div class="footer-item-img"></div>
+                <p>电影</p>
+            </a>
+            <a href="#" class="footer-item db_tv">
+                <div class="footer-item-img"></div>
+                <p>剧集</p>
+            </a>
+            <a href="#" class="footer-item db_grade">
+                <div class="footer-item-img"></div>
+                <p>强档</p>
+            </a>
+            <a href="#" class="footer-item db_zq">
+                <div class="footer-item-img"></div>
+                <p>专区</p>
+            </a>
+            <a href="#" class="footer-item db_news">
+                <div class="footer-item-img"></div>
+                <p>资讯</p>
+            </a>
+            <a href="#" class="footer-item db_variety">
+                <div class="footer-item-img"></div>
+                <p>综艺</p>
+            </a>
+            <a href="#" class="footer-item db_entertainment">
+                <div class="footer-item-img"></div>
+                <p>娱乐</p>
+            </a>
+            <a href="#" class="footer-item db_record">
+                <div class="footer-item-img"></div>
+                <p>纪实</p>
+            </a>
+            <a href="#" class="footer-item db_sport">
+                <div class="footer-item-img"></div>
+                <p>体育</p>
+            </a>
+            <a href="#" class="footer-item db_anime">
+                <div class="footer-item-img"></div>
+                <p>动漫</p>
+            </a>
+
+        </div>
+    </div>
 
 </div>
 
+<div class="loadingTip"><div class="loadingTipImg"></div></div>
 
-
-<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=cf78cb35d4"></script>
-<script type="text/javascript" src="./res/js/lib/fx.js?v=9921ea03ff"></script>
+<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
+<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
 <script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
-<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=95934de1f5"></script>
+<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
 
-<script type="text/javascript" src="./res/js/main.js?v=f30e0a340c"></script>
-<script type="text/javascript" src="./res/js/db_index.js?v=b4f965feba?v=4209d363f4"></script>
+<script type="text/javascript" src="./res/js/main.js?v=f6a78cebe0"></script>
+<script type="text/javascript" src="./res/js/db_index.js?v=57ba72d66c"></script>
 <script type="text/javascript">
 
 

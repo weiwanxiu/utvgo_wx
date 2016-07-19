@@ -108,7 +108,12 @@ function isWeiXin(){
 	} 
 } 
 
-
+function showLoading(){
+	$('.loadingTip').show();
+}
+function hideLoading(){
+	$('.loadingTip').hide();
+}
 
 
 

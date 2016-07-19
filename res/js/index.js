@@ -36,10 +36,10 @@ $.ajax({
   // type of data we are expecting in return:
   dataType: 'json',
   success: function(data){
-    
     indexData=data;
     renderTopBanner(data);
     renderHots(data);
+    hideLoading();
     renderTVs(data);
     renderDy(data);
     renderYyzq(data);

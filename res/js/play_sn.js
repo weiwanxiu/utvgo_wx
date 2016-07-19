@@ -14,6 +14,7 @@
 	var playDataList=[];
 	var likeDataList=[];
 	var currentIndex=0;
+	var isDuoji=false;
 
 	function urlParaInit(url){
 		urlParaObj=getUrlPara(url||'');
@@ -24,6 +25,10 @@
 		playName=urlParaObj.playName||'';
 		mediaNumber=urlParaObj.mediaNumber||1;
 		contentId=urlParaObj.contentId||0;
+
+		if(col>2){
+			isDuoji=true;
+		}
 	}
 
 	function getLikeList(){
@@ -61,13 +66,56 @@
 
 		$('#likeListBox .rdzx-item-link').on('tap',function(e){
 			//alert($(this).attr('data-href'));
+			var i=$(this).parent().index();
+			//alert(i);
 			urlParaInit($(this).attr('data-href'));
 			setVideoTitle(playName);
 			setVideoInfo(playUrl,playImg);
-			setVideoIntroduce(playName);
+			setVideoIntroduce(likeDataList[i].remark||playName);
 			document.getElementById('videoView').play();
 		});
 	}
+	function getDuojiList(){
+		$.ajax({
+		  type: 'GET',
+		  url: serverAddress+'/utvgoClient/interfaces/content_listContentTvs.action',
+		  // data to be added to query string:
+		  data: {contentId:contentId},
+		  // type of data we are expecting in return:
+		  dataType: 'json',
+		  success: function(data){
+		  	if(data.status!=0){
+		  		alert(data.result);
+		  		return;
+		  	}
+		    renderDuojiList(data);
+
+		    
+		  },
+		  error: function(xhr, type){
+		    alert('network error!');
+		  }
+		});
+	}
+	function renderDuojiList(data){
+		var items=data.result||[];
+		var s='';
+		for(var i=0,len=items.length;i<len;i++){
+			s+='<a data-playurl="'+items[i].playUrl+'" data-img="'+items[i].img+'" title="'+items[i].title+'" class="detail-jiList-item">'+items[i].mediaNum+'</a>';
+		}
+		$('#duojiListBox').html(s);
+
+		$('.detail-jiList-item').on('tap',function(e){
+			var playUrl=$(this).attr('data-playurl');
+			var title=$(this).attr('title');
+			var img=$(this).attr('data-img');
+			setVideoInfo(playUrl,img);
+			document.getElementById('videoView').play();
+			$('.detail-jiList-item.on').removeClass('on');
+			$(this).addClass('on');
+		});
+	}
+
 	function renderVideoIntroduce(s){
 		
 		$('#videoIntroduceBox').html(s);
@@ -88,7 +136,7 @@
 		s+='<div class="detailTabContentBox overflow-scroll-y">';
 
 		if(col==3){
-			s+='<div class="detailTabItemContent detail-jiList clearfix"> <a href="#" class="detail-jiList-item">1</a> </div>';
+			s+='<div id="duojiListBox" class="detailTabItemContent detail-jiList clearfix">  </div>';
 		}
 
 		s+='<div id="likeListBox" class="detailTabItemContent indexContentBox clearfix"> </div> <div id="videoIntroduceBox" class="detailTabItemContent"> </div>';
@@ -109,8 +157,11 @@
 
 		setVideoTitle(playName);
 		setVideoInfo(playUrl,playImg);
+		if(isDuoji){
+			getDuojiList();
+		}
 		getLikeList();
-		setVideoIntroduce(playName);
+		setVideoIntroduce(localStorage.getItem('videoRemark')||playName);
 	}
 
 	$('.video-play-wrapper').one('touchstart',function(e){
@@ -150,3 +201,4 @@
 	urlParaInit();
 	renderDetailTab();
 	init();
+
