@@ -74,6 +74,8 @@
 			setVideoInfo(playUrl,playImg);
 			setVideoIntroduce(likeDataList[i].remark||playName);
 			document.getElementById('videoView').play();
+			$('.video-play-play-icon').hide();
+			$('.video-play-img').hide();
 			if(isDuoji){
 				$('.detail-jiList-item').off();
 				getDuojiList();

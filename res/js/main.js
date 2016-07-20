@@ -131,6 +131,14 @@ function hideLoading(){
 	$('#meBt').tap(function(e){
 		alert('me');
 	});
+	$('#topNavBackBt').tap(function(e){
+		window.history.back();
+	});
+
+	$('#topNavSearchBt').tap(function(e){
+		alert('search');
+	});
+	
 	$('#main').on('touchstart',function(e){
 		if($('#sideMenu').hasClass('sideMenu-on')&&e.target.id!='menuBt'){
 			$('#sideMenu').removeClass('sideMenu-on');
@@ -166,4 +174,3 @@ function detailTabInitShow(){
 	$('.detailTabItem').eq(0).addClass('on');
 	$('.detailTabItemContent').eq(0).addClass('on');
 }
-
