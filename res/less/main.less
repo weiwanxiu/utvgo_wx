@@ -567,6 +567,7 @@ body,html{
 
 .list-page-header{
 	height: 36px;
+  border-bottom: 1px #eee solid;
 }
 .list-page-main{
 	padding-top: 36px;
@@ -628,6 +629,7 @@ body,html{
   height: 100px;
   background-color: #FFFFFF;
   padding: 0px 10px;
+  border-bottom: 1px #eee solid;
 }
 
 .listTypeBox.fixed {
@@ -647,6 +649,19 @@ body,html{
   z-index: 3;
   display: none;
   background-color: #FFFFFF;
+  border-bottom: 1px #eee solid;
+}
+.listTypeSelectedBox:after{
+	content: '';
+	width: 40px;
+	height: 36px;
+	position: absolute;
+	top: 0;
+	right: 10px;
+  background-image: url(../images/sx-icon@3x.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .nomore{
   padding: 5px 10px;
@@ -663,9 +678,15 @@ body,html{
 }
 .listType-item{
   display: inline-block;
-  padding-right: 20px;
+  padding-right: 0px;
   font-size: 14px;
 }
 .listType-item.on{
   color: #E66002;
+}
+.listType-item-text{
+	padding-right: 10px;
+}
+.listTypeBox .swiper-free-mode>.swiper-wrapper{
+	margin: 0;
 }

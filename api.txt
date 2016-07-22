@@ -15,3 +15,9 @@ http://120.31.66.15:8080/utvgoClient/utvgo_wx/dest/index.html
 
 
 /var/webroot/wabp/utvgoClient/utvgo_wx
+
+
+http://app.utvgo.com:8080/utvgoClient/interfaces/hdtvContent_listChannelData.action?channelId=2&pageSize=20&pageNo=2&publishYear=2013&typeId=&areaId=
+
+
+http://app.utvgo.com:8080/utvgoClient/interfaces/hdtvContent_typeContext.action?channelId=3&pageSize=20&pageNo=2&publishYear=2013&typeId=&areaId=
