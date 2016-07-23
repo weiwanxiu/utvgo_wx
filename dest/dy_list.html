@@ -30,7 +30,7 @@
     <title></title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=b07c0f0178" />
+    <link rel="stylesheet" href="./res/css/main.css?v=cf88e12ffe" />
     <style type="text/css">
 
     </style>
@@ -40,137 +40,56 @@
     </script>
 </head>
 <body style="" class="overflow-scroll-y">
-
-	<div class="listTypeBox fixed overflow-scroll-x">
-		
-		<div id="listType-type-fixed" class="listType-row listType-type swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide listType-item on"><div class="listType-item-text">全部类型</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">亿元大片</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">喜剧</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">大路</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">警匪</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">韩国</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">欧洲</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">青春</div></div>
-			</div>
-		</div>
-		<div id="listType-area-fixed" class="listType-row listType-area swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide listType-item on"><div class="listType-item-text">全部地区</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">香港</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">台湾</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">大路</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">美国</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">韩国</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">欧洲</div></div>
-			</div>
-		</div>
-		<div id="listType-year-fixed" class="listType-row listType-year swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide listType-item on"><div class="listType-item-text">全部年份</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2016</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2015</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2014</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2013</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2012</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2011</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2010</div></div>
-			</div>
-		</div>
-	</div>
-	<div class="listTypeSelectedBox fixed overflow-scroll-x">当前选择: 全部类型 全部地区 全部年份</div>
-
 	<div id="main" class="overflowHidden">
 		<div class="main-header list-page-header">
 			<div class="topNav-title">电影</div>
 			<button id="topNavBackBt"></button>
 			<button id="topNavSearchBt"></button>
 		</div>
+		<div id="listTypeBoxFixed" class="listTypeBox fixed overflow-scroll-x">
+
+			<!--<div id="listType-type-fixed" class="listType-row listType-type swiper-container">-->
+				<!--<div class="swiper-wrapper">-->
+					<!--<div class="swiper-slide listType-item on"><div class="listType-item-text">全部类型</div></div>-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div id="listType-area-fixed" class="listType-row listType-area swiper-container">-->
+				<!--<div class="swiper-wrapper">-->
+					<!--<div class="swiper-slide listType-item on"><div class="listType-item-text">全部地区</div></div>-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div id="listType-year-fixed" class="listType-row listType-year swiper-container">-->
+				<!--<div class="swiper-wrapper">-->
+					<!--<div class="swiper-slide listType-item on"><div class="listType-item-text">全部年份</div></div>-->
+				<!--</div>-->
+			<!--</div>-->
+		</div>
+		<div class="listTypeSelectedBox fixed overflow-scroll-x">当前选择: 全部类型 全部地区 全部年份</div>
+
 		<div class="main-scroll list-page-main overflow-scroll-y" style="height:100%;">
-			<div class="listTypeBox">
-				<div id="listType-type" class="listType-row listType-type swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide listType-item on"><div class="listType-item-text">全部类型</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">亿元大片</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">喜剧</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">大路</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">警匪</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">韩国</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">欧洲</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">青春</div></div>
-					</div>
-				</div>
-				<div id="listType-area" class="listType-row listType-area swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide listType-item on"><div class="listType-item-text">全部地区</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">香港</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">台湾</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">大路</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">美国</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">韩国</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">欧洲</div></div>
-					</div>
-				</div>
-				<div id="listType-year" class="listType-row listType-year swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide listType-item on"><div class="listType-item-text">全部年份</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2016</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2015</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2014</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2013</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2012</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2011</div></div><div class="swiper-slide listType-item"><div class="listType-item-text">2010</div></div>
-					</div>
-				</div>
+			<div id="listTypeBox" class="listTypeBox">
+				<!--<div id="listType-type" class="listType-row listType-type swiper-container">-->
+					<!--<div class="swiper-wrapper">-->
+						<!--<div class="swiper-slide listType-item on"><div class="listType-item-text">全部类型</div></div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div id="listType-area" class="listType-row listType-area swiper-container">-->
+					<!--<div class="swiper-wrapper">-->
+						<!--<div class="swiper-slide listType-item on"><div class="listType-item-text">全部地区</div></div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div id="listType-year" class="listType-row listType-year swiper-container">-->
+					<!--<div class="swiper-wrapper">-->
+						<!--<div class="swiper-slide listType-item on"><div class="listType-item-text">全部年份</div></div>-->
+					<!--</div>-->
+				<!--</div>-->
 			</div>
 			<div id="listContent">
 				<div id="listContentBox" class="clearfix indexContentBox">
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
-					<div class="rmdy-item">
-						<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />
-						<p class="rdzx-text ellipsis">高考确定键三闾</p></a>
-					</div>
+					<!--<div class="rmdy-item">-->
+						<!--<a href="#" class="rmdy-item-link"><img src="./res/images/3.jpg?v=e4a168b45e" />-->
+						<!--<p class="rdzx-text ellipsis">高考确定键三闾</p></a>-->
+					<!--</div>-->
 
 				</div>
 				<!--<button class="list-more-bt">更多</button>-->
@@ -182,13 +101,13 @@
 	<div class="loadingTip"><div class="loadingTipImg"></div></div>
 
 
-	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
-	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
+	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=cf78cb35d4"></script>
+	<script type="text/javascript" src="./res/js/lib/fx.js?v=9921ea03ff"></script>
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
-	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
+	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=95934de1f5"></script>
 
-	<script type="text/javascript" src="./res/js/main.js?v=10ce419620"></script>
-	<script type="text/javascript" src="./res/js/dy_list.js?v=771f222682"></script>
+	<script type="text/javascript" src="./res/js/main.js?v=04f8ffa808"></script>
+	<script type="text/javascript" src="./res/js/dy_list.js?v=a4161040de"></script>
 	<script type="text/javascript">
 
 	
