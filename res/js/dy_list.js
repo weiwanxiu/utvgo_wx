@@ -24,10 +24,10 @@ $('.list-page-main').on('scroll',function(e){
 		//加在更多
 		if($('.nomore').length>0){
 			$('.nomore').show().html('正在加载...');
-			return;
 		}else{
 			$('#listContent').append('<div class="nomore">正在加载...</div>');
 		}
+
 		getNewData('more');
 		//$('#listContentBox').append('<div class="nomore">没有更多了!</div>');
 	}
@@ -51,6 +51,7 @@ typeId=0;
 areaId=0;
 yearId=0;
 pageSize=10;
+var typeName='全部类型',areaName='全部地区',yearName='全部年份';
 
 function getTypeData(){
 	$.ajax({
@@ -64,6 +65,9 @@ function getTypeData(){
 	  	hideLoading();
 	    renderTypeData(data);
 		  //renderListData(data.result.hotDys,'new');
+		  if(ajaxMore){
+			  return;
+		  }
 		  getNewData('new');
 	  },
 	  error: function(xhr, type){
@@ -134,29 +138,49 @@ function renderTypeData(data){
 	$('#listTypeBoxFixed').html(s);
 
 	initListTypeSwiper();
+	initListTypeEvent();
 }
 
 function initListTypeEvent(){
 	$('.listType-type .listType-item').on('tap',function(e){
 		typeId=$(this).attr('data-id');
+		typeName=$(this).children().html();
 		$('.listType-type .listType-item.on').removeClass('on');
-		$(this).addClass('on');
+		$('#listType-type .listType-item').eq($(this).index()).addClass('on');
+		$('#listType-type-fixed .listType-item').eq($(this).index()).addClass('on');
+
+		try{ajaxMore.abort();}catch(err){}
 		getNewData('new');
+		setListTypeSelectedBox();
 	});
 	$('.listType-area .listType-item').on('tap',function(e){
 		areaId=$(this).attr('data-id');
+		areaName=$(this).children().html();
 		$('.listType-area .listType-item.on').removeClass('on');
-		$(this).addClass('on');
+		$('#listType-area .listType-item').eq($(this).index()).addClass('on');
+		$('#listType-area-fixed .listType-item').eq($(this).index()).addClass('on');
+
+		try{ajaxMore.abort();}catch(err){}
 		getNewData('new');
+		setListTypeSelectedBox();
 	});
 	$('.listType-year .listType-item').on('tap',function(e){
 		yearId=$(this).attr('data-id');
+		yearName=$(this).children().html();
 		$('.listType-year .listType-item.on').removeClass('on');
-		$(this).addClass('on');
+		$('#listType-year .listType-item').eq($(this).index()).addClass('on');
+		$('#listType-year-fixed .listType-item').eq($(this).index()).addClass('on');
+		try{ajaxMore.abort();}catch(err){}
 		getNewData('new');
+		setListTypeSelectedBox();
 	});
 
 }
+
+function setListTypeSelectedBox(){
+	$('.listTypeSelectedBox').html('当前选择: '+typeName+' '+areaName+' '+yearName);
+}
+
 function getNewData(action){
 	var action=action||'new';
 	if(action=='new'){
@@ -164,7 +188,9 @@ function getNewData(action){
 	}else{
 		pageNo++;
 	}
-	showLoading();
+	if(action=='new'){
+		showLoading();
+	}
 	ajaxMore=$.ajax({
 		type: 'GET',
 		url: serverAddress+'/utvgoClient/interfaces/hdtvContent_listChannelData.action',
@@ -173,7 +199,6 @@ function getNewData(action){
 		// type of data we are expecting in return:
 		dataType: 'json',
 		success: function(data){
-			ajaxMore=null;
 			hideLoading();
 			renderListData(data.result,action);
 		},
@@ -196,13 +221,21 @@ function renderListData(data,action){
 	}else{
 		$('#listContentBox').append(s);
 	}
-	//加载到内容了
-	$('.nomore').hide();
+	if($('.nomore').length>0){
+		//加载到内容了
+		$('.nomore').hide();
+	}else{
+		$('#listContent').append('<div class="nomore">正在加载...</div>');
+	}
 	//没有内容了
 	if(data.length<pageSize){
 		$('.nomore').show().html('没有更多了!');
-
+		ajaxMore=true;//最后一页了，设置ajaxMore避免再请求
+	}else{
+		ajaxMore=null;
 	}
+
+
 }
 function updateListTypeFixedSwiper(){
 	// listTypeType.reInit();

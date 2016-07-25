@@ -112,7 +112,9 @@
 	var urlParaObj=getUrlPara();//contentId=31996
 	var contentId=urlParaObj.contentId||0;
 	var type=urlParaObj.type||'dy';
-
+	if(type=='dm'){
+		type='dsj';
+	}
 	function getdata(){
 		$.ajax({
 		  type: 'GET',

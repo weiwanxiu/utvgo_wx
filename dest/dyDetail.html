@@ -30,7 +30,7 @@
     <title></title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=cf88e12ffe" />
+    <link rel="stylesheet" href="./res/css/main.css?v=68c541b9b6" />
     <style type="text/css">
 		html,body{
 			background-color: #fff;
@@ -112,7 +112,9 @@
 	var urlParaObj=getUrlPara();//contentId=31996
 	var contentId=urlParaObj.contentId||0;
 	var type=urlParaObj.type||'dy';
-
+	if(type=='dm'){
+		type='dsj';
+	}
 	function getdata(){
 		$.ajax({
 		  type: 'GET',
