@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
     <link rel="stylesheet" href="./res/css/main.css?v=68c541b9b6" />
-    <link rel="stylesheet" href="./res/css/sp_list.css?v=a18376a6b3" />
+    <link rel="stylesheet" href="./res/css/sp_list.css?v=46d0e8d06a" />
     <style type="text/css">
 
     </style>
@@ -172,7 +172,7 @@ function render(arr){
  var _arr=arr;
  var _str="";
  for (var i = 0; i < _arr.length; i++) {
- 	_str=_str+'<li class="sp-listItem"> <div class="imgBox"><img src="'+_arr[i].img+'" alt=""></div> <p>'+_arr[i].name+'</p> </li>';
+ 	_str=_str+'<li class="sp-listItem"><a href="javascript:void(0)"><img src="'+_arr[i].img+'" alt=""> <p>'+_arr[i].name+'</p></a>  </li>';
  };
  $("#sp-list").html(_str);
 
