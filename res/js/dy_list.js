@@ -219,6 +219,7 @@ function getNewData(action){
 
 function renderListData(data,action){
 	var s='';
+	var data=data||[];
 	for(var i= 0,len=data.length;i<len;i++){
 		s+='<div class="rmdy-item"><a href="dyDetail.html?contentId='+data[i].id+'&type='+(data[i].type||'dy')+'" class="rmdy-item-link"><img src="'+data[i].img+'" /><p class="rdzx-text ellipsis">'+data[i].name+'</p></a></div>';
 	}

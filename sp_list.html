@@ -27,7 +27,7 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>推荐</title>
+    <title>专区</title>
     <link rel="stylesheet" href="./res/css/base.css" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
@@ -115,9 +115,12 @@
 		</div>
 		<div class="sp-main-body">
 			<ul class="sp-list" id="sp-list">
-<a href="javascript:void(0)"></a><!-- 				<li class="sp-listItem">
-					<div class="imgBox"><img src="res/images/4.png" alt=""></div>
+			
+			<!-- <li class="sp-listItem">
+					<a href="javascript:void(0)">
+					<img src="res/images/4.png" alt="">
 					<p>腾讯视频</p>
+					</a>
 				</li> -->				
 
 			</ul>
@@ -135,48 +138,46 @@
 
 	<script type="text/javascript" src="./res/js/main.js"></script>
 	<script type="text/javascript">
-window.onload=function(){
-	getListData(render);
-}
-function getListData(cb){
-	var _url="http://app.utvgo.com:8080/utvgoClient/interfaces/consoc_listConsoc.action";
-	showLoading();
-	var req;
-	if (req) {
-		req.abort();
-		req=null;
-	};
-	req=$.ajax({
-	  type: 'GET',
-	  url: _url,
-	  // data to be added to query string:
-	  // data: { name: 'Zepto.js' },
-	  // type of data we are expecting in return:
-	  dataType: 'json',
-	  timeout: 300,
-	  context: $('body'),
-	  success: function(data){
-	  	var _data=data;
-	  	if (_data.status==0) {
-	  		cb&&cb(_data.result);
-	  	};
-	    hideLoading();
-	  },
-	  error: function(xhr, type){
-	    alert('Ajax error!');
-	    hideLoading();
-	  }
-	})	
-}
-function render(arr){
- var _arr=arr;
- var _str="";
- for (var i = 0; i < _arr.length; i++) {
- 	_str=_str+'<li class="sp-listItem"><a href="javascript:void(0)"><img src="'+_arr[i].img+'" alt=""> <p>'+_arr[i].name+'</p></a>  </li>';
- };
- $("#sp-list").html(_str);
+	window.onload=function(){
+		getListData(render);
+	}
+	function getListData(cb){
+		var _url="http://app.utvgo.com:8080/utvgoClient/interfaces/consoc_listConsoc.action";
+		showLoading();
+		var req;
+		if (req) {
+			req.abort();
+			req=null;
+		};
+		req=$.ajax({
+		  type: 'GET',
+		  url: _url,
+		  // data to be added to query string:
+		  // data: { name: 'Zepto.js' },
+		  // type of data we are expecting in return:
+		  dataType: 'json',
+		  success: function(data){
+		  	var _data=data;
+		  	if (_data.status==0) {
+		  		cb&&cb(_data.result);
+		  	};
+		    hideLoading();
+		  },
+		  error: function(xhr, type){
+		    alert('Ajax error!');
+		    hideLoading();
+		  }
+		})	
+	}
+	function render(arr){
+		var _arr=arr;
+		var _str="";
+		for (var i = 0; i < _arr.length; i++) {
+			_str=_str+'<li class="sp-listItem"><a href="list_common.html?supplierId='+_arr[i].id+'&spName='+encodeURIComponent(_arr[i].name)+'"><img src="'+_arr[i].img+'" alt=""> <p>'+_arr[i].name+'</p></a>  </li>';
+		};
+		$("#sp-list").html(_str);
 
-}	
+	}	
 	
 
 	</script>
