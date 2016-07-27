@@ -115,7 +115,7 @@
 		</div>
 		<div class="sp-main-body">
 			<ul class="sp-list" id="sp-list">
-<!-- 				<li class="sp-listItem">
+<a href="javascript:void(0)"></a><!-- 				<li class="sp-listItem">
 					<div class="imgBox"><img src="res/images/4.png" alt=""></div>
 					<p>腾讯视频</p>
 				</li> -->				
@@ -172,7 +172,7 @@ function render(arr){
  var _arr=arr;
  var _str="";
  for (var i = 0; i < _arr.length; i++) {
- 	_str=_str+'<li class="sp-listItem"> <div class="imgBox"><img src="'+_arr[i].img+'" alt=""></div> <p>'+_arr[i].name+'</p> </li>';
+ 	_str=_str+'<li class="sp-listItem"><a href="javascript:void(0)"><img src="'+_arr[i].img+'" alt=""> <p>'+_arr[i].name+'</p></a>  </li>';
  };
  $("#sp-list").html(_str);
 
