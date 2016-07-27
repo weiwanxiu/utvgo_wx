@@ -53,6 +53,13 @@ yearId=0;
 pageSize=10;
 var typeName='全部类型',areaName='全部地区',yearName='全部年份';
 
+if(parseInt(channelId,10)==3){
+	$('.topNav-title').html('电视剧');
+}
+if(parseInt(channelId,10)==7){
+	$('.topNav-title').html('动漫');
+}
+
 function getTypeData(){
 	$.ajax({
 	  type: 'GET',
