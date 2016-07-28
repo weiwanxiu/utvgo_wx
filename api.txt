@@ -21,3 +21,19 @@ http://app.utvgo.com:8080/utvgoClient/interfaces/hdtvContent_listChannelData.act
 
 
 http://app.utvgo.com:8080/utvgoClient/interfaces/hdtvContent_typeContext.action?channelId=3&pageSize=20&pageNo=2&publishYear=2013&typeId=&areaId=
+
+//强档节目列表
+http://app.utvgo.com:8080/utvgoClient/interfaces/qiangDang_getQDList.action?typeId=144
+//强档类型
+http://app.utvgo.com:8080/utvgoClient/appAPI/GetTypeJson.jsp?channelId=12
+//强档期列表
+http://app.utvgo.com:8080/utvgoClient/interfaces/content_listQdContent.action?qdId=11045&pageNo=1&pageSize=20
+
+直播分类
+http://app.utvgo.com:8080/utvgoClient/appAPI/GetFilterWordsNew.jsp?channelId=0
+直播台列表
+http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listTvCollectList.action?pageNo=1&pageSize=30&channel=4&province=
+节目表
+http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listTvShow.action?tvId=10088&userId=1517
+回看
+http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listPlayBackTvShow.action?tvId=29

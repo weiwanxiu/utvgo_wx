@@ -5,17 +5,18 @@
 	var contentId=0;
 	
 	var type='';
-	var col='2';//几列
+	var col=2;//几列
 	var playUrl='';
 	var playImg='';
 	var playName='';
 	var mediaNumber=1;
 
-	var playDataList=[];
+	var qiDataList=[];//期列表
 	var likeDataList=[];
-	var duojiDataList=[];
+	var duojiDataList=[];//多集列表
 	var currentIndex=0;
 	var isDuoji=false;
+	var duojiType='';//集 or 期 ji qi
 
 	function urlParaInit(url){
 		urlParaObj=getUrlPara(url||'');
@@ -27,12 +28,23 @@
 		mediaNumber=urlParaObj.mediaNumber||1;
 		contentId=urlParaObj.contentId||0;
 		currentIndex=0;
+		var playList=localStorage.getItem('playList')||'';
+		try{localStorage.setItem('playList','');}catch(err){}
+		if(col>2) duojiType='ji';
+		
+		if(!!playList&&type=='qd'){
+			duojiType='qi';
+			col=3;
+			qiDataList=JSON.parse(playList);
+		}
+		isDuoji=false;
 		if(col>2){
 			isDuoji=true;
 		}
 	}
 
 	function getLikeList(){
+		showLoading();
 		$.ajax({
 		  type: 'GET',
 		  url: serverAddress+'/utvgoClient/interfaces/content_getExtraInfo.action',
@@ -41,6 +53,7 @@
 		  // type of data we are expecting in return:
 		  dataType: 'json',
 		  success: function(data){
+		  	hideLoading();
 		  	if(data.status!=0){
 		  		alert(data.result);
 		  		return;
@@ -59,7 +72,7 @@
 		var items=data.result||[];
 		likeDataList=items;
 		for(var i=0,len=items.length;i<len;i++){
-			s+='<div class="rdzx-item"> <a data-href="./play_sn.html?playName='+encodeURIComponent(items[i].name)+'&playUrl='+encodeURIComponent(items[i].playUrl)+'&playImg='+encodeURIComponent(items[i].img)+'&contentId='+encodeURIComponent(items[i].contentId)+'&col=2&type='+encodeURIComponent(items[i].type)+'&mediaNumber='+encodeURIComponent(items[i].mediaNumber)+'" class="rdzx-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text">'+items[i].name+'</p></a> </div>';
+			s+='<div class="rdzx-item"> <a data-href="./play_sn.html?playName='+encodeURIComponent(items[i].name)+'&playUrl='+encodeURIComponent(items[i].playUrl)+'&playImg='+encodeURIComponent(items[i].img)+'&contentId='+encodeURIComponent(items[i].contentId)+'&col='+(items[i].mediaNumber>1? 3:2)+'&type='+encodeURIComponent(items[i].type)+'&mediaNumber='+encodeURIComponent(items[i].mediaNumber)+'" class="rdzx-item-link"><img src="'+items[i].img+'" /> <p class="rdzx-text">'+items[i].name+'</p></a> </div>';
 		}
 
 
@@ -76,13 +89,14 @@
 			document.getElementById('videoView').play();
 			$('.video-play-play-icon').hide();
 			$('.video-play-img').hide();
-			if(isDuoji){
+			if(isDuoji&&duojiType=='ji'){
 				$('.detail-jiList-item').off();
 				getDuojiList();
 			}
 		});
 	}
 	function getDuojiList(){
+		showLoading();
 		$.ajax({
 		  type: 'GET',
 		  url: serverAddress+'/utvgoClient/interfaces/content_listContentTvs.action',
@@ -91,6 +105,7 @@
 		  // type of data we are expecting in return:
 		  dataType: 'json',
 		  success: function(data){
+		  	hideLoading();
 		  	if(data.status!=0){
 		  		alert(data.result);
 		  		return;
@@ -130,19 +145,53 @@
 		$('.detail-jiList-item').eq(0).addClass('on');
 	}
 	function playDuojiNext(){
-		var len=duojiDataList.length;
+		var len=duojiType=='ji'?duojiDataList.length:qiDataList.length;
 		if((currentIndex+1)>=len){
 			return;
 		}
-		$('.detail-jiList-item').eq(++currentIndex).trigger('tap');
+		if(duojiType=='ji'){
+			$('.detail-jiList-item').eq(++currentIndex).trigger('tap');
+		}else{
+			$('.commonList-item').eq(++currentIndex).trigger('tap');
+		}
+		
 	}
+	function renderQiList(){
+		var items=qiDataList||[];
+		var s='';
+		for(var i=0,len=items.length;i<len;i++){
+			s+='<div class="commonList-item" data-remark="'+items[i].remark+'" data-playurl="'+items[i].playUrl+'" data-img="'+items[i].img+'" title="'+items[i].name+'"><a class="commonList-item-link clearfix"> <div class="commonList-item-img"> <img src="'+items[i].img+'" /> </div> <div class="commonList-item-text-wrapper"> <p class="commonList-item-text">'+items[i].name+'</p> <span class="commonList-item-type-text">'+items[i].createTime+'&nbsp;&nbsp;&nbsp;'+items[i].type+'</span> </div> </a> </div>';
+		}
+		$('#duojiListBox').html(s);
 
+		$('.commonList-item').on('tap',function(e){
+			var $el=$(this);
+			var i=$el.index();
+			//console.log(i);
+			currentIndex=i;
+			duojiType='qi';
+			col=3;
+			isDuoji=true;
+			var playUrl=$el.attr('data-playurl');
+			var title=$el.attr('title');
+			var img=$el.attr('data-img');
+			setVideoInfo(playUrl,img);
+			document.getElementById('videoView').play();
+			setVideoTitle(title);
+			setVideoIntroduce($el.attr('data-remark'));
+			//$('.detail-jiList-item.on').removeClass('on');
+			//$el.addClass('on');
+			$('.video-play-play-icon').hide();
+			$('.video-play-img').hide();
+		});
+		//$('.detail-jiList-item').eq(0).addClass('on');
+	}
 	function renderVideoIntroduce(s){
 		
 		$('#videoIntroduceBox').html(s);
 	}
 
-	function renderDetailTab(data){
+	function renderDetailTab(){
 		var s='';
 		s+='<div class="detailTabBar col'+col+' clearfix">';
 		
@@ -178,16 +227,25 @@
 
 		setVideoTitle(playName);
 		setVideoInfo(playUrl,playImg);
-		if(isDuoji){
+		if(isDuoji&&duojiType=='ji'){
 			getDuojiList();
 		}
 		getLikeList();
 		setVideoIntroduce(localStorage.getItem('videoRemark')||playName);
+		try{
+			localStorage.setItem('videoRemark','');
+		}catch(err){}
 		document.getElementById('videoView').addEventListener('ended',function(e){
 			if(isDuoji){
 				playDuojiNext();
 			}
 		});
+		document.getElementById('videoView').addEventListener('error',function(e){
+			alert('视频加载失败!');
+		});
+		if(duojiType=='qi'){
+			renderQiList();
+		}
 	}
 
 	$('.video-play-wrapper').one('touchstart',function(e){

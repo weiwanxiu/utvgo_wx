@@ -53,6 +53,13 @@ yearId=0;
 pageSize=10;
 var typeName='全部类型',areaName='全部地区',yearName='全部年份';
 
+if(parseInt(channelId,10)==3){
+	$('.topNav-title').html('电视剧');
+}
+if(parseInt(channelId,10)==7){
+	$('.topNav-title').html('动漫');
+}
+
 function getTypeData(){
 	$.ajax({
 	  type: 'GET',
@@ -212,6 +219,7 @@ function getNewData(action){
 
 function renderListData(data,action){
 	var s='';
+	var data=data||[];
 	for(var i= 0,len=data.length;i<len;i++){
 		s+='<div class="rmdy-item"><a href="dyDetail.html?contentId='+data[i].id+'&type='+(data[i].type||'dy')+'" class="rmdy-item-link"><img src="'+data[i].img+'" /><p class="rdzx-text ellipsis">'+data[i].name+'</p></a></div>';
 	}
