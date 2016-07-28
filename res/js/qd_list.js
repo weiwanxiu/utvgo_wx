@@ -45,7 +45,7 @@ $('.listTypeSelectedBox').on('tap',function(e){
 
 var channelId,pageNo,typeId,areaId,yearId,pageSize,supplierId,spName,channelName;
 var urlParaObj=getUrlPara();
-channelId=urlParaObj.channelId||'';
+channelId=12;
 supplierId=urlParaObj.supplierId||'';
 spName=urlParaObj.spName||'';
 channelName=urlParaObj.channelName||'';
@@ -59,10 +59,8 @@ var typeName='全部类型';
 
 
 function getTypeData(){
-	var url=serverAddress+'/utvgoClient/interfaces/consoc_listContent.action';
-	if(!!!supplierId){
-		url=serverAddress+'/utvgoClient/interfaces/hdtvContent_typeContext.action'
-	}
+	var url=serverAddress+'/utvgoClient/appAPI/GetTypeJson.jsp';
+	
 	$.ajax({
 		type: 'GET',
 		url: url,
@@ -76,48 +74,31 @@ function getTypeData(){
 			if(ajaxMore){
 				return;
 			}
-			if(!!supplierId){
-				renderListData(data.result.contents,'new');
-			}else{
-				getNewData('new');
-			}
+			getNewData('new');
 		},
 		error: function(xhr, type){
 			alert('network error!');
 		}
 	});
 }
-//getTypeData();
-getNewData('new');
+getTypeData();
+//getNewData('new');
 
 function renderTypeData(data){
 	var s='',items=[],i= 0,len= 0,text='',on='';
 	//type
 	s+='<div id="listType-type" class="listType-row listType-type swiper-container"><div class="swiper-wrapper">';
-	items=data.result.channels||[];
-	if(!!!supplierId){
-		items=data.result.dyTypes||[];
-	}
+	items=data.types||[];
 	i=0;
 	len=items.length;
-	if(!!supplierId){//专区
-		s+='<div class="swiper-slide listType-item on" data-id="0"><div class="listType-item-text">'+'全部类型'+'</div></div>';
 
-		for(;i<len;i++){
-			text=items[i].name;
-			s+='<div class="swiper-slide listType-item" data-id="'+items[i].id+'"><div class="listType-item-text">'+text+'</div></div>';
-		}
-	}else{
-		for(;i<len;i++){
-			text=items[i].typeName;
-			if(items[i].typeId==0){
-				on='on';
-			}else{
-				on='';
-			}
-			s+='<div class="swiper-slide listType-item '+on+'" data-id="'+items[i].typeId+'"><div class="listType-item-text">'+text+'</div></div>';
-		}
+	s+='<div class="swiper-slide listType-item on" data-id="0"><div class="listType-item-text">'+'全部类型'+'</div></div>';
+
+	for(;i<len;i++){
+		text=items[i].typeName;
+		s+='<div class="swiper-slide listType-item '+on+'" data-id="'+items[i].typeId+'"><div class="listType-item-text">'+text+'</div></div>';
 	}
+
 	s+='</div></div>';
 
 	
@@ -133,11 +114,7 @@ function renderTypeData(data){
 
 function initListTypeEvent(){
 	$('.listType-type .listType-item').on('tap',function(e){
-		if(!!supplierId){
-			channelId=$(this).attr('data-id');
-		}else{
-			typeId=$(this).attr('data-id');
-		}
+		typeId=$(this).attr('data-id');
 		typeName=$(this).children().html();
 		$('.listType-type .listType-item.on').removeClass('on');
 		$('#listType-type .listType-item').eq($(this).index()).addClass('on');
@@ -170,7 +147,7 @@ function getNewData(action){
 		type: 'GET',
 		url: url,
 		// data to be added to query string:
-		//data: {supplierId:supplierId,channelId:channelId,pageSize:pageSize,pageNo:pageNo,publishYear:yearId,typeId:typeId,areaId:areaId},
+		data: {supplierId:supplierId,channelId:channelId,pageSize:pageSize,pageNo:pageNo,publishYear:yearId,typeId:typeId,areaId:areaId},
 		// type of data we are expecting in return:
 		dataType: 'json',
 		success: function(data){
@@ -189,7 +166,7 @@ function renderListData(data,action){
 	var s='';
 	var data=data||[];
 	for(var i= 0,len=data.length;i<len;i++){
-		s+='<div class="rdzx-item"> <a href="qd_list_set.html?qdId='+data[i].id+'" class="rdzx-item-link"><img src="'+data[i].img+'" /> <p class="rdzx-text">'+data[i].name+'<br/><span class="rdzx-text-source">来源:'+data[i].tvName+'</span></p></a> </div>'; 
+		s+='<div class="rdzx-item"> <a href="qd_list_set.html?qdId='+data[i].id+'&qdName='+encodeURIComponent(data[i].name)+'" class="rdzx-item-link"><img src="'+data[i].img+'" /> <p class="rdzx-text">'+data[i].name+'<br/><span class="rdzx-text-source">来源:'+data[i].tvName+'</span></p></a> </div>'; 
 	}
 
 	if(!!!action||action=='new'){
@@ -204,23 +181,23 @@ function renderListData(data,action){
 		$('#listContent').append('<div class="nomore">正在加载...</div>');
 	}
 	//没有内容了
-	//if(data.length<pageSize){
+	if(data.length<pageSize){
 		$('.nomore').show().html('没有更多了!');
 		ajaxMore=true;//最后一页了，设置ajaxMore避免再请求
-	//}else{
-		//ajaxMore=null;
-	//}
+	}else{
+		ajaxMore=null;
+	}
 
 }
 
-$('#listContentBox').on('tap','.commonList-item-link',function(e){
-    var s=$(this).attr('data-remark');
-    try{
-        localStorage.setItem('videoRemark',s);
-    }catch(err){}
+// $('#listContentBox').on('tap','.commonList-item-link',function(e){
+//     var s=$(this).attr('data-remark');
+//     try{
+//         localStorage.setItem('videoRemark',s);
+//     }catch(err){}
     
-    window.location.href=$(this).attr('data-href');
-});
+//     window.location.href=$(this).attr('data-href');
+// });
 
 function updateListTypeFixedSwiper(){
 	// listTypeType.reInit();

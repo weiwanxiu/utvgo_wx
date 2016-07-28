@@ -91,7 +91,7 @@ function renderYyzq(data){
 	var s='';
 	var items=data.result.spList;
 	for(var i=0,len=items.length;i<len;i++){
-    	s+='<div class="yyzq-item"> <a href="#" class="yyzq-item-link"><img src="'+items[i].img+'" /> <p class="yyzq-text ellipsis">'+items[i].name+'</p></a></div>';
+    	s+='<div class="yyzq-item"> <a href="list_common.html?supplierId='+items[i].id+'&spName='+items[i].name+'" class="yyzq-item-link"><img src="'+items[i].img+'" /> <p class="yyzq-text ellipsis">'+items[i].name+'</p></a></div>';
     }
     $('#yyzqContent').append(s);
 }
