@@ -1,0 +1,61 @@
+.weekBox {
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    margin-left: -8px;
+    margin-top: 10px;
+    font-size: 0;
+}
+.weekItem {
+    background-color: #F17D03;
+    display: inline-block;
+    width: 10%;
+    margin-left: 8px;
+    padding: 10px 0;
+    font-size: 12px;
+}
+.tvListBox {
+    overflow: hidden;
+    color: #B7B7B7;
+    margin-top: 10px;    
+}
+.listItem {
+    height: 50px;
+	line-height: 50px;
+	.icon {
+		position: relative;
+	    float: left;
+	    width: 60px;
+	    height: 100%;
+	    text-align: center;
+	    border-right: 1px solid #ccc;
+	    background-image: url(res/images/zb_isNotOrdered@2x.png);
+	    background-repeat: no-repeat;
+	    background-size: 50%;
+	    background-position: center;	    
+	    i{
+		    display: inline-block;
+		    width: 6px;
+		    height: 6px;
+		    border-radius: 50%;
+		    background-color: #ABABAB;
+		    position: absolute;
+		    top: 50%;
+		    right: -3px;	    	
+	    }
+	}  
+	.tvShowItem {
+	    float: left;
+	    text-align: left;
+	    padding-left: 10px;
+	}
+	&.isOrdered{
+		color: #F05E00;
+		.icon {
+			background-image: url(res/images/zb_isOrdered@2x.png);
+		}
+		i{
+			 background-color: #F05E00;
+		}
+	}	  
+}
