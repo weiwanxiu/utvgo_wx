@@ -129,7 +129,7 @@ function hideLoading(){
 		}
 	});
 	$('#meBt').tap(function(e){
-		alert('me');
+		alert('about me');
 	});
 	$('#topNavBackBt').tap(function(e){
 		window.history.back();
@@ -138,7 +138,7 @@ function hideLoading(){
 	$('#topNavSearchBt').tap(function(e){
 		alert('search');
 	});
-	
+
 	$('#main').on('touchstart',function(e){
 		if($('#sideMenu').hasClass('sideMenu-on')&&e.target.id!='menuBt'){
 			$('#sideMenu').removeClass('sideMenu-on');
