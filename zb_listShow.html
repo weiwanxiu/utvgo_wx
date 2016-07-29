@@ -55,51 +55,73 @@
 
 
 	<div class="detailTabBox">
-		<div class="detailTabBar col3 clearfix">
-			<!-- <div class="detailTabItem on">
-				<span class="detailTab-text">选集</span>
+		<div class="detailTabBar col2 clearfix">
+			<div class="detailTabItem on">
+				<span class="detailTab-text">节目表</span>
 			</div>
 			<div class="detailTabItem">
-				<span class="detailTab-text">猜你喜欢</span>
+				<span class="detailTab-text">回看</span>
 			</div>
-			<div class="detailTabItem">
-				<span class="detailTab-text">简介</span>
-			</div> -->
 		</div>
-		<div class="detailTabContentBox overflow-scroll-y">
-			<div class="detailTabItemContent detail-jiList clearfix">
-				<a href="#" class="detail-jiList-item">1</a>
+		<div class="tabContentBoxWrapper">
+			<div id="detailTabContentBox_0" class="detailTabContentBox overflow-scroll-y show">
+				<div class="detailTabItemContent detail-jiList clearfix">
+					<a href="#" class="detail-jiList-item">1</a>
+				</div>
+<!-- 				<ul id="weekBox" class=" weekBox ">
+					<li class="weekItem on" >周四<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周五<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周六<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周日<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周一<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周二<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周三<br><span class="tvShowDate">07-30</span></li>
+				</ul> -->
+<!-- 				<ul id="tvListBox" class="tvListBox show">
+					<li class="listItem on">
+						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
+						<div class="tvShowItem">
+							<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
+						</div>
+					</li>								
+				</ul>
+				<ul id="tvListBox" class="tvListBox">2</ul>
+				<ul id="tvListBox" class="tvListBox">3</ul>
+				<ul id="tvListBox" class="tvListBox">4</ul>
+				<ul id="tvListBox" class="tvListBox">5</ul>
+				<ul id="tvListBox" class="tvListBox">6</ul>
+				<ul id="tvListBox" class="tvListBox">7</ul>	 -->		
 			</div>
-			<ul id="weekBox" class=" weekBox ">
-				<li class="weekItem">周四<br>07-30</li>
-				<li class="weekItem">周四<br>07-30</li>
-				<li class="weekItem">周四<br>07-30</li>
-				<li class="weekItem">周四<br>07-30</li>
-				<li class="weekItem">周四<br>07-30</li>
-				<li class="weekItem">周四<br>07-30</li>
-				<li class="weekItem">周四<br>07-30</li>
-			</ul>
-			<ul id="tvListBox" class="tvListBox">
-				<li class="listItem">
-					<div class="icon"><i></i><span>已结束</span></div>
-					<div class="tvShowItem">
-						<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
-					</div>
-				</li>
-				<li class="listItem">
-					<div class="icon"><i></i><span>已结束</span></div>
-					<div class="tvShowItem">
-						<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
-					</div>
-				</li>
-				<li class="listItem">
-					<div class="icon"><i></i><span>已结束</span></div>
-					<div class="tvShowItem">
-						<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
-					</div>
-				</li>								
-			</ul>
+			<div id="detailTabContentBox_1" class="detailTabContentBox overflow-scroll-y ">
+				<div class="detailTabItemContent detail-jiList clearfix">
+					<a href="#" class="detail-jiList-item">1</a>
+				</div>
+<!-- 				<ul id="weekBox" class=" weekBox ">
+					<li class="weekItem on" >周四<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周五<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周六<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周日<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周一<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周二<br><span class="tvShowDate">07-30</span></li>
+					<li class="weekItem">周三<br><span class="tvShowDate">07-30</span></li>
+				</ul> -->
+<!-- 				<ul id="tvListBox" class="tvListBox show">
+					<li class="listItem on">
+						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText"></span></div>
+						<div class="tvShowItem">
+							<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
+						</div>
+					</li>								
+				</ul>
+				<ul id="tvListBox" class="tvListBox">2</ul>
+				<ul id="tvListBox" class="tvListBox">3</ul>
+				<ul id="tvListBox" class="tvListBox">4</ul>
+				<ul id="tvListBox" class="tvListBox">5</ul>
+				<ul id="tvListBox" class="tvListBox">6</ul>
+				<ul id="tvListBox" class="tvListBox">7</ul> -->
+			</div>			
 		</div>
+		
 	</div>
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
@@ -108,6 +130,187 @@
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
 
 	<script type="text/javascript" src="./res/js/main.js"></script>
+	<script>
+var urlParaObj=getUrlPara();//contentId=31996
+var playUrl=urlParaObj.playUrl||"";//contentId=31996
+var contentId=urlParaObj.contentId||"";//contentId=31996
+var playName=urlParaObj.playName||"";//contentId=31996
+
+$(document).ready(function () {
+
+	getTvShowList();
+	getBackShowsList();
+	window.document.title="playName";
+	$("#videoView").attr("src",playUrl) ;
+	
+})
+
+function getTvShowList(){
+	req=$.ajax({
+	  type: 'GET',
+	  url: serverAddress+'/utvgoClient/interfaces/tvShow_listTvShow.action?tvId='+urlParaObj.contentId+'&userId=',
+	  // data to be added to query string:
+	  data: {},
+	  // type of data we are expecting in return:
+	  dataType: 'json',
+	  success: function(data){
+  		var _data=data.result||[];
+	  	if (data.status==0) {
+	  		renderTVShow(_data);
+	  	};
+
+	  },
+	  error: function(xhr, type){
+	    alert('network error!');
+	  }
+	});
+
+}
+function renderTVShow(dataArr){
+	var contentBox= $("#detailTabContentBox_0");
+	var _dataArr=dataArr;
+	var _tvShowDate="";
+	var _tvShows="";
+	var _tvShowsItem="";
+	var tvListBoxStr="";
+	var _dateStr="";
+	var theDay=new Date().getDay();
+	var day={"1":"一","2":"二","3":"三","4":"四","5":"五","6":"六","7":"日"};
+	var dayNth=0;
+	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
+	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
+	 	_tvShows=_dataArr[i].tvShows;
+	 	_dateStr+='<li class="weekItem " >周'+day[""+theDay]+'<br><span class="tvShowDate">'+_tvShowDate+'</span></li>'; 
+	 	theDay=theDay<7?++theDay:1;
+	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
+		 	var isOver=new Date(_tvShows[j].showTime.replace(/-/g, "/"))-new Date();
+		 	if (isOver<0) {
+		 		isOverClass="isOver";
+		 		isOverTips="已结束";
+		 	}else if (_tvShows[j].showId==contentId) {
+		 		isOverClass="onPlay";
+		 		isOverTips="正在<br>播放";
+		 	}else{
+		 		isOverClass="notStart";
+		 		isOverTips="";
+		 	};	
+
+	 		_tvShowsItem+='<li data-showId="'+_tvShows[j].showId+'" class="listItem '+isOverClass+'"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">'+isOverTips+'</span></div> <div class="tvShowItem"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
+
+	 	};
+	 	
+	 	tvListBoxStr+='<ul id="tvListBox" class="tvListBox">'+_tvShowsItem+'</ul>';
+	 	_tvShowsItem="";
+	 	// console.log(tvListBoxStr);
+
+	 }; 
+	 _dateStr='<ul id="weekBox" class=" weekBox ">'+_dateStr+'</ul>';
+	 $(".detailTabContentBox").append(_dateStr);
+	 $(" .weekBox  .weekItem").eq(0).addClass("on") ;
+	 contentBox.append(tvListBoxStr);
+	 $(".tvListBox").eq(0).addClass("show");
+	 var _height=$(window).height()-260;
+	 $(".tvListBox").height(_height);
+	
+
+}
+//==================================================================
+function getBackShowsList(){
+	req=$.ajax({
+	  type: 'GET',
+	  url: serverAddress+'/utvgoClient/interfaces/tvShow_listPlayBackTvShow.action?tvId='+contentId+'&userId=',
+	  // data to be added to query string:
+	  data: {},
+	  // type of data we are expecting in return:
+	  dataType: 'json',
+	  success: function(data){
+  		var _data=data.result||[];
+	  	if (data.status==0) {
+	  		BackShowsList_render(_data);
+	  	};
+
+	  },
+	  error: function(xhr, type){
+	    alert('network error!');
+	  }
+	});
+
+}
+
+function BackShowsList_render(dataArr){
+	var contentBox= $("#detailTabContentBox_1");
+	var _dataArr=dataArr;
+	var _tvShowDate="";
+	var _tvShows="";
+	var _tvShowsItem="";
+	var tvListBoxStr="";
+	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
+	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
+	 	_tvShows=_dataArr[i].playBackShows;
+	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
+
+	 		_tvShowsItem+='<li data-playurl="'+_tvShows[j].cliPlayUrl+'" data-showId="'+_tvShows[j].showId+'" class="listItem on"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText"></span></div> <div class="tvShowItem"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
+
+	 	};
+	 	
+	 	tvListBoxStr+='<ul id="tvListBox" class="tvListBox">'+_tvShowsItem+'</ul>';
+	 	_tvShowsItem="";
+	 	// console.log(tvListBoxStr);
+
+	 }; 
+	 contentBox.append(tvListBoxStr);
+	 $(".tvListBox").eq(0).addClass("show");
+	  var _height=$(window).height()-260;
+	 $(".tvListBox").height(_height);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).on("touchstart",".detailTabItem ",function(){
+	var _this=$(this);
+	_this.addClass("on").siblings().removeClass("on");
+	$(".detailTabContentBox").eq(_this.index()).addClass("show").siblings().filter(".detailTabContentBox").removeClass("show");
+})
+.on("touchstart",".weekItem",function(){
+	var _this=$(this);
+	_this.addClass("on").siblings().removeClass("on");	
+	_this.parent().siblings().filter(".tvListBox").removeClass("show").eq(_this.index()).addClass("show");	
+})
+.on("touchstart","#detailTabContentBox_1 .listItem",function(){
+	var _this=$(this);
+	if (_this.hasClass("onPlay")) {
+		return false;
+	};
+	$("#videoView").attr("src",_this.attr("data-playurl")) ;
+	window.document.title="playName";	
+	_this.addClass("onPlay").siblings().removeClass("onPlay").find(".playTipsText").html("");
+	_this.find(".playTipsText").html("正在<br>播放");
+
+})
+
+
+
+function setPlayTipsText(el){
+
+}
+
+	</script>
 </body>
 
 

@@ -1,24 +1,46 @@
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
 .weekBox {
-    overflow: hidden;
+    // overflow: hidden;
     color: white;
     text-align: center;
     margin-left: -8px;
     margin-top: 10px;
     font-size: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
 }
 .weekItem {
-    background-color: #F17D03;
+    background-color: #E7E7E7;
     display: inline-block;
-    width: 10%;
+    width: 11%;
     margin-left: 8px;
-    padding: 10px 0;
-    font-size: 12px;
+    padding: 6px 0;
+    font-size: 10px;
+    color: #000;
+    &.on{
+ 	background-color: #F17D03;
+ 	color: #FFF;
+    }    
 }
 .tvListBox {
     overflow: hidden;
     color: #B7B7B7;
-    margin-top: 10px;    
+    margin-top: 10px;  
+    display: none;
+    overflow: scroll;
+    &.show{
+    	display: block;
+    }  
 }
+
 .listItem {
     height: 50px;
 	line-height: 50px;
@@ -28,34 +50,102 @@
 	    width: 60px;
 	    height: 100%;
 	    text-align: center;
-	    border-right: 1px solid #ccc;
-	    background-image: url(res/images/zb_isNotOrdered@2x.png);
+	    // border-right: 1px solid #ccc;
 	    background-repeat: no-repeat;
 	    background-size: 50%;
 	    background-position: center;	    
 	    i{
 		    display: inline-block;
-		    width: 6px;
-		    height: 6px;
 		    border-radius: 50%;
 		    background-color: #ABABAB;
 		    position: absolute;
-		    top: 50%;
-		    right: -3px;	    	
+			top: 50%;
+		    right: 0;
+		    width: 6px;
+		    height: 6px;
+		    margin-top: -3px;
+		    margin-right: -3px;    	
 	    }
+	    b{
+		    display: inline-block;
+		    height: 50%;
+		    border-right: 1px solid #ccc;
+		    position: absolute;
+		    right: 0px;	
+		    &.top{
+		    	top: 0;
+		    }
+		    &.bottom{
+		    	top: 50%;
+		    }		        	
+	    }
+	    
+
 	}  
 	.tvShowItem {
 	    float: left;
 	    text-align: left;
 	    padding-left: 10px;
+	    font-size: 16px;
 	}
-	&.isOrdered{
+	&.onPlay{
 		color: #F05E00;
 		.icon {
-			background-image: url(res/images/zb_isOrdered@2x.png);
+			line-height: 20px;
+			// background-image: url(res/images/zb_isOrdered@2x.png);
 		}
 		i{
-			 background-color: #F05E00;
+	 		background-color: #F05E00;
+		    width: 10px;
+		    height: 10px;
+	        margin-top: -5px;
+	        margin-right: -5px;			 
 		}
+	}
+	&:first-child b.top,&:last-child b.bottom{
+		display: none;
 	}	  
+}
+.detailTabContentBox{
+	position: relative;
+	&:nth-child(1){
+		.listItem{
+			&.notStart {
+				.icon{
+					color: #ABABAB;
+					background-image: url(res/images/zb_isNotOrdered@2x.png);
+					background-size: 18px;			
+				}
+
+			}
+			&.isOver{
+				color: #ABABAB;
+				background-image: none;		
+			}
+		}
+		
+	
+	}
+	&:nth-child(2){
+		.listItem{
+			.icon{
+				// color: #ABABAB;
+				background-image:  url(res/images/zb_play@2x.png);				
+				background-size: 20px;
+				background-repeat: no-repeat;
+			}
+			&.onPlay{
+				color: #F05E00;
+				.icon{
+					background-image: none;
+				}	
+			}
+		}
+	}	
+}
+.detailTabContentBox{
+	display: none;
+	&.show{
+		display: block;
+	}
 }
