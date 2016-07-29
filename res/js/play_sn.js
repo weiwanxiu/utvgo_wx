@@ -63,7 +63,7 @@
 		    
 		  },
 		  error: function(xhr, type){
-		    alert('network error!');
+		    //alert('network error!');
 		  }
 		});
 	}
@@ -116,7 +116,7 @@
 		    
 		  },
 		  error: function(xhr, type){
-		    alert('network error!');
+		    //alert('network error!');
 		  }
 		});
 	}

@@ -45,7 +45,7 @@ $.ajax({
     renderYyzq(data);
   },
   error: function(xhr, type){
-    alert('network error!');
+    //alert('network error!');
   }
 });
 
