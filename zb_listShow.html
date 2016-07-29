@@ -174,11 +174,14 @@ function renderTVShow(dataArr){
 	var _tvShowsItem="";
 	var tvListBoxStr="";
 	var _dateStr="";
+	var theDay=new Date().getDay();
+	var day={"1":"一","2":"二","3":"三","4":"四","5":"五","6":"六","7":"日"};
+	var dayNth=0;
 	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
 	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
 	 	_tvShows=_dataArr[i].tvShows;
-	 	var day=['四','五','六','日','一','二','三'];
-	 	_dateStr+='<li class="weekItem " >周'+day[i]+'<br><span class="tvShowDate">'+_tvShowDate+'</span></li>'; 
+	 	_dateStr+='<li class="weekItem " >周'+day[""+theDay]+'<br><span class="tvShowDate">'+_tvShowDate+'</span></li>'; 
+	 	theDay=theDay<7?++theDay:1;
 	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
 		 	var isOver=new Date(_tvShows[j].showTime.replace(/-/g, "/"))-new Date();
 		 	if (isOver<0) {
@@ -257,6 +260,7 @@ function BackShowsList_render(dataArr){
 	 }; 
 	 contentBox.append(tvListBoxStr);
 	 $(".tvListBox").eq(0).addClass("show");
+	  var _height=$(window).height()-260;
 	 $(".tvListBox").height(_height);
 
 }
