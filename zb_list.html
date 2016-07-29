@@ -27,7 +27,7 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>推荐</title>
+    <title>直播</title>
     <link rel="stylesheet" href="./res/css/base.css" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
@@ -46,11 +46,11 @@
 			<div type="text" id="searchInput">请输入关键词</div>
 		</div>
 		<div class="sideMenu-list-wrapper clearfix">
-			<a href="#" class="menuItem">
+			<a href="index.html" class="menuItem">
 				<img src="./res/images/home@2x.png">
 				<p>推荐</p>
 			</a>
-			<a href="#" class="menuItem">
+			<a href="zb_list.html" class="menuItem">
 				<img src="./res/images/liveplay_icon@2x.png">
 				<p>直播</p>
 			</a>
@@ -62,11 +62,11 @@
 				<img src="./res/images/broadcast_icon@2x.png">
 				<p>广播</p>
 			</a>
-			<a href="#" class="menuItem">
+			<!-- <a href="#" class="menuItem">
 				<img src="./res/images/shopping_icon@2x.png">
 				<p>购物</p>
-			</a>
-			<a href="#" class="menuItem">
+			</a> -->
+			<a href="http://m.maizuo.com/" class="menuItem">
 				<img src="./res/images/ticket_icon@2x.png">
 				<p>电影票</p>
 			</a>
@@ -74,11 +74,11 @@
 				<img src="./res/images/usercenter_icon@2x.png">
 				<p>个人中心</p>
 			</a>
-			<a href="#" class="menuItem">
+			<a href="qd_list.html" class="menuItem">
 				<img src="./res/images/qd_icon@2x.png">
 				<p>强档</p>
 			</a>
-			<a href="#" class="menuItem">
+			<a href="sp_list.html" class="menuItem">
 				<img src="./res/images/zq_icon@2x.png">
 				<p>专区</p>
 			</a>
@@ -94,7 +94,7 @@
 				<img src="./res/images/dm_icon@2x.png">
 				<p>动漫</p>
 			</a>
-			<a href="#" class="menuItem">
+			<!-- <a href="#" class="menuItem">
 				<img src="./res/images/car_icon@2x.png">
 				<p>汽车</p>
 			</a>
@@ -105,38 +105,42 @@
 			<a href="#" class="menuItem">
 				<img src="./res/images/39health_icon@2x.png">
 				<p>39健康</p>
-			</a>
+			</a> -->
 		</div>
 	</div>
-<div id="main" class="overflowHidden">
-    <div class="main-header">
-        <button id="menuBt"></button>
-        <button id="meBt"></button>
-    </div>
-    <div id="swiper-container1" class="listTypeBox swiper-container">
-        <ul id="typeList" class="listType-type swiper-wrapper">
-<!--             <li class="listType-item swiper-slide ">粤语台<i></i>
-            </li> -->
-        </ul>
-    </div>
-    <div id="swiper-container2" class="swiper-container tvlistbox">
-        <ul id="container2Wrapper" class="swiper-wrapper">
-<!--             <li id="" class="indexContentBox swiper-slide">
-                <div class="zb-item">
-                    <a href="#" class="zb-item-link clearfix">
-                        <div class="zb-item-logo" style="background-image:url();"></div>
-                        <div class="zb-item-text">
-                            <p class="zb-item-name ellipsis">佛山电视台</p>
-                            <p class="zb-item-now ellipsis">19:00 转播中央台新闻联播</p>
-                            <p class="zb-item-next ellipsis">财富前途</p>
-                        </div>
-                        <div class="zb-item-icon"></div>
-                    </a>
-                </div>
-            </li> -->
-        </ul>
-    </div>
-</div>
+	<div id="main" class="overflowHidden">
+	    <div class="main-header">
+	        <button id="menuBt"></button>
+	        <button id="meBt"></button>
+	    </div>
+	    <div class="listTypeBox">
+		    <div id="swiper-container1" class="swiper-container">
+		        <ul id="typeList" class="listType-type swiper-wrapper">
+		<!--             <li class="listType-item swiper-slide ">粤语台<i></i>
+		            </li> -->
+		        </ul>
+		    </div>
+	    </div>
+	    <div class="tvlistbox">
+		    <div id="swiper-container2" class="swiper-container">
+		        <ul id="container2Wrapper" class="swiper-wrapper">
+		<!--             <li id="" class="indexContentBox swiper-slide overflow-scroll-y">
+		                <div class="zb-item">
+		                    <a href="#" class="zb-item-link clearfix">
+		                        <div class="zb-item-logo" style="background-image:url();"></div>
+		                        <div class="zb-item-text">
+		                            <p class="zb-item-name ellipsis">佛山电视台</p>
+		                            <p class="zb-item-now ellipsis">19:00 转播中央台新闻联播</p>
+		                            <p class="zb-item-next ellipsis">财富前途</p>
+		                        </div>
+		                        <div class="zb-item-icon"></div>
+		                    </a>
+		                </div>
+		            </li> -->
+		        </ul>
+		    </div>
+	    </div>
+	</div>
 
 	<div class="loadingTip"><div class="loadingTipImg"></div></div>
 
@@ -170,9 +174,10 @@ function initSwiper(){
         //slidesPerView: "auto",
         //freeMode: !0 ,  
 		onSlideChangeEnd: function(swiper, even){
-	 	$(".listType-item.on").removeClass("on");
-	 	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");	
-	 	 }
+		 	$(".listType-item.on").removeClass("on");
+		 	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");
+		 	Swiper1.swipeTo(Swiper2.activeIndex,200,false);	
+	 	}
 	})
 	// Swiper1.params.control = Swiper2;//需要在Swiper2初始化后，Swiper1控制Swiper2
 	// Swiper2.params.control = Swiper1;//需要在Swiper1初始化后，Swiper2控制Swiper1
@@ -182,7 +187,7 @@ function initSwiper(){
 	 	var _this=$(this);
 	 	$(".listType-item.on").removeClass("on");
 	 	_this.addClass("on");
-	 	Swiper2.swipeTo(_this.index(),1000,false);
+	 	Swiper2.swipeTo(_this.index(),300,false);
 	});	
 	// $("#swiper-container2").on("swipe",function(){
 	//  	var _this=$(this);
@@ -242,7 +247,7 @@ function renderTVs(typeArr,listArr){
 	tvListObt["all"]="";
     for(var i=0,_listLen=_listArr.length;i<_listLen;i++){
     	item=_listArr[i];
-    	s='<div class="zb-item"> <a href="./play_sn.html?playName='+encodeURIComponent(item.tvName)+'&playUrl='+encodeURIComponent('http://120.31.66.11:8080/hls/live-gdty-004/stream800/index.m3u8')+'&playImg='+encodeURIComponent('')+'&contentId='+encodeURIComponent(item.id)+'&col=2&type='+encodeURIComponent("item.type")+'" class="zb-item-link clearfix"> <div class="zb-item-logo" style="background-image:url('+item.img+');"></div> <div class="zb-item-text"> <p class="zb-item-name ellipsis">'+item.tvName+'</p> <p class="zb-item-now ellipsis">'+item.showTime+' '+item.showName+'</p> <p class="zb-item-next ellipsis">'+item.nextShowTime+' '+item.nextShowName+'</p> </div> <div class="zb-item-icon"></div>'+(item.isOpen?'':'<div class="zb-nolimitTime-icon"></div>')+'</a> </div> ';
+    	s='<div class="zb-item"> <a href="./zb_listShow.html?playName='+encodeURIComponent(item.tvName)+'&playUrl='+encodeURIComponent(item.playUrl)+'&playImg='+encodeURIComponent('')+'&contentId='+encodeURIComponent(item.id)+'&col=2&type='+encodeURIComponent("tv")+'" class="zb-item-link clearfix"> <div class="zb-item-logo" style="background-image:url('+item.img+');"></div> <div class="zb-item-text"> <p class="zb-item-name ellipsis">'+item.tvName+'</p> <p class="zb-item-now ellipsis">'+item.showTime+' '+item.showName+'</p> <p class="zb-item-next ellipsis">'+item.nextShowTime+' '+item.nextShowName+'</p> </div> <div class="zb-item-icon"></div>'+(item.isOpen?'':'<div class="zb-nolimitTime-icon"></div>')+'</a> </div> ';
 	    	if (!!!tvListObt[""+item.channel]) {
 	    		tvListObt[""+item.channel]="";
 	    	};
@@ -250,15 +255,18 @@ function renderTVs(typeArr,listArr){
     		tvListObt["all"]+=s;
     };
 	for (var j = 0,_typeLen=typeArr.length; j < _typeLen; j++) {
-		typeStr=typeStr+'<li class="listType-item swiper-slide ">'+ (_typeArr[j].name||"--")+'<i></i> </li>'; 
+		if(!!!_typeArr[j].name){
+			continue;
+		}
+		typeStr=typeStr+'<li class="listType-item swiper-slide "><span>'+ (_typeArr[j].name||"--")+'</span><!--<i></i> --></li>'; 
 		if (tvListObt[""+_typeArr[j].id]) {
-        	 listStr+='<li id="" class="indexContentBox swiper-slide">'+tvListObt[""+_typeArr[j].id]+'</li>' ;
+        	 listStr+='<li id="" class="indexContentBox swiper-slide overflow-scroll-y">'+tvListObt[""+_typeArr[j].id]+'</li>';
         }else{
-        	listStr+='<li id="" class="indexContentBox swiper-slide"><div class="noDtataTips">暂无数据</div></li>' ;
+        	listStr+='<li id="" class="indexContentBox swiper-slide overflow-scroll-y"><div class="noDtataTips">暂无数据</div></li>';
         };
         if (j==_typeLen-1) {
-        		typeStr+='<li class="listType-item swiper-slide ">全部<i></i> </li>'; 
-        		listStr+='<li id="" class="indexContentBox swiper-slide">'+tvListObt["all"]+'</li>' ;
+        		typeStr+='<li class="listType-item swiper-slide "><span>全部</span><!--<i></i>--> </li>'; 
+        		listStr+='<li id="" class="indexContentBox swiper-slide overflow-scroll-y">'+tvListObt["all"]+'</li>';
         }; 
 	};
 

@@ -3,28 +3,30 @@
 }
 .listTypeBox {
     position: absolute;
-    top: 0;
-    margin-top: 46px;
-    border-bottom:none;
-    height: auto;
-    width: 100%; 
-    height: 46px;    
+    top: 46px;
+    border-bottom: 1px #eee solid;
+    width: 100%;
+    height: 40px;
+    padding: 0px;
+
+    border-top: 1px solid #eee;
 }
 .listType-type {
     overflow: hidden;
     text-align: center;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    height: 46px;
     width: 100%;
 
 }
 .listType-item {
     display: inline-block;
-    padding: 10px 10px 0;
-    color: #999;
-    font-size: 14px;
-    transition-duration: 0.2s; 
+    // transition-duration: 0.2s; 
+    height: 100%;
+    span{
+        padding: 15px 15px 0;
+        color: #999;
+        font-size: 14px;
+        display: inline-block;
+    }
     i{
 	display: inline-block;
     visibility: hidden;
@@ -34,12 +36,16 @@
     }
     &.on{
 	    color: #E66002;
+        border-bottom: 2px solid #E66002;
 		i{    visibility: visible; }    
+        span{
+            color: #E66002;
+        }
     }
 
 }
 .tvlistbox{
-    padding-top: 92px;
+    padding-top: 86px;
     width: 100%;
     height: 100%;
 	.noDtataTips{
@@ -66,4 +72,7 @@
 #container2Wrapper,#container2Wrapper li{
 		height: 100%;
 		overflow-y: scroll;		
+}
+#swiper-container2,#swiper-container1{
+    height: 100%;
 }
