@@ -11,7 +11,8 @@ $(document).ready(function(){
     getTvShowList();
     getBackShowsList();
     window.document.title=playName;
-    $("#videoView").attr("src",playUrl);
+    //$("#videoView").attr("src",playUrl);
+    document.getElementById('videoView').src=playUrl
 });
 
 function getTvShowList(){
@@ -148,36 +149,38 @@ function BackShowsList_render(dataArr){
 
 
 
-$(document).on("touchstart",".detailTabItem ",function(){
+$(document).on("tap",".detailTabItem ",function(){
     var _this=$(this);
     _this.addClass("on").siblings().removeClass("on");
     $(".detailTabContentBox").eq(_this.index()).addClass("show").siblings().filter(".detailTabContentBox").removeClass("show");
 })
-    .on("touchstart",".weekItem",function(){
+    .on("tap",".weekItem",function(){
         var _this=$(this);
         _this.addClass("on").siblings().removeClass("on");
         _this.parent().siblings().filter(".tvListBox").removeClass("show").eq(_this.index()).addClass("show");
     })
 
-    .on("touchstart","#detailTabContentBox_0 .listItem",function() {
+    .on("tap","#detailTabContentBox_0 .listItem",function() {
         var _this = $(this);
         if(islive){
             return;
         }
 
         window.document.title=playName;
-        $("#videoView").attr("src",playUrl);
+        //$("#videoView").attr("src",playUrl);
+        document.getElementById('videoView').src=playUrl
         $('.video-play-play-icon').hide();
         $('.video-play-img').hide();
         document.getElementById('videoView').play();
         islive=true;
     })
-    .on("touchstart","#detailTabContentBox_1 .listItem",function(){
+    .on("tap","#detailTabContentBox_1 .listItem",function(){
         var _this=$(this);
         if (_this.hasClass("onPlay")) {
             return false;
         };
-        $("#videoView").attr("src",_this.attr("data-playurl")) ;
+        //$("#videoView").attr("src",_this.attr("data-playurl")) ;
+        document.getElementById('videoView').src=_this.attr("data-playurl");
         window.document.title=_this.attr("data-tvname");
         _this.addClass("onPlay").siblings().removeClass("onPlay").find(".playTipsText").html("");
         _this.find(".playTipsText").html("正在<br>播放");
@@ -187,10 +190,14 @@ $(document).on("touchstart",".detailTabItem ",function(){
         islive=false;
     });
 
-$('.video-play-wrapper').one('touchstart',function(e){
+$('.video-play-wrapper').one('tap',function(e){
     $('.video-play-play-icon').hide();
     $('.video-play-img').hide();
     document.getElementById('videoView').play();
     islive=true;
 });
 
+if(isWeiXin()){
+    $('.video-top-bar').hide();
+    $('.video-play-wrapper').css('padding-top','0px');
+}

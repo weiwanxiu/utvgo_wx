@@ -38,3 +38,4 @@ http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listTvShow.action?tvId=1
 回看
 http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listPlayBackTvShow.action?tvId=29
 
+http://120.31.66.11:8080/hls/live-gdty-004/stream800/index.m3u8 
