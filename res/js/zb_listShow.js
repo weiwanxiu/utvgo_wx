@@ -7,12 +7,13 @@ var playUrl=urlParaObj.playUrl||"";//contentId=31996
 var contentId=urlParaObj.contentId||"";//contentId=31996
 var playName=urlParaObj.playName||"";//contentId=31996
 var islive=false;
+var liveAuth='?id=utvgo&uid=3a163d973ed4c23a8e150212099db671&user=vrrvrmnuwsihilggucfnhhchjidjbjijafgej&appid=10057&uuid=13BD6592188244D0A92C156532C06D372566000006566B00C122';
 $(document).ready(function(){
     getTvShowList();
     getBackShowsList();
     window.document.title=playName;
     //$("#videoView").attr("src",playUrl);
-    document.getElementById('videoView').src=playUrl
+    document.getElementById('videoView').src=playUrl+liveAuth;
 });
 
 function getTvShowList(){
@@ -168,7 +169,7 @@ $(document).on("tap",".detailTabItem ",function(){
 
         window.document.title=playName;
         //$("#videoView").attr("src",playUrl);
-        document.getElementById('videoView').src=playUrl
+        document.getElementById('videoView').src=playUrl+liveAuth;
         $('.video-play-play-icon').hide();
         $('.video-play-img').hide();
         document.getElementById('videoView').play();
@@ -180,7 +181,7 @@ $(document).on("tap",".detailTabItem ",function(){
             return false;
         };
         //$("#videoView").attr("src",_this.attr("data-playurl")) ;
-        document.getElementById('videoView').src=_this.attr("data-playurl");
+        document.getElementById('videoView').src=_this.attr("data-playurl")+liveAuth;
         window.document.title=_this.attr("data-tvname");
         _this.addClass("onPlay").siblings().removeClass("onPlay").find(".playTipsText").html("");
         _this.find(".playTipsText").html("正在<br>播放");
@@ -201,3 +202,8 @@ if(isWeiXin()){
     $('.video-top-bar').hide();
     $('.video-play-wrapper').css('padding-top','0px');
 }
+
+$('.video-top-bar-back').on('tap',function(e){
+    //alert('t');
+    window.history.back();
+});

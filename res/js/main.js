@@ -1,7 +1,7 @@
 //基础配置
 //http://120.31.66.15:8080/
 var hostName='http://app.utvgo.com';//http://120.31.66.15';//http://app.utvgo.com:8099/utvgoClient/interfaces/main_index.action
-var hostPort=8080;
+var hostPort=8099;
 var serverAddress=hostName+':'+hostPort;
 
 
