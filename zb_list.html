@@ -205,7 +205,7 @@ function initSwiper(){
 		//      console.log(swiper);
 		//     }
 		
-	})
+	});
 	var Swiper2 = new Swiper('#swiper-container2',{
         paginationClickable: !0,
         //slidesPerView: "auto",
@@ -219,7 +219,7 @@ function initSwiper(){
 	 	onFirstInit : function(swiper,event){
 	 		loadTVlistByType(swiper);
 	 	}
-	})
+	});
 	// Swiper1.params.control = Swiper2;//需要在Swiper2初始化后，Swiper1控制Swiper2
 	// Swiper2.params.control = Swiper1;//需要在Swiper1初始化后，Swiper2控制Swiper1
 	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");

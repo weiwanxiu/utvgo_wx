@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"><!-- 国产双核浏览器，启用极速模式 -->
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="touch-fullscreen" content="yes"/>
+	
+    <title>搜索</title>
+    <link rel="stylesheet" href="./res/css/base.css" />
+    <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
+    <link rel="stylesheet" href="./res/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./res/css/site_search.css" />
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+
+    
+    </script>
+</head>
+<body style="background-color:#fff;" class="overflow-scroll-y">
+	<div id="main" class="overflowHidden">
+		<div class="main-header site-search-header">
+			<input id="siteSearchInput" type="search" />
+			<button id="siteSearchCancelBt">取消</button>
+		</div>
+		
+		<div class="listTypeBox">
+		    <div id="swiper-container1" class="swiper-container">
+		        <ul id="typeList" class="listType-type swiper-wrapper">
+		            <li class="listType-item swiper-slide "><span>全部</span>
+		            </li>
+		            <li class="listType-item swiper-slide "><span>电影</span>
+		            </li>
+		            <li class="listType-item swiper-slide "><span>电视剧</span>
+		            </li>
+		        </ul>
+		    </div>
+	    </div>
+
+
+		<div class="main-scroll site-search-body" style="height:100%;">
+			<div id="swiper-container2" class="swiper-container">
+		        <ul id="container2Wrapper" class="swiper-wrapper">
+		            <li id="" class="indexContentBox swiper-slide overflow-scroll-y">
+		                <div class="zb-item">
+		                    <a href="#" class="zb-item-link clearfix">
+		                        <div class="zb-item-logo" style="background-image:url();"></div>
+		                        <div class="zb-item-text">
+		                            <p class="zb-item-name ellipsis">佛山电视台</p>
+		                            <p class="zb-item-now ellipsis">19:00 转播中央台新闻联播</p>
+		                            <p class="zb-item-next ellipsis">财富前途</p>
+		                        </div>
+		                        <div class="zb-item-icon"></div>
+		                    </a>
+		                </div>
+		            </li>
+		            <li id="" class="indexContentBox swiper-slide overflow-scroll-y">
+		                <div class="zb-item">
+		                    <a href="#" class="zb-item-link clearfix">
+		                        <div class="zb-item-logo" style="background-image:url();"></div>
+		                        <div class="zb-item-text">
+		                            <p class="zb-item-name ellipsis">佛山电视台</p>
+		                            <p class="zb-item-now ellipsis">19:00 转播中央台新闻联播</p>
+		                            <p class="zb-item-next ellipsis">财富前途</p>
+		                        </div>
+		                        <div class="zb-item-icon"></div>
+		                    </a>
+		                </div>
+		            </li>
+		            <li id="" class="indexContentBox swiper-slide overflow-scroll-y">
+		                <div class="zb-item">
+		                    <a href="#" class="zb-item-link clearfix">
+		                        <div class="zb-item-logo" style="background-image:url();"></div>
+		                        <div class="zb-item-text">
+		                            <p class="zb-item-name ellipsis">佛山电视台</p>
+		                            <p class="zb-item-now ellipsis">19:00 转播中央台新闻联播</p>
+		                            <p class="zb-item-next ellipsis">财富前途</p>
+		                        </div>
+		                        <div class="zb-item-icon"></div>
+		                    </a>
+		                </div>
+		            </li>
+		        </ul>
+		    </div>
+		</div>
+		
+	</div>
+
+	<div class="loadingTip"><div class="loadingTipImg"></div></div>
+
+
+	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./res/js/lib/fx.js"></script>
+	<script type="text/javascript" src="./res/js/lib/fx_methods.js"></script>
+	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
+
+	<script type="text/javascript" src="./res/js/main.js"></script>
+	<!-- <script type="text/javascript" src="./res/js/dy_list.js"></script> -->
+	<script type="text/javascript">
+
+	$('#siteSearchCancelBt').on('tap',function(e){
+		window.history.back();
+	})
+	$('#siteSearchInput').focus();
+	$('#siteSearchInput').on('input keyup',function(e){
+		//console.log(e.keyCode);
+		if(e.keyCode==13){
+			//搜索
+		}
+	});
+
+	var Swiper1 = new Swiper('#swiper-container1',{
+        paginationClickable: !0,
+        slidesPerView: "auto",
+        freeMode: !0  
+		// ,onTouchStart: function(swiper, even){
+		//  	$(".listType-item.on").removeClass("on");
+		//  	$(".listType-item").eq(Swiper1.activeIndex).addClass("on");	
+		//  	Swiper2.swipeTo(Swiper1.activeIndex,1000,false);			
+		//      console.log(swiper);
+		//     }
+		
+	})
+	var Swiper2 = new Swiper('#swiper-container2',{
+        paginationClickable: !0,
+        //slidesPerView: "auto",
+        //freeMode: !0 ,  
+		onSlideChangeEnd: function(swiper, even){
+		 	$(".listType-item.on").removeClass("on");
+		 	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");
+		 	Swiper1.swipeTo(Swiper2.activeIndex,200,false);	
+		 	//loadTVlistByType(swiper);
+	 	},
+	 	onFirstInit : function(swiper,event){
+	 		//loadTVlistByType(swiper);
+	 	}
+	});
+	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");
+
+	$("#swiper-container1").on("tap",".listType-item",function(){
+	 	var _this=$(this);
+	 	$(".listType-item.on").removeClass("on");
+	 	_this.addClass("on");
+	 	Swiper2.swipeTo(_this.index(),300,false);
+	});	
+
+
+	</script>
+</body>
+
+
+</html>
