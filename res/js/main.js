@@ -136,7 +136,13 @@ function hideLoading(){
 	});
 
 	$('#topNavSearchBt').tap(function(e){
-		alert('search');
+		//alert('search');
+    if(parseInt(channelId,10)==2||parseInt(channelId,10)==3){
+      
+    }else{
+      channelId=0;
+    }
+    location.href='./site_search.html?channelId='+(channelId||0);
 	});
 
 	$('#main').on('touchstart',function(e){
@@ -151,7 +157,9 @@ function hideLoading(){
 
 	//侧边搜索
 	$('#searchInput').tap(function(e){
-		alert('input');
+		//alert('input');
+    
+    location.href='./site_search.html?channelId=0';
 	});
 
 })();

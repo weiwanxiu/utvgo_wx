@@ -179,8 +179,10 @@
 			s+='<div class="detailTabBar col'+col+' clearfix"> <div class="detailTabItem"> <span class="detailTab-text">选集</span> </div> <div class="detailTabItem"> <span class="detailTab-text">猜你喜欢</span> </div> <div class="detailTabItem"> <span class="detailTab-text">简介</span> </div> </div>';
 			var jiList='';
 			var items=data.result.suppliers[0]||[];
-			for(var i=0,len=items.urls.length;i<len;i++){
-				jiList+='<a href="'+items.urls[i]+'" class="detail-jiList-item">'+items.numbers[i]+'</a>';
+			if(!!items.urls){
+				for(var i=0,len=items.urls.length;i<len;i++){
+					jiList+='<a href="'+items.urls[i]+'" class="detail-jiList-item">'+items.numbers[i]+'</a>';
+				}
 			}
 			s+='<div class="detailTabItemContent detail-jiList clearfix">'+jiList+'</div>';
 
