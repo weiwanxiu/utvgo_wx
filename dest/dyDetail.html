@@ -107,7 +107,7 @@
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
 
-	<script type="text/javascript" src="./res/js/main.js?v=2eb914a1f6"></script>
+	<script type="text/javascript" src="./res/js/main.js?v=ef9aaed63f"></script>
 	<script type="text/javascript">
 	var urlParaObj=getUrlPara();//contentId=31996
 	var contentId=urlParaObj.contentId||0;
@@ -133,7 +133,7 @@
 		    renderDetailTab(data);
 		  },
 		  error: function(xhr, type){
-		    alert('network error!');
+		    //alert('network error!');
 		  }
 		});
 	}
@@ -179,8 +179,10 @@
 			s+='<div class="detailTabBar col'+col+' clearfix"> <div class="detailTabItem"> <span class="detailTab-text">选集</span> </div> <div class="detailTabItem"> <span class="detailTab-text">猜你喜欢</span> </div> <div class="detailTabItem"> <span class="detailTab-text">简介</span> </div> </div>';
 			var jiList='';
 			var items=data.result.suppliers[0]||[];
-			for(var i=0,len=items.urls.length;i<len;i++){
-				jiList+='<a href="'+items.urls[i]+'" class="detail-jiList-item">'+items.numbers[i]+'</a>';
+			if(!!items.urls){
+				for(var i=0,len=items.urls.length;i<len;i++){
+					jiList+='<a href="'+items.urls[i]+'" class="detail-jiList-item">'+items.numbers[i]+'</a>';
+				}
 			}
 			s+='<div class="detailTabItemContent detail-jiList clearfix">'+jiList+'</div>';
 

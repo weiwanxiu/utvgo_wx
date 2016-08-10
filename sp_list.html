@@ -142,7 +142,7 @@
 		getListData(render);
 	}
 	function getListData(cb){
-		var _url="http://app.utvgo.com:8080/utvgoClient/interfaces/consoc_listConsoc.action";
+		var _url=serverAddress+"/utvgoClient/interfaces/consoc_listConsoc.action";
 		showLoading();
 		var req;
 		if (req) {
@@ -164,7 +164,7 @@
 		    hideLoading();
 		  },
 		  error: function(xhr, type){
-		    alert('Ajax error!');
+		    //alert('Ajax error!');
 		    hideLoading();
 		  }
 		})	

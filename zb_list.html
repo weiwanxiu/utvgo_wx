@@ -156,7 +156,43 @@ $(document).ready(function () {
 	showLoading()
 	getTvTypes();
 })
+function loadTVlistByType(swiper){
+	var i=swiper.activeIndex;
+	var typeid=$('#typeList .swiper-slide').eq(i).attr('data-id');
+	var $el=$('#container2Wrapper .swiper-slide').eq(i);
+	if($el.html().indexOf('暂无数据')>-1){
+		showLoading();
+		$.ajax({
+		  type: 'GET',
+		  url: serverAddress+'/utvgoClient/interfaces/tvShow_listTvCollectList.action?pageNo=1&pageSize=10000&channel='+typeid+'&province=',
+		  // data to be added to query string:
+		  //data: {},
+		  // type of data we are expecting in return:
+		  dataType: 'json',
+		  success: function(data){
+		  	hideLoading();
+		  	if (data.status==0) {
+		  		var _data=data.result;
+		  		var s='';
+		  		var item;
+			    for(var i=0,len=_data.length;i<len;i++){
+			    	item=_data[i];
+			    	s+='<div class="zb-item"> <a href="./zb_listShow.html?playName='+encodeURIComponent(item.tvName)+'&playUrl='+encodeURIComponent(item.playUrl)+'&playImg='+encodeURIComponent('')+'&contentId='+encodeURIComponent(item.id)+'&col=2&type='+encodeURIComponent("tv")+'" class="zb-item-link clearfix"> <div class="zb-item-logo" style="background-image:url('+item.img+');"></div> <div class="zb-item-text"> <p class="zb-item-name ellipsis">'+item.tvName+'</p> <p class="zb-item-now ellipsis">'+item.showTime+' '+(!!item.showName?item.showName:'暂无节目名称')+'</p> <p class="zb-item-next ellipsis">'+item.nextShowTime+' '+(!!item.nextShowName?item.nextShowName:'暂无节目预告')+'</p> </div> <div class="zb-item-icon"></div>'+(item.isOpen?'':'<div class="zb-nolimitTime-icon"></div>')+'</a> </div> ';
+			    }
+			    if(_data.length<=0){
+			    	s+='<div class="noDtataTips">暂无数据</div>';
+			    }
+			    $el.html(s);
+		  	};
 
+		  },
+		  error: function(xhr, type){
+		    //alert('network error!');
+		    hideLoading();
+		  }
+		});
+	}
+}
 function initSwiper(){
 	var Swiper1 = new Swiper('#swiper-container1',{
         paginationClickable: !0,
@@ -168,7 +204,8 @@ function initSwiper(){
 		//  	Swiper2.swipeTo(Swiper1.activeIndex,1000,false);			
 		//      console.log(swiper);
 		//     }
-	})
+		
+	});
 	var Swiper2 = new Swiper('#swiper-container2',{
         paginationClickable: !0,
         //slidesPerView: "auto",
@@ -177,8 +214,12 @@ function initSwiper(){
 		 	$(".listType-item.on").removeClass("on");
 		 	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");
 		 	Swiper1.swipeTo(Swiper2.activeIndex,200,false);	
+		 	loadTVlistByType(swiper);
+	 	},
+	 	onFirstInit : function(swiper,event){
+	 		loadTVlistByType(swiper);
 	 	}
-	})
+	});
 	// Swiper1.params.control = Swiper2;//需要在Swiper2初始化后，Swiper1控制Swiper2
 	// Swiper2.params.control = Swiper1;//需要在Swiper1初始化后，Swiper2控制Swiper1
 	$(".listType-item").eq(Swiper2.activeIndex).addClass("on");
@@ -209,7 +250,7 @@ function getTvTypes(){
 	  	getTvList(_data);
 	  },
 	  error: function(xhr, type){
-	    alert('network error!');
+	    //alert('network error!');
 	  }
 	});
 
@@ -231,7 +272,7 @@ function getTvList(typeArr){
 
 	  },
 	  error: function(xhr, type){
-	    alert('network error!');
+	    //alert('network error!');
 	  }
 	});
 }
@@ -247,7 +288,7 @@ function renderTVs(typeArr,listArr){
 	tvListObt["all"]="";
     for(var i=0,_listLen=_listArr.length;i<_listLen;i++){
     	item=_listArr[i];
-    	s='<div class="zb-item"> <a href="./zb_listShow.html?playName='+encodeURIComponent(item.tvName)+'&playUrl='+encodeURIComponent(item.playUrl)+'&playImg='+encodeURIComponent('')+'&contentId='+encodeURIComponent(item.id)+'&col=2&type='+encodeURIComponent("tv")+'" class="zb-item-link clearfix"> <div class="zb-item-logo" style="background-image:url('+item.img+');"></div> <div class="zb-item-text"> <p class="zb-item-name ellipsis">'+item.tvName+'</p> <p class="zb-item-now ellipsis">'+item.showTime+' '+item.showName+'</p> <p class="zb-item-next ellipsis">'+item.nextShowTime+' '+item.nextShowName+'</p> </div> <div class="zb-item-icon"></div>'+(item.isOpen?'':'<div class="zb-nolimitTime-icon"></div>')+'</a> </div> ';
+    	s='<div class="zb-item"> <a href="./zb_listShow.html?playName='+encodeURIComponent(item.tvName)+'&playUrl='+encodeURIComponent(item.playUrl)+'&playImg='+encodeURIComponent('')+'&contentId='+encodeURIComponent(item.id)+'&col=2&type='+encodeURIComponent("tv")+'" class="zb-item-link clearfix"> <div class="zb-item-logo" style="background-image:url('+item.img+');"></div> <div class="zb-item-text"> <p class="zb-item-name ellipsis">'+item.tvName+'</p> <p class="zb-item-now ellipsis">'+item.showTime+' '+(!!item.showName?item.showName:'暂无节目名称')+'</p> <p class="zb-item-next ellipsis">'+item.nextShowTime+' '+(!!item.nextShowName?item.nextShowName:'暂无节目预告')+'</p> </div> <div class="zb-item-icon"></div>'+(item.isOpen?'':'<div class="zb-nolimitTime-icon"></div>')+'</a> </div> ';
 	    	if (!!!tvListObt[""+item.channel]) {
 	    		tvListObt[""+item.channel]="";
 	    	};
@@ -258,7 +299,7 @@ function renderTVs(typeArr,listArr){
 		if(!!!_typeArr[j].name){
 			continue;
 		}
-		typeStr=typeStr+'<li class="listType-item swiper-slide "><span>'+ (_typeArr[j].name||"--")+'</span><!--<i></i> --></li>'; 
+		typeStr=typeStr+'<li class="listType-item swiper-slide " data-id="'+_typeArr[j].id+'"><span>'+ (_typeArr[j].name||"--")+'</span><!--<i></i> --></li>'; 
 		if (tvListObt[""+_typeArr[j].id]) {
         	 listStr+='<li id="" class="indexContentBox swiper-slide overflow-scroll-y">'+tvListObt[""+_typeArr[j].id]+'</li>';
         }else{

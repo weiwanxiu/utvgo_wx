@@ -11,10 +11,10 @@ http://app.utvgo.com:8099/utvgoClient/interfaces/clientInterface_getInterfaceLis
 clientType=iPhone&version=2.8
 
 测试地址
-http://120.31.66.15:8080/utvgoClient/utvgo_wx/dest/index.html
+http://app.utvgo.com:8099/utvgoClient/utvgo_wx/dest/index.html
 
+/var/webroot/utvgoClient/utvgo_wx
 
-/var/webroot/wabp/utvgoClient/utvgo_wx
 
 
 http://app.utvgo.com:8080/utvgoClient/interfaces/hdtvContent_listChannelData.action?channelId=2&pageSize=20&pageNo=2&publishYear=2013&typeId=&areaId=
@@ -37,3 +37,24 @@ http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listTvCollectList.action
 http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listTvShow.action?tvId=10088&userId=1517
 回看
 http://app.utvgo.com:8080/utvgoClient/interfaces/tvShow_listPlayBackTvShow.action?tvId=29
+
+http://120.31.66.11:8080/hls/live-gdty-004/stream800/index.m3u8 
+
+//直播地址加了防盗链
+uid:ip+token的md5加密
+user:随机10个字符再md5加密
+uuid:设备标志
+http://hls.yy.com/live/46645489_2201928521.m3u8?id=utvgo&uid=3a163d973ed4c23a8e150212099db671&user=vrrvrmnuwsihilggucfnhhchjidjbjijafgej&appid=10057&uuid=13BD6592188244D0A92C156532C06D372566000006566B00C122
+
+
+
+http://app.utvgo.com:8080/
+http://app.utvgo.com:8099/
+
+全站搜索
+http://app.utvgo.com:8099/utvgoClient/interfaces/searchRelated_list.action?contentName=好&channelId=0
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/searchRelated_list.action?contentName=好男人&channelId=2
+
+0是全部  2是电影   3剧集
+

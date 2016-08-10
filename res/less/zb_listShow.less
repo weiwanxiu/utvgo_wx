@@ -8,7 +8,6 @@
     // overflow: hidden;
     color: white;
     text-align: center;
-    margin-left: -8px;
     margin-top: 10px;
     font-size: 0;
     position: absolute;
@@ -18,35 +17,49 @@
 
 }
 .weekItem {
-    background-color: #E7E7E7;
     display: inline-block;
-    width: 11%;
-    margin-left: 8px;
-    padding: 6px 0;
+    width: 14%;
     font-size: 10px;
     color: #000;
+    text-align: center;
     &.on{
- 	background-color: #F17D03;
- 	color: #FFF;
-    }    
+	  color: #FFF;
+	  .text{
+		background-color: #F17D03;
+
+	  }
+    }
+  	.text{
+	  background-color: #E7E7E7;
+	  padding: 6px 0;
+	  width: 90%;
+	  height: 100%;
+	  display: inline-block;
+	}
+}
+@media (min-width:375px){
+	.weekItem .text{
+	  font-size: 14px;
+	}
 }
 .tvListBox {
     overflow: hidden;
     color: #B7B7B7;
-    margin-top: 10px;  
     display: none;
     overflow: scroll;
+  	padding-bottom: 20px;
+  	padding-top: 10px;
     &.show{
     	display: block;
     }  
 }
 
 .listItem {
-    height: 50px;
-	line-height: 50px;
+  height: 38px;
+  line-height: 38px;
 	.icon {
 		position: relative;
-	    // float: left;
+	    float: left;
 	    width: 60px;
 	    height: 100%;
 	    text-align: center;
@@ -83,12 +96,9 @@
 
 	}  
 	.tvShowItem {
-    float: left;
-    text-align: left;
-    padding-left: 70px;
-    font-size: 16px;
-    overflow: hidden;
-    height: 100%;
+	    text-align: left;
+	    padding-left: 12px;
+	    font-size: 16px;
 	}
 	&.onPlay{
 		color: #F05E00;
@@ -106,10 +116,16 @@
 	}
 	&:first-child b.top,&:last-child b.bottom{
 		display: none;
-	}	  
+	}
+  	&.nolist{
+	  text-align: center;
+	  color: #F05E00;
+	  font-style: 16px;
+	}
 }
 .detailTabContentBox{
 	position: relative;
+  	padding-top: 46px;
 	&:nth-child(1){
 		.listItem{
 			&.notStart {

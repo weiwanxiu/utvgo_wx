@@ -77,7 +77,7 @@ function getTypeData(){
 			getNewData('new');
 		},
 		error: function(xhr, type){
-			alert('network error!');
+			//alert('network error!');
 		}
 	});
 }
@@ -156,7 +156,7 @@ function getNewData(action){
 		},
 		error: function(xhr, type){
 			ajaxMore=null;
-			alert('network error!');
+			//alert('network error!');
 		}
 	});
 }
