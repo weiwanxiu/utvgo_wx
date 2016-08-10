@@ -27,15 +27,168 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title></title>
+    <title>广播节目表</title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
     <link rel="stylesheet" href="./res/css/main.css?v=da35df55cb" />
-    <link rel="stylesheet" href="./res/css/zb_listShow.css?v=7d79b3b4b6" />
     <style type="text/css">
 		html,body{
 			background-color: #fff;
 		}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+.weekBox {
+    // overflow: hidden;
+    color: white;
+    text-align: center;
+    margin-left: -8px;
+    margin-top: 10px;
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+.weekItem {
+    background-color: #E7E7E7;
+    display: inline-block;
+    width: 11%;
+    margin-left: 8px;
+    padding: 6px 0;
+    font-size: 10px;
+    color: #000;
+    &.on{
+ 	background-color: #F17D03;
+ 	color: #FFF;
+    }    
+}
+.tvListBox {
+    overflow: hidden;
+    color: #B7B7B7;
+    margin-top: 10px;  
+    display: none;
+    overflow: scroll;
+    &.show{
+    	display: block;
+    }  
+}
+
+.listItem {
+    height: 50px;
+	line-height: 50px;
+	.icon {
+		position: relative;
+	    /* float: left;*/
+	    width: 60px;
+	    height: 100%;
+	    text-align: center;
+	    /* border-right: 1px solid #ccc;*/
+	    background-repeat: no-repeat;
+	    background-size: 50%;
+	    background-position: center;	    
+	    i{
+		    display: inline-block;
+		    border-radius: 50%;
+		    background-color: #ABABAB;
+		    position: absolute;
+			top: 50%;
+		    right: 0;
+		    width: 6px;
+		    height: 6px;
+		    margin-top: -3px;
+		    margin-right: -3px;    	
+	    }
+	    b{
+		    display: inline-block;
+		    height: 50%;
+		    border-right: 1px solid #ccc;
+		    position: absolute;
+		    right: 0px;	
+		    &.top{
+		    	top: 0;
+		    }
+		    &.bottom{
+		    	top: 50%;
+		    }		        	
+	    }
+	    
+
+	}  
+	.tvShowItem {
+    float: left;
+    text-align: left;
+    padding-left: 70px;
+    font-size: 16px;
+    overflow: hidden;
+    height: 100%;
+	}
+	&.onPlay{
+		color: #F05E00;
+		.icon {
+			line-height: 20px;
+			// background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAAe1BMVEUAAAD/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBgzpd6oAAAAKHRSTlMA9mIP7ulb8tnOOQymPohqE+PVqpQYr4t/e3QImm/EVlBH3bgzMCQi5l8yxQAAAVdJREFUOMuFk+uSgyAMRj9EVECt9qq13W73mvd/wrWpCGVs9/yRMGcSCQQ3bK+F0F0DT9NpketeutgoYlQFRzVttV9TLGhCNy6Ldlu54SxO2Rt4zN5J34BsiSkqQCZlkVJelIkEqmIqN6AnZmMha0EOUUvYDTFn3CufgCylkDQDTrx6g+AswIFiaoAzKXYKizo2WLLFzeFaFTJaIkPFtbrx0Nili066w9iCIxpFBltaZgtDrQWMhhRPHCGhDTceCcWcbcffBBJ3ylhJAMuLEo41x8dh5RUcebWGI+d4AJJZmfQcDmJWYGlWGJ/Hl0icEudZz30FfpwS/U9JXpqV6FwJhdL5oQmOoM8r2T/22fHivmZe3Lvn6fsJWXyHB0Qc/leW5iLifWm+Tg0Cho95TvNgTkt4+LGIHUIMjVzhUXO/PJ/uSr2TNpHzK8bN8JdVe0XMRakLL/4AqgJlbYAtx4MAAAAASUVORK5CYII=);
+		}
+		i{
+	 		background-color: #F05E00;
+		    width: 10px;
+		    height: 10px;
+	        margin-top: -5px;
+	        margin-right: -5px;			 
+		}
+	}
+	&:first-child b.top,&:last-child b.bottom{
+		display: none;
+	}	  
+}
+.detailTabContentBox{
+	position: relative;
+	&:nth-child(1){
+		.listItem{
+			&.notStart {
+				.icon{
+					color: #ABABAB;
+					background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAAbFBMVEUAAACtra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra3GQLXjAAAAI3RSTlMAEPfup4kL6RXy2Vo+YnrON9Wv48w7mpR/c93EllBHMR+4Vu142x0AAAFFSURBVDjLddPZkoIwEIXhk4UkbAFF3MZRZ/r931GIxLQU+W4E6oe0VQlmxndSdmeHxJ07WR68wGK0FNgGUbM8Gh7LvaRFF18THS3KEZM+JvseSb+P0QMQAwVVA4hWV4rKSrcCaCoKrgaeAm0gCkmRLASMpuCCQ/g9ArUiTtXAMVz9QIZRgILWCiB8yYamMinxxqfIVHMT1mpQUwSYz3WNJqx1nldyijVIMzns55mdpR4n2mzohJ4GA4wdhMw0UuDQYyLQUqahFgJvOttoRLtss0NUfjfqbR6yREQMkgu/Lbcbx7/D5/FGLFzB59GUoxG12aZFJGQmkQIft0xzQ+LUZqIcmHqzqcHxrco3aybKJ1vnYuV363wdHRhz/ZzTkp1TDcbPrz7BjTS5I7Fhf3/7i1ssNcqtmqecHvKR7XDH2r+17//2ApWxV5EJS69jAAAAAElFTkSuQmCC);
+					background-size: 18px;			
+				}
+
+			}
+			&.isOver{
+				color: #ABABAB;
+				background-image: none;		
+			}
+		}
+		
+	
+	}
+	&:nth-child(2){
+		.listItem{
+			.icon{
+				/* color: #ABABAB;*/
+				background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAXVBMVEUAAABVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyLwUyD1AAAAHnRSTlMABy4M+vPb7RVy982ob2TWJndONmfQXdGqojPkRa/SM76SAAABRElEQVQ4y41U7XKEIAwU8FBUFD/vo9e8/2N2aasHGGfIj5ubzJrNbkKKKKR9rFVZVuvDyuIilBkoiMEoBiRsRUlUVqQo1xLi1i1zLUQ9L92NEK2LUZPP6j6gUb32300haiuJmjGhEGNDVG5BLaA0I01q4I56DoxtzYmvW/C6/+L4r4FicRoV/pqx6OvSTIn+7K8k+DUe6ff4inEj/PMGGFB+NKJnE+sFrc9gQv0nS4jvaEo95gZyaFExjHRIrOCD9AK6IoFRswSpDqz+p09hiKcKWFHoTjQzMBoOj2aiewE7ag5GzbRbDEsKjFOwMPraLYFJmbBr0ts7IL2UsLpQwqUhIjbEsPZuib3ssAZ5GhYz+udp9MwiNct5kU5r+bKOWcu8Jc98MnkPMP855x8H/tSI/dRkHa7MM5h/VBlpZj/RJhb+A3OuL8bRCVcIAAAAAElFTkSuQmCC);				
+				background-size: 20px;
+				background-repeat: no-repeat;
+			}
+			&.onPlay{
+				color: #F05E00;
+				.icon{
+					background-image: none;
+				}	
+			}
+		}
+	}	
+}
+.detailTabContentBox{
+	display: none;
+	&.show{
+		display: block;
+	}
+}		
     </style>
     <script type="text/javascript">
     
@@ -55,29 +208,13 @@
 
 
 	<div class="detailTabBox">
-		<div class="detailTabBar col2 clearfix">
-			<div class="detailTabItem on">
-				<span class="detailTab-text">节目表</span>
-			</div>
-			<div class="detailTabItem">
-				<span class="detailTab-text">回看</span>
-			</div>
-		</div>
+
 		<div class="tabContentBoxWrapper">
 			<div id="detailTabContentBox_0" class="detailTabContentBox overflow-scroll-y show">
 				<div class="detailTabItemContent detail-jiList clearfix">
 					<a href="#" class="detail-jiList-item">1</a>
 				</div>
-<!-- 				<ul id="weekBox" class=" weekBox ">
-					<li class="weekItem on" >周四<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周五<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周六<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周日<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周一<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周二<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周三<br><span class="tvShowDate">07-30</span></li>
-				</ul> -->
-<!-- 				<ul id="tvListBox" class="tvListBox show">
+				<ul id="tvListBox" class="tvListBox show">
 					<li class="listItem on">
 						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
 						<div class="tvShowItem">
@@ -90,36 +227,8 @@
 				<ul id="tvListBox" class="tvListBox">4</ul>
 				<ul id="tvListBox" class="tvListBox">5</ul>
 				<ul id="tvListBox" class="tvListBox">6</ul>
-				<ul id="tvListBox" class="tvListBox">7</ul>	 -->		
-			</div>
-			<div id="detailTabContentBox_1" class="detailTabContentBox overflow-scroll-y ">
-				<div class="detailTabItemContent detail-jiList clearfix">
-					<a href="#" class="detail-jiList-item">1</a>
-				</div>
-<!-- 				<ul id="weekBox" class=" weekBox ">
-					<li class="weekItem on" >周四<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周五<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周六<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周日<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周一<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周二<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周三<br><span class="tvShowDate">07-30</span></li>
-				</ul> -->
-<!-- 				<ul id="tvListBox" class="tvListBox show">
-					<li class="listItem on">
-						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText"></span></div>
-						<div class="tvShowItem">
-							<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
-						</div>
-					</li>								
-				</ul>
-				<ul id="tvListBox" class="tvListBox">2</ul>
-				<ul id="tvListBox" class="tvListBox">3</ul>
-				<ul id="tvListBox" class="tvListBox">4</ul>
-				<ul id="tvListBox" class="tvListBox">5</ul>
-				<ul id="tvListBox" class="tvListBox">6</ul>
-				<ul id="tvListBox" class="tvListBox">7</ul> -->
-			</div>			
+				<ul id="tvListBox" class="tvListBox">7</ul>			
+			</div>		
 		</div>
 		
 	</div>
@@ -136,14 +245,14 @@ var playUrl=urlParaObj.playUrl||"";//contentId=31996
 var contentId=urlParaObj.contentId||"";//contentId=31996
 var playName=urlParaObj.playName||"";//contentId=31996
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-	getTvShowList();
-	getBackShowsList();
-	window.document.title="playName";
-	$("#videoView").attr("src",playUrl) ;
+// 	getTvShowList();
+// 	getBackShowsList();
+// 	window.document.title="playName";
+// 	$("#videoView").attr("src",playUrl) ;
 	
-})
+// })
 
 function getTvShowList(){
 	req=$.ajax({

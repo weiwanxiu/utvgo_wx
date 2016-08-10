@@ -27,15 +27,168 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title></title>
-    <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
-    <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=da35df55cb" />
-    <link rel="stylesheet" href="./res/css/zb_listShow.css?v=7d79b3b4b6" />
+    <title>广播节目表</title>
+    <link rel="stylesheet" href="./res/css/base.css" />
+    <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
+    <link rel="stylesheet" href="./res/css/main.css" />
     <style type="text/css">
 		html,body{
 			background-color: #fff;
 		}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+.weekBox {
+    // overflow: hidden;
+    color: white;
+    text-align: center;
+    margin-left: -8px;
+    margin-top: 10px;
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+.weekItem {
+    background-color: #E7E7E7;
+    display: inline-block;
+    width: 11%;
+    margin-left: 8px;
+    padding: 6px 0;
+    font-size: 10px;
+    color: #000;
+    &.on{
+ 	background-color: #F17D03;
+ 	color: #FFF;
+    }    
+}
+.tvListBox {
+    overflow: hidden;
+    color: #B7B7B7;
+    margin-top: 10px;  
+    display: none;
+    overflow: scroll;
+    &.show{
+    	display: block;
+    }  
+}
+
+.listItem {
+    height: 50px;
+	line-height: 50px;
+	.icon {
+		position: relative;
+	    /* float: left;*/
+	    width: 60px;
+	    height: 100%;
+	    text-align: center;
+	    /* border-right: 1px solid #ccc;*/
+	    background-repeat: no-repeat;
+	    background-size: 50%;
+	    background-position: center;	    
+	    i{
+		    display: inline-block;
+		    border-radius: 50%;
+		    background-color: #ABABAB;
+		    position: absolute;
+			top: 50%;
+		    right: 0;
+		    width: 6px;
+		    height: 6px;
+		    margin-top: -3px;
+		    margin-right: -3px;    	
+	    }
+	    b{
+		    display: inline-block;
+		    height: 50%;
+		    border-right: 1px solid #ccc;
+		    position: absolute;
+		    right: 0px;	
+		    &.top{
+		    	top: 0;
+		    }
+		    &.bottom{
+		    	top: 50%;
+		    }		        	
+	    }
+	    
+
+	}  
+	.tvShowItem {
+    float: left;
+    text-align: left;
+    padding-left: 70px;
+    font-size: 16px;
+    overflow: hidden;
+    height: 100%;
+	}
+	&.onPlay{
+		color: #F05E00;
+		.icon {
+			line-height: 20px;
+			// background-image: url(res/images/zb_isOrdered@2x.png);
+		}
+		i{
+	 		background-color: #F05E00;
+		    width: 10px;
+		    height: 10px;
+	        margin-top: -5px;
+	        margin-right: -5px;			 
+		}
+	}
+	&:first-child b.top,&:last-child b.bottom{
+		display: none;
+	}	  
+}
+.detailTabContentBox{
+	position: relative;
+	&:nth-child(1){
+		.listItem{
+			&.notStart {
+				.icon{
+					color: #ABABAB;
+					background-image: url(res/images/zb_isNotOrdered@2x.png);
+					background-size: 18px;			
+				}
+
+			}
+			&.isOver{
+				color: #ABABAB;
+				background-image: none;		
+			}
+		}
+		
+	
+	}
+	&:nth-child(2){
+		.listItem{
+			.icon{
+				/* color: #ABABAB;*/
+				background-image:  url(res/images/zb_play@2x.png);				
+				background-size: 20px;
+				background-repeat: no-repeat;
+			}
+			&.onPlay{
+				color: #F05E00;
+				.icon{
+					background-image: none;
+				}	
+			}
+		}
+	}	
+}
+.detailTabContentBox{
+	display: none;
+	&.show{
+		display: block;
+	}
+}		
     </style>
     <script type="text/javascript">
     
@@ -55,29 +208,13 @@
 
 
 	<div class="detailTabBox">
-		<div class="detailTabBar col2 clearfix">
-			<div class="detailTabItem on">
-				<span class="detailTab-text">节目表</span>
-			</div>
-			<div class="detailTabItem">
-				<span class="detailTab-text">回看</span>
-			</div>
-		</div>
+
 		<div class="tabContentBoxWrapper">
 			<div id="detailTabContentBox_0" class="detailTabContentBox overflow-scroll-y show">
 				<div class="detailTabItemContent detail-jiList clearfix">
 					<a href="#" class="detail-jiList-item">1</a>
 				</div>
-<!-- 				<ul id="weekBox" class=" weekBox ">
-					<li class="weekItem on" >周四<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周五<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周六<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周日<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周一<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周二<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周三<br><span class="tvShowDate">07-30</span></li>
-				</ul> -->
-<!-- 				<ul id="tvListBox" class="tvListBox show">
+				<ul id="tvListBox" class="tvListBox show">
 					<li class="listItem on">
 						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
 						<div class="tvShowItem">
@@ -90,60 +227,32 @@
 				<ul id="tvListBox" class="tvListBox">4</ul>
 				<ul id="tvListBox" class="tvListBox">5</ul>
 				<ul id="tvListBox" class="tvListBox">6</ul>
-				<ul id="tvListBox" class="tvListBox">7</ul>	 -->		
-			</div>
-			<div id="detailTabContentBox_1" class="detailTabContentBox overflow-scroll-y ">
-				<div class="detailTabItemContent detail-jiList clearfix">
-					<a href="#" class="detail-jiList-item">1</a>
-				</div>
-<!-- 				<ul id="weekBox" class=" weekBox ">
-					<li class="weekItem on" >周四<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周五<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周六<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周日<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周一<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周二<br><span class="tvShowDate">07-30</span></li>
-					<li class="weekItem">周三<br><span class="tvShowDate">07-30</span></li>
-				</ul> -->
-<!-- 				<ul id="tvListBox" class="tvListBox show">
-					<li class="listItem on">
-						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText"></span></div>
-						<div class="tvShowItem">
-							<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
-						</div>
-					</li>								
-				</ul>
-				<ul id="tvListBox" class="tvListBox">2</ul>
-				<ul id="tvListBox" class="tvListBox">3</ul>
-				<ul id="tvListBox" class="tvListBox">4</ul>
-				<ul id="tvListBox" class="tvListBox">5</ul>
-				<ul id="tvListBox" class="tvListBox">6</ul>
-				<ul id="tvListBox" class="tvListBox">7</ul> -->
-			</div>			
+				<ul id="tvListBox" class="tvListBox">7</ul>			
+			</div>		
 		</div>
 		
 	</div>
 
-	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
-	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
-	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
-	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
+	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
+	<script type="text/javascript" src="./res/js/lib/fx.js"></script>
+	<script type="text/javascript" src="./res/js/lib/fx_methods.js"></script>
+	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
 
-	<script type="text/javascript" src="./res/js/main.js?v=2eb914a1f6"></script>
+	<script type="text/javascript" src="./res/js/main.js"></script>
 	<script>
 var urlParaObj=getUrlPara();//contentId=31996
 var playUrl=urlParaObj.playUrl||"";//contentId=31996
 var contentId=urlParaObj.contentId||"";//contentId=31996
 var playName=urlParaObj.playName||"";//contentId=31996
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-	getTvShowList();
-	getBackShowsList();
-	window.document.title="playName";
-	$("#videoView").attr("src",playUrl) ;
+// 	getTvShowList();
+// 	getBackShowsList();
+// 	window.document.title="playName";
+// 	$("#videoView").attr("src",playUrl) ;
 	
-})
+// })
 
 function getTvShowList(){
 	req=$.ajax({
