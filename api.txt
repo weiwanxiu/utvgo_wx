@@ -58,3 +58,22 @@ http://app.utvgo.com:8099/utvgoClient/interfaces/searchRelated_list.action?conte
 
 0是全部  2是电影   3剧集
 
+广播
+http://app.utvgo.com:8099/utvgoClient/interfaces/getFilterWords_list.action?channelId=10056
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/getRadio_list.action?pageNo=1&pageSize=40&areaId=22
+
+地区和频道
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/getRadio_detailInfo.action?id=201&fetchRadioId=1260
+播放页节目名称
+
+
+
+登录与注册
+http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_login.action?catvid=13800138006&userPsw=e10adc3949ba59abbe56e057f20f883e&clientType=2&version=1.0&extra=extra&loginFlag=ED5A45612056431FA8ACEBC17B35A0A12584000006824238122B&name=%E6%AC%A7%E9%98%B3%E7%9A%84+iPhone&userType=Utvgo_User
+密码md5加密了
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_userRegister.action?userName=mamamia&userPsw=e10adc3949ba59abbe56e057f20f883e&email=409342535@qq.com&userType=Utvgo_User
+
+
