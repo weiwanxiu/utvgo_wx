@@ -59,16 +59,62 @@
 		<div class="forgetPassword"><a href="#">忘记密码></a></div>
 		<button class="login-submit">登录</button>
 	</div>
-	<div class="goRegBt-wrapper"><a href="#">快速注册></a></div>
+	<div class="goRegBt-wrapper"><a href="register.html">快速注册></a></div>
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
 	<script type="text/javascript" src="./res/js/lib/fx.js"></script>
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
+	<script type="text/javascript" src="./res/js/lib/md5.js"></script>
 	<script type="text/javascript" src="./res/js/main.js"></script>
 
 	<script>
-
+		$('.login-submit').on('tap',function(e){
+			var $el=$(this);
+			var username,password;
+			username=$('#username').val();
+			password=''+$('#password').val();
+			if(!!!username||!!!password){
+				alert('请输入用户名和密码');
+				return;
+			}
+			if($el.html()=='登录中...'){
+				//登录中...
+				return;
+			}
+			$el.html('登录中...');
+			$.ajax({
+				type: 'GET',
+				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_login.action',
+				// data to be added to query string:
+				data: {
+					catvid:username,
+					userPsw:hex_md5(password),
+					clientType:2,
+					version:'1.0',
+					extra:'extra',
+					loginFlag:'wx',
+					name:'wx',
+					userType:'Utvgo_User'
+				},
+				// type of data we are expecting in return:
+				dataType: 'json',
+				success: function(data){
+					$el.html('登录');
+					if(data.status==0){
+						//成功
+						userId=data.result.userId;
+						localStorage.setItem('account',JSON.stringify(data.result));
+						location.replace('./index.html');
+					}else{
+						alert(data.result.msg);
+					}
+				},
+				error: function(xhr, type){
+					$el.html('登录');
+				}
+			});
+		});
 
 	</script>
 </body>
