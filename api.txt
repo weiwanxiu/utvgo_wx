@@ -77,3 +77,31 @@ http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_login.action?catvid=1
 http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_userRegister.action?userName=mamamia&userPsw=e10adc3949ba59abbe56e057f20f883e&email=409342535@qq.com&userType=Utvgo_User
 
 
+apiBasePath+'interfaces/smartGateway_wxBindingCheck.action'//	微信号绑定验证;參數?openid
+http://app.utvgo.com:8099/utvgoClient/interfaces/smartGateway_wxBindingCheck.action?openid=oWsght58hM_Qmob9pVlJ8N73Q1bk
+{
+"errors": [],
+"extra": {
+"idCardNo": "",
+"catvId": "",
+"userName": "节目部",
+"branchNo": "GZ",
+"isBindBank": "N",
+"keyNo": "8002002601164715"
+},
+"result": "微信号已绑定用户信息，keyNo=8002002601164715branchNo=GZ",
+"status": 0
+}
+
+
+apiBasePath+'interfaces/smartGateway_wxBindingKeyNo.action'//	微信号绑定keyNo;參數?openid/keyNo/catvId
+贺卡
+http://192.168.2.244/wap-card/gCard.jsp?openid=oWsghtwU8QHCoKeSoGF_n2xbUcis
+
+
+//获取openId
+http://wechat.utvmall.cn/wechat/wechat-goLogin/GoLogin?rqType=Login&after_login_url=http://app.utvgo.com:8099/utvgoClient/utvgo_wx/dest/index.html
+//只有携带openid到after_login_url
+
+
+
