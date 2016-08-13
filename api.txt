@@ -94,7 +94,7 @@ http://app.utvgo.com:8099/utvgoClient/interfaces/smartGateway_wxBindingCheck.act
 }
 
 
-apiBasePath+'interfaces/smartGateway_wxBindingKeyNo.action'//	微信号绑定keyNo;參數?openid/keyNo/catvId
+apiBasePath+'interfaces/smartGateway_wxBindingKeyNo.action'//	微信号绑定keyNo;參數?openid/keyNo/catvId/branchNo/userName
 贺卡
 http://192.168.2.244/wap-card/gCard.jsp?openid=oWsghtwU8QHCoKeSoGF_n2xbUcis
 
@@ -105,3 +105,7 @@ http://wechat.utvmall.cn/wechat/wechat-goLogin/GoLogin?rqType=Login&after_login_
 
 
 
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+请注意，如果你的页面启用了https，务必引入 https://res.wx.qq.com/open/js/jweixin-1.0.0.js ，否则将无法在iOS9.0以上系统中成功使用JSSDK
+
+如需使用摇一摇周边功能，请引入 jweixin-1.1.0.js
