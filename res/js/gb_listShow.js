@@ -5,29 +5,43 @@
 var urlParaObj=getUrlPara();//contentId=31996
 var playUrl=urlParaObj.playUrl||"";//contentId=31996
 var contentId=urlParaObj.contentId||"";//contentId=31996
-var playName=urlParaObj.playName||"";//contentId=31996
+var fetchRadioId=urlParaObj.fetchRadioId||"";//contentId=31996
+var radioName=decodeURIComponent(urlParaObj.radioName)||"";//contentId=31996
+var showName=decodeURIComponent(urlParaObj.showName)||"";//contentId=31996
+var playUrl=decodeURIComponent(urlParaObj.playUrl)||"";//contentId=31996
 var islive=false;
 var liveAuth='?id=utvgo&uid=3a163d973ed4c23a8e150212099db671&user=vrrvrmnuwsihilggucfnhhchjidjbjijafgej&appid=10057&uuid=13BD6592188244D0A92C156532C06D372566000006566B00C122';
 $(document).ready(function(){
-    GetRadioDetailInfo();
-    // getBackShowsList();
-    window.document.title=playName;
-    //$("#videoView").attr("src",playUrl);
-    document.getElementById('videoView').src=playUrl+liveAuth;
+    init()
 });
 
-function GetRadioDetailInfo(){
+function init(){
+    GetRadioDetailInfo(function(data){
+        var _result=data.result;
+        var videoView= $("#videoView");
+        videoView.attr("src",_result.playUrl+liveAuth);
+        // $(".video-play-img").attr("src",_result.imageUrl);
+        $(".video-play-title").text(_result.radioName);
+        window.document.title=_result.radioName;
+        renderRadioShow(data);
+    });
+
+      
+}
+function GetRadioDetailInfo(back){
     $.ajax({
         type: 'GET',
-        url: serverAddress+'/interfaces/getRadio_detailInfo.action?tvId='+urlParaObj.contentId+'&userId=',
+        url: serverAddress+'/utvgoClient/interfaces/getRadio_detailInfo.action?id='+contentId+'&fetchRadioId='+fetchRadioId,
         // data to be added to query string:
         data: {},
         // type of data we are expecting in return:
         dataType: 'json',
         success: function(data){
-            var _data=data.result||[];
+            var _data=data;
             if (data.status==0) {
-                renderRadioShow(_data);
+                if (back) {
+                    back(_data);
+                };
             };
 
         },
@@ -38,48 +52,43 @@ function GetRadioDetailInfo(){
 }
 
 
-function renderRadioShow(dataArr){
+function renderRadioShow(data){
     var contentBox= $("#detailTabContentBox_0");
-    var _dataArr=dataArr;
+    var _dataArr=data.extra.showList;
+    var _result=data.result;
     var _tvShowDate="";
-    var _tvShows="";
+    var _tvShows=data.extra.showList;;
     var _tvShowsItem="";
     var tvListBoxStr="";
-    // var _dateStr="";
-    // var day={"1":"一","2":"二","3":"三","4":"四","5":"五","6":"六","0":"日"};
-    // for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
-    //     _tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
-    //     _tvShows=_dataArr[i].tvShows;
-    //     _dateStr+='<li class="weekItem " ><div class="text">周'+day[""+new Date(_dataArr[i].showDate).getDay()]+'<br><span class="tvShowDate">'+_tvShowDate+'</span></div></li>';
+    var isOverTips="";
 
         for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
-            var isOver=new Date(_tvShows[j].showTime.replace(/-/g, "/"))-new Date();
+            var isOver=new Date(_tvShows[j].startTime.replace(/-/g, "/"))-new Date();
             if (isOver<0) {
                 isOverClass="isOver";
-                isOverTips="已结束";
+                // isOverTips="已结束";
             }else if (_tvShows[j].showId==contentId) {
                 isOverClass="onPlay";
-                isOverTips="正在<br>播放";
+                // isOverTips="正在<br>播放";
             }else{
                 isOverClass="notStart";
-                isOverTips="";
+                // isOverTips="";
             };
 
-            _tvShowsItem+='<li data-showid="'+_tvShows[j].showId+'" class="listItem '+isOverClass+'"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">'+isOverTips+'</span></div> <div class="tvShowItem ellipsis"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
+            _tvShowsItem+='<li data-showid="'+_tvShows[j].id+'" class="listItem '+isOverClass+'"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">'+isOverTips+'</span></div> <div class="tvShowItem ellipsis"> <span class="tvShowtime">'+_tvShows[j].startTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
 
         };
         if(_tvShows.length<=0){
             _tvShowsItem='<li class="listItem nolist">没有资源</li>';
         }
-        tvListBoxStr+='<ul class="tvListBox overflow-scroll-y ">'+_tvShowsItem+'</ul>';
+        tvListBoxStr='<ul class="tvListBox overflow-scroll-y ">'+_tvShowsItem+'</ul>';
         _tvShowsItem="";
         // console.log(tvListBoxStr);
 
     //};
-    $("#detailTabContentBox_0 .weekBox  .weekItem").eq(0).addClass("on") ;
     contentBox.append(tvListBoxStr);
     $("#detailTabContentBox_0 .tvListBox").eq(0).addClass("show");
-    var _height=$(window).height()-($(window).height()*0.37)-80;
+    var _height=$(window).height()-($(window).height()*0.37)-20;
     $("#detailTabContentBox_0 .tvListBox").height(_height);
 
 
@@ -87,57 +96,6 @@ function renderRadioShow(dataArr){
 
 
 //==================================================================
-
-
-
-
-$(document).on("tap",".detailTabItem ",function(){
-    var _this=$(this);
-    _this.addClass("on").siblings().removeClass("on");
-    $(".detailTabContentBox").eq(_this.index()).addClass("show").siblings().filter(".detailTabContentBox").removeClass("show");
-})
-    .on("tap",".weekItem",function(){
-        var _this=$(this);
-        _this.addClass("on").siblings().removeClass("on");
-        _this.parent().siblings().filter(".tvListBox").removeClass("show").eq(_this.index()).addClass("show");
-    })
-
-    .on("tap","#detailTabContentBox_0 .listItem",function() {
-        var _this = $(this);
-        if(islive){
-            return;
-        }
-
-        window.document.title=playName;
-        //$("#videoView").attr("src",playUrl);
-        document.getElementById('videoView').src=playUrl+liveAuth;
-        $('.video-play-play-icon').hide();
-        $('.video-play-img').hide();
-        document.getElementById('videoView').play();
-        islive=true;
-    })
-    .on("tap","#detailTabContentBox_1 .listItem",function(){
-        var _this=$(this);
-        if (_this.hasClass("onPlay")) {
-            return false;
-        };
-        //$("#videoView").attr("src",_this.attr("data-playurl")) ;
-        document.getElementById('videoView').src=_this.attr("data-playurl")+liveAuth;
-        window.document.title=_this.attr("data-tvname");
-        _this.addClass("onPlay").siblings().removeClass("onPlay").find(".playTipsText").html("");
-        _this.find(".playTipsText").html("正在<br>播放");
-        $('.video-play-play-icon').hide();
-        $('.video-play-img').hide();
-        document.getElementById('videoView').play();
-        islive=false;
-    });
-
-$('.video-play-wrapper').one('tap',function(e){
-    $('.video-play-play-icon').hide();
-    $('.video-play-img').hide();
-    document.getElementById('videoView').play();
-    islive=true;
-});
 
 if(isWeiXin()){
     $('.video-top-bar').hide();

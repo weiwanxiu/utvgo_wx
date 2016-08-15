@@ -37,10 +37,31 @@
 		html,body{
 			background-color: #fff;
 		}
-		.detailTabContentBox:nth-child(1) .listItem .icon {
-		  	width: 30px;
-		    background-image: none;
-		}		
+.detailTabContentBox:nth-child(1) .listItem .icon {
+	  	width: 30px;
+	    background-image: none;
+	}	
+.detailTabContentBox:nth-child(1) .listItem.notStart .icon {
+    color: #000000;
+	background-image: none;
+
+}
+
+.detailTabContentBox:nth-child(1) .listItem.isOver {
+    color: #ABABAB;
+    background-image: none
+}
+.detailTabContentBox:nth-child(1) .listItem.onPlay {
+    color: #ABABAB;
+    background-image: none
+}
+
+.detailTabContentBox:nth-child(2) .listItem .icon {
+    background-image:none;
+}
+.detailTabContentBox {
+    padding-top: 0px;
+}
 		
     </style>
     <script type="text/javascript">
@@ -64,19 +85,14 @@
 		<div class="tabContentBoxWrapper">
 			<div id="detailTabContentBox_0" class="detailTabContentBox show">
 <!-- 				<ul class="tvListBox show">
-					<li class="listItem on">
-						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
-						<div class="tvShowItem">
-							<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
-						</div>
-					</li>								
-				</ul>
-				<ul class="tvListBox">2</ul>
-				<ul class="tvListBox">3</ul>
-				<ul class="tvListBox">5</ul>
-				<ul class="tvListBox">6</ul>
-				<ul class="tvListBox">7</ul>	 -->
-			</div>		
+						<li class="listItem on">
+							<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
+							<div class="tvShowItem">
+								<span class="tvShowtime">09:30&nbsp;&nbsp;海派甜心(24)</span>
+							</div>
+						</li>								
+					</ul>	
+			</div>	 -->	
 		</div>
 		
 	</div>
