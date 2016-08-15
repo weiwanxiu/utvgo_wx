@@ -95,6 +95,10 @@ http://app.utvgo.com:8099/utvgoClient/interfaces/smartGateway_wxBindingCheck.act
 
 
 apiBasePath+'interfaces/smartGateway_wxBindingKeyNo.action'//	微信号绑定keyNo;參數?openid/keyNo/catvId/branchNo/userName
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/smartGateway_wxBindingKeyNo.action?openid=oWsght58hM_Qmob9pVlJ8N73Q1bk&keyNo=8002002601164715&catvId=&branchNo=GZ&userName=节目部
+
+
 贺卡
 http://192.168.2.244/wap-card/gCard.jsp?openid=oWsghtwU8QHCoKeSoGF_n2xbUcis
 

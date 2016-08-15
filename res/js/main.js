@@ -41,7 +41,7 @@ function checkWxBind(openid,fn,noBind){
 }
 
 
-function bingWx(openid,keyNo,catvId){
+function bingWx(openid,keyNo,catvId,branchNo,userName,fn,fail){
 	if(!!!openid){
 		alert('无openid');
 		return;
@@ -57,13 +57,19 @@ function bingWx(openid,keyNo,catvId){
 		data: {
 			openid:openid,
 			catvId:catvId,
-			keyNo:keyNo
+			keyNo:keyNo,
+			branchNo:branchNo,
+			userName:userName
 		},
 		// type of data we are expecting in return:
 		dataType: 'json',
 		success: function(data){
 			if(data.status==0){
+				//绑定成功
+				localStorage.setItem('account',JSON.stringify(data.extra));
+				!!fn&&fn();
 			}else{
+				!!fail&&fail();
 			}
 		},
 		error: function(xhr, type){
@@ -191,7 +197,8 @@ function hideLoading(){
 		}
 	});
 	$('#meBt').tap(function(e){
-		alert('about me');
+		//alert('about me');
+		location.href='usercenter.html';
 	});
 	$('#topNavBackBt').tap(function(e){
 		window.history.back();
