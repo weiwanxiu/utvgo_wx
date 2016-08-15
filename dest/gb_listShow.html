@@ -27,168 +27,21 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>广播节目表</title>
+    <title></title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
     <link rel="stylesheet" href="./res/css/main.css?v=da35df55cb" />
+    <link rel="stylesheet" href="./res/css/zb_listShow.css?v=1944e58fae" />
+    <link rel="stylesheet" href="./res/css/gb_listShow.css?v=d41d8cd98f" />
     <style type="text/css">
 		html,body{
 			background-color: #fff;
 		}
-
-.hide{
-	display: none;
-}
-.show{
-	display: block;
-}
-.weekBox {
-    // overflow: hidden;
-    color: white;
-    text-align: center;
-    margin-left: -8px;
-    margin-top: 10px;
-    font-size: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-}
-.weekItem {
-    background-color: #E7E7E7;
-    display: inline-block;
-    width: 11%;
-    margin-left: 8px;
-    padding: 6px 0;
-    font-size: 10px;
-    color: #000;
-    &.on{
- 	background-color: #F17D03;
- 	color: #FFF;
-    }    
-}
-.tvListBox {
-    overflow: hidden;
-    color: #B7B7B7;
-    margin-top: 10px;  
-    display: none;
-    overflow: scroll;
-    &.show{
-    	display: block;
-    }  
-}
-
-.listItem {
-    height: 50px;
-	line-height: 50px;
-	.icon {
-		position: relative;
-	    /* float: left;*/
-	    width: 60px;
-	    height: 100%;
-	    text-align: center;
-	    /* border-right: 1px solid #ccc;*/
-	    background-repeat: no-repeat;
-	    background-size: 50%;
-	    background-position: center;	    
-	    i{
-		    display: inline-block;
-		    border-radius: 50%;
-		    background-color: #ABABAB;
-		    position: absolute;
-			top: 50%;
-		    right: 0;
-		    width: 6px;
-		    height: 6px;
-		    margin-top: -3px;
-		    margin-right: -3px;    	
-	    }
-	    b{
-		    display: inline-block;
-		    height: 50%;
-		    border-right: 1px solid #ccc;
-		    position: absolute;
-		    right: 0px;	
-		    &.top{
-		    	top: 0;
-		    }
-		    &.bottom{
-		    	top: 50%;
-		    }		        	
-	    }
-	    
-
-	}  
-	.tvShowItem {
-    float: left;
-    text-align: left;
-    padding-left: 70px;
-    font-size: 16px;
-    overflow: hidden;
-    height: 100%;
-	}
-	&.onPlay{
-		color: #F05E00;
-		.icon {
-			line-height: 20px;
-			// background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAAe1BMVEUAAAD/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBj/wBgzpd6oAAAAKHRSTlMA9mIP7ulb8tnOOQymPohqE+PVqpQYr4t/e3QImm/EVlBH3bgzMCQi5l8yxQAAAVdJREFUOMuFk+uSgyAMRj9EVECt9qq13W73mvd/wrWpCGVs9/yRMGcSCQQ3bK+F0F0DT9NpketeutgoYlQFRzVttV9TLGhCNy6Ldlu54SxO2Rt4zN5J34BsiSkqQCZlkVJelIkEqmIqN6AnZmMha0EOUUvYDTFn3CufgCylkDQDTrx6g+AswIFiaoAzKXYKizo2WLLFzeFaFTJaIkPFtbrx0Nili066w9iCIxpFBltaZgtDrQWMhhRPHCGhDTceCcWcbcffBBJ3ylhJAMuLEo41x8dh5RUcebWGI+d4AJJZmfQcDmJWYGlWGJ/Hl0icEudZz30FfpwS/U9JXpqV6FwJhdL5oQmOoM8r2T/22fHivmZe3Lvn6fsJWXyHB0Qc/leW5iLifWm+Tg0Cho95TvNgTkt4+LGIHUIMjVzhUXO/PJ/uSr2TNpHzK8bN8JdVe0XMRakLL/4AqgJlbYAtx4MAAAAASUVORK5CYII=);
-		}
-		i{
-	 		background-color: #F05E00;
-		    width: 10px;
-		    height: 10px;
-	        margin-top: -5px;
-	        margin-right: -5px;			 
-		}
-	}
-	&:first-child b.top,&:last-child b.bottom{
-		display: none;
-	}	  
-}
-.detailTabContentBox{
-	position: relative;
-	&:nth-child(1){
-		.listItem{
-			&.notStart {
-				.icon{
-					color: #ABABAB;
-					background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAAbFBMVEUAAACtra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra3GQLXjAAAAI3RSTlMAEPfup4kL6RXy2Vo+YnrON9Wv48w7mpR/c93EllBHMR+4Vu142x0AAAFFSURBVDjLddPZkoIwEIXhk4UkbAFF3MZRZ/r931GIxLQU+W4E6oe0VQlmxndSdmeHxJ07WR68wGK0FNgGUbM8Gh7LvaRFF18THS3KEZM+JvseSb+P0QMQAwVVA4hWV4rKSrcCaCoKrgaeAm0gCkmRLASMpuCCQ/g9ArUiTtXAMVz9QIZRgILWCiB8yYamMinxxqfIVHMT1mpQUwSYz3WNJqx1nldyijVIMzns55mdpR4n2mzohJ4GA4wdhMw0UuDQYyLQUqahFgJvOttoRLtss0NUfjfqbR6yREQMkgu/Lbcbx7/D5/FGLFzB59GUoxG12aZFJGQmkQIft0xzQ+LUZqIcmHqzqcHxrco3aybKJ1vnYuV363wdHRhz/ZzTkp1TDcbPrz7BjTS5I7Fhf3/7i1ssNcqtmqecHvKR7XDH2r+17//2ApWxV5EJS69jAAAAAElFTkSuQmCC);
-					background-size: 18px;			
-				}
-
-			}
-			&.isOver{
-				color: #ABABAB;
-				background-image: none;		
-			}
-		}
+		.detailTabContentBox:nth-child(1) .listItem .icon {
+		  	width: 30px;
+		    background-image: none;
+		}		
 		
-	
-	}
-	&:nth-child(2){
-		.listItem{
-			.icon{
-				/* color: #ABABAB;*/
-				background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAXVBMVEUAAABVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyJVuyLwUyD1AAAAHnRSTlMABy4M+vPb7RVy982ob2TWJndONmfQXdGqojPkRa/SM76SAAABRElEQVQ4y41U7XKEIAwU8FBUFD/vo9e8/2N2aasHGGfIj5ubzJrNbkKKKKR9rFVZVuvDyuIilBkoiMEoBiRsRUlUVqQo1xLi1i1zLUQ9L92NEK2LUZPP6j6gUb32300haiuJmjGhEGNDVG5BLaA0I01q4I56DoxtzYmvW/C6/+L4r4FicRoV/pqx6OvSTIn+7K8k+DUe6ff4inEj/PMGGFB+NKJnE+sFrc9gQv0nS4jvaEo95gZyaFExjHRIrOCD9AK6IoFRswSpDqz+p09hiKcKWFHoTjQzMBoOj2aiewE7ag5GzbRbDEsKjFOwMPraLYFJmbBr0ts7IL2UsLpQwqUhIjbEsPZuib3ssAZ5GhYz+udp9MwiNct5kU5r+bKOWcu8Jc98MnkPMP855x8H/tSI/dRkHa7MM5h/VBlpZj/RJhb+A3OuL8bRCVcIAAAAAElFTkSuQmCC);				
-				background-size: 20px;
-				background-repeat: no-repeat;
-			}
-			&.onPlay{
-				color: #F05E00;
-				.icon{
-					background-image: none;
-				}	
-			}
-		}
-	}	
-}
-.detailTabContentBox{
-	display: none;
-	&.show{
-		display: block;
-	}
-}		
     </style>
     <script type="text/javascript">
     
@@ -197,7 +50,7 @@
 <body style="" class="overflowHidden">
 
 	<div class="video-play-wrapper">
-		<video id="videoView" poster="" src="http://video3.utvgo.com:17553/800/dongnanweishitv/yulelefantian/yllft20151119.mp4" controls webkit-playsinline="true" x-webkit-airplay></video>
+		<audeo id="videoView" poster="" src="" controls webkit-playsinline="true" x-webkit-airplay></audeo>
 		<div class="video-play-img"></div>
 		<div class="video-play-play-icon"></div>
 		<div class="video-top-bar">
@@ -208,13 +61,9 @@
 
 
 	<div class="detailTabBox">
-
 		<div class="tabContentBoxWrapper">
-			<div id="detailTabContentBox_0" class="detailTabContentBox overflow-scroll-y show">
-				<div class="detailTabItemContent detail-jiList clearfix">
-					<a href="#" class="detail-jiList-item">1</a>
-				</div>
-				<ul id="tvListBox" class="tvListBox show">
+			<div id="detailTabContentBox_0" class="detailTabContentBox show">
+<!-- 				<ul class="tvListBox show">
 					<li class="listItem on">
 						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
 						<div class="tvShowItem">
@@ -222,12 +71,11 @@
 						</div>
 					</li>								
 				</ul>
-				<ul id="tvListBox" class="tvListBox">2</ul>
-				<ul id="tvListBox" class="tvListBox">3</ul>
-				<ul id="tvListBox" class="tvListBox">4</ul>
-				<ul id="tvListBox" class="tvListBox">5</ul>
-				<ul id="tvListBox" class="tvListBox">6</ul>
-				<ul id="tvListBox" class="tvListBox">7</ul>			
+				<ul class="tvListBox">2</ul>
+				<ul class="tvListBox">3</ul>
+				<ul class="tvListBox">5</ul>
+				<ul class="tvListBox">6</ul>
+				<ul class="tvListBox">7</ul>	 -->
 			</div>		
 		</div>
 		
@@ -237,187 +85,11 @@
 	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
+	<script type="text/javascript" src="./res/js/main.js?v=ef9aaed63f"></script>
+	<script type="text/javascript" src="./res/js/gb_listShow.js?v=129c03260a"></script>
 
-	<script type="text/javascript" src="./res/js/main.js?v=2eb914a1f6"></script>
 	<script>
-var urlParaObj=getUrlPara();//contentId=31996
-var playUrl=urlParaObj.playUrl||"";//contentId=31996
-var contentId=urlParaObj.contentId||"";//contentId=31996
-var playName=urlParaObj.playName||"";//contentId=31996
 
-// $(document).ready(function () {
-
-// 	getTvShowList();
-// 	getBackShowsList();
-// 	window.document.title="playName";
-// 	$("#videoView").attr("src",playUrl) ;
-	
-// })
-
-function getTvShowList(){
-	req=$.ajax({
-	  type: 'GET',
-	  url: serverAddress+'/utvgoClient/interfaces/tvShow_listTvShow.action?tvId='+urlParaObj.contentId+'&userId=',
-	  // data to be added to query string:
-	  data: {},
-	  // type of data we are expecting in return:
-	  dataType: 'json',
-	  success: function(data){
-  		var _data=data.result||[];
-	  	if (data.status==0) {
-	  		renderTVShow(_data);
-	  	};
-
-	  },
-	  error: function(xhr, type){
-	    alert('network error!');
-	  }
-	});
-
-}
-function renderTVShow(dataArr){
-	var contentBox= $("#detailTabContentBox_0");
-	var _dataArr=dataArr;
-	var _tvShowDate="";
-	var _tvShows="";
-	var _tvShowsItem="";
-	var tvListBoxStr="";
-	var _dateStr="";
-	var theDay=new Date().getDay();
-	var day={"1":"一","2":"二","3":"三","4":"四","5":"五","6":"六","7":"日"};
-	var dayNth=0;
-	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
-	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
-	 	_tvShows=_dataArr[i].tvShows;
-	 	_dateStr+='<li class="weekItem " >周'+day[""+theDay]+'<br><span class="tvShowDate">'+_tvShowDate+'</span></li>'; 
-	 	theDay=theDay<7?++theDay:1;
-	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
-		 	var isOver=new Date(_tvShows[j].showTime.replace(/-/g, "/"))-new Date();
-		 	if (isOver<0) {
-		 		isOverClass="isOver";
-		 		isOverTips="已结束";
-		 	}else if (_tvShows[j].showId==contentId) {
-		 		isOverClass="onPlay";
-		 		isOverTips="正在<br>播放";
-		 	}else{
-		 		isOverClass="notStart";
-		 		isOverTips="";
-		 	};	
-
-	 		_tvShowsItem+='<li data-showId="'+_tvShows[j].showId+'" class="listItem '+isOverClass+'"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">'+isOverTips+'</span></div> <div class="tvShowItem"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
-
-	 	};
-	 	
-	 	tvListBoxStr+='<ul id="tvListBox" class="tvListBox">'+_tvShowsItem+'</ul>';
-	 	_tvShowsItem="";
-	 	// console.log(tvListBoxStr);
-
-	 }; 
-	 _dateStr='<ul id="weekBox" class=" weekBox ">'+_dateStr+'</ul>';
-	 $(".detailTabContentBox").append(_dateStr);
-	 $(" .weekBox  .weekItem").eq(0).addClass("on") ;
-	 contentBox.append(tvListBoxStr);
-	 $(".tvListBox").eq(0).addClass("show");
-	 var _height=$(window).height()-260;
-	 $(".tvListBox").height(_height);
-	
-
-}
-//==================================================================
-function getBackShowsList(){
-	req=$.ajax({
-	  type: 'GET',
-	  url: serverAddress+'/utvgoClient/interfaces/tvShow_listPlayBackTvShow.action?tvId='+contentId+'&userId=',
-	  // data to be added to query string:
-	  data: {},
-	  // type of data we are expecting in return:
-	  dataType: 'json',
-	  success: function(data){
-  		var _data=data.result||[];
-	  	if (data.status==0) {
-	  		BackShowsList_render(_data);
-	  	};
-
-	  },
-	  error: function(xhr, type){
-	    alert('network error!');
-	  }
-	});
-
-}
-
-function BackShowsList_render(dataArr){
-	var contentBox= $("#detailTabContentBox_1");
-	var _dataArr=dataArr;
-	var _tvShowDate="";
-	var _tvShows="";
-	var _tvShowsItem="";
-	var tvListBoxStr="";
-	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
-	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
-	 	_tvShows=_dataArr[i].playBackShows;
-	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
-
-	 		_tvShowsItem+='<li data-playurl="'+_tvShows[j].cliPlayUrl+'" data-showId="'+_tvShows[j].showId+'" class="listItem on"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText"></span></div> <div class="tvShowItem"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
-
-	 	};
-	 	
-	 	tvListBoxStr+='<ul id="tvListBox" class="tvListBox">'+_tvShowsItem+'</ul>';
-	 	_tvShowsItem="";
-	 	// console.log(tvListBoxStr);
-
-	 }; 
-	 contentBox.append(tvListBoxStr);
-	 $(".tvListBox").eq(0).addClass("show");
-	  var _height=$(window).height()-260;
-	 $(".tvListBox").height(_height);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).on("touchstart",".detailTabItem ",function(){
-	var _this=$(this);
-	_this.addClass("on").siblings().removeClass("on");
-	$(".detailTabContentBox").eq(_this.index()).addClass("show").siblings().filter(".detailTabContentBox").removeClass("show");
-})
-.on("touchstart",".weekItem",function(){
-	var _this=$(this);
-	_this.addClass("on").siblings().removeClass("on");	
-	_this.parent().siblings().filter(".tvListBox").removeClass("show").eq(_this.index()).addClass("show");	
-})
-.on("touchstart","#detailTabContentBox_1 .listItem",function(){
-	var _this=$(this);
-	if (_this.hasClass("onPlay")) {
-		return false;
-	};
-	$("#videoView").attr("src",_this.attr("data-playurl")) ;
-	window.document.title="playName";	
-	_this.addClass("onPlay").siblings().removeClass("onPlay").find(".playTipsText").html("");
-	_this.find(".playTipsText").html("正在<br>播放");
-
-})
-
-
-
-function setPlayTipsText(el){
-
-}
 
 	</script>
 </body>

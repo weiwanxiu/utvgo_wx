@@ -27,168 +27,21 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>广播节目表</title>
+    <title></title>
     <link rel="stylesheet" href="./res/css/base.css" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
+    <link rel="stylesheet" href="./res/css/zb_listShow.css" />
+    <link rel="stylesheet" href="./res/css/gb_listShow.css" />
     <style type="text/css">
 		html,body{
 			background-color: #fff;
 		}
-
-.hide{
-	display: none;
-}
-.show{
-	display: block;
-}
-.weekBox {
-    // overflow: hidden;
-    color: white;
-    text-align: center;
-    margin-left: -8px;
-    margin-top: 10px;
-    font-size: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-}
-.weekItem {
-    background-color: #E7E7E7;
-    display: inline-block;
-    width: 11%;
-    margin-left: 8px;
-    padding: 6px 0;
-    font-size: 10px;
-    color: #000;
-    &.on{
- 	background-color: #F17D03;
- 	color: #FFF;
-    }    
-}
-.tvListBox {
-    overflow: hidden;
-    color: #B7B7B7;
-    margin-top: 10px;  
-    display: none;
-    overflow: scroll;
-    &.show{
-    	display: block;
-    }  
-}
-
-.listItem {
-    height: 50px;
-	line-height: 50px;
-	.icon {
-		position: relative;
-	    /* float: left;*/
-	    width: 60px;
-	    height: 100%;
-	    text-align: center;
-	    /* border-right: 1px solid #ccc;*/
-	    background-repeat: no-repeat;
-	    background-size: 50%;
-	    background-position: center;	    
-	    i{
-		    display: inline-block;
-		    border-radius: 50%;
-		    background-color: #ABABAB;
-		    position: absolute;
-			top: 50%;
-		    right: 0;
-		    width: 6px;
-		    height: 6px;
-		    margin-top: -3px;
-		    margin-right: -3px;    	
-	    }
-	    b{
-		    display: inline-block;
-		    height: 50%;
-		    border-right: 1px solid #ccc;
-		    position: absolute;
-		    right: 0px;	
-		    &.top{
-		    	top: 0;
-		    }
-		    &.bottom{
-		    	top: 50%;
-		    }		        	
-	    }
-	    
-
-	}  
-	.tvShowItem {
-    float: left;
-    text-align: left;
-    padding-left: 70px;
-    font-size: 16px;
-    overflow: hidden;
-    height: 100%;
-	}
-	&.onPlay{
-		color: #F05E00;
-		.icon {
-			line-height: 20px;
-			// background-image: url(res/images/zb_isOrdered@2x.png);
-		}
-		i{
-	 		background-color: #F05E00;
-		    width: 10px;
-		    height: 10px;
-	        margin-top: -5px;
-	        margin-right: -5px;			 
-		}
-	}
-	&:first-child b.top,&:last-child b.bottom{
-		display: none;
-	}	  
-}
-.detailTabContentBox{
-	position: relative;
-	&:nth-child(1){
-		.listItem{
-			&.notStart {
-				.icon{
-					color: #ABABAB;
-					background-image: url(res/images/zb_isNotOrdered@2x.png);
-					background-size: 18px;			
-				}
-
-			}
-			&.isOver{
-				color: #ABABAB;
-				background-image: none;		
-			}
-		}
+		.detailTabContentBox:nth-child(1) .listItem .icon {
+		  	width: 30px;
+		    background-image: none;
+		}		
 		
-	
-	}
-	&:nth-child(2){
-		.listItem{
-			.icon{
-				/* color: #ABABAB;*/
-				background-image:  url(res/images/zb_play@2x.png);				
-				background-size: 20px;
-				background-repeat: no-repeat;
-			}
-			&.onPlay{
-				color: #F05E00;
-				.icon{
-					background-image: none;
-				}	
-			}
-		}
-	}	
-}
-.detailTabContentBox{
-	display: none;
-	&.show{
-		display: block;
-	}
-}		
     </style>
     <script type="text/javascript">
     
@@ -197,7 +50,7 @@
 <body style="" class="overflowHidden">
 
 	<div class="video-play-wrapper">
-		<video id="videoView" poster="" src="http://video3.utvgo.com:17553/800/dongnanweishitv/yulelefantian/yllft20151119.mp4" controls webkit-playsinline="true" x-webkit-airplay></video>
+		<audeo id="videoView" poster="" src="" controls webkit-playsinline="true" x-webkit-airplay></audeo>
 		<div class="video-play-img"></div>
 		<div class="video-play-play-icon"></div>
 		<div class="video-top-bar">
@@ -208,13 +61,9 @@
 
 
 	<div class="detailTabBox">
-
 		<div class="tabContentBoxWrapper">
-			<div id="detailTabContentBox_0" class="detailTabContentBox overflow-scroll-y show">
-				<div class="detailTabItemContent detail-jiList clearfix">
-					<a href="#" class="detail-jiList-item">1</a>
-				</div>
-				<ul id="tvListBox" class="tvListBox show">
+			<div id="detailTabContentBox_0" class="detailTabContentBox show">
+<!-- 				<ul class="tvListBox show">
 					<li class="listItem on">
 						<div class="icon"><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">已结束</span></div>
 						<div class="tvShowItem">
@@ -222,12 +71,11 @@
 						</div>
 					</li>								
 				</ul>
-				<ul id="tvListBox" class="tvListBox">2</ul>
-				<ul id="tvListBox" class="tvListBox">3</ul>
-				<ul id="tvListBox" class="tvListBox">4</ul>
-				<ul id="tvListBox" class="tvListBox">5</ul>
-				<ul id="tvListBox" class="tvListBox">6</ul>
-				<ul id="tvListBox" class="tvListBox">7</ul>			
+				<ul class="tvListBox">2</ul>
+				<ul class="tvListBox">3</ul>
+				<ul class="tvListBox">5</ul>
+				<ul class="tvListBox">6</ul>
+				<ul class="tvListBox">7</ul>	 -->
 			</div>		
 		</div>
 		
@@ -237,187 +85,11 @@
 	<script type="text/javascript" src="./res/js/lib/fx.js"></script>
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js"></script>
-
 	<script type="text/javascript" src="./res/js/main.js"></script>
+	<script type="text/javascript" src="./res/js/gb_listShow.js"></script>
+
 	<script>
-var urlParaObj=getUrlPara();//contentId=31996
-var playUrl=urlParaObj.playUrl||"";//contentId=31996
-var contentId=urlParaObj.contentId||"";//contentId=31996
-var playName=urlParaObj.playName||"";//contentId=31996
 
-// $(document).ready(function () {
-
-// 	getTvShowList();
-// 	getBackShowsList();
-// 	window.document.title="playName";
-// 	$("#videoView").attr("src",playUrl) ;
-	
-// })
-
-function getTvShowList(){
-	req=$.ajax({
-	  type: 'GET',
-	  url: serverAddress+'/utvgoClient/interfaces/tvShow_listTvShow.action?tvId='+urlParaObj.contentId+'&userId=',
-	  // data to be added to query string:
-	  data: {},
-	  // type of data we are expecting in return:
-	  dataType: 'json',
-	  success: function(data){
-  		var _data=data.result||[];
-	  	if (data.status==0) {
-	  		renderTVShow(_data);
-	  	};
-
-	  },
-	  error: function(xhr, type){
-	    alert('network error!');
-	  }
-	});
-
-}
-function renderTVShow(dataArr){
-	var contentBox= $("#detailTabContentBox_0");
-	var _dataArr=dataArr;
-	var _tvShowDate="";
-	var _tvShows="";
-	var _tvShowsItem="";
-	var tvListBoxStr="";
-	var _dateStr="";
-	var theDay=new Date().getDay();
-	var day={"1":"一","2":"二","3":"三","4":"四","5":"五","6":"六","7":"日"};
-	var dayNth=0;
-	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
-	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
-	 	_tvShows=_dataArr[i].tvShows;
-	 	_dateStr+='<li class="weekItem " >周'+day[""+theDay]+'<br><span class="tvShowDate">'+_tvShowDate+'</span></li>'; 
-	 	theDay=theDay<7?++theDay:1;
-	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
-		 	var isOver=new Date(_tvShows[j].showTime.replace(/-/g, "/"))-new Date();
-		 	if (isOver<0) {
-		 		isOverClass="isOver";
-		 		isOverTips="已结束";
-		 	}else if (_tvShows[j].showId==contentId) {
-		 		isOverClass="onPlay";
-		 		isOverTips="正在<br>播放";
-		 	}else{
-		 		isOverClass="notStart";
-		 		isOverTips="";
-		 	};	
-
-	 		_tvShowsItem+='<li data-showId="'+_tvShows[j].showId+'" class="listItem '+isOverClass+'"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText">'+isOverTips+'</span></div> <div class="tvShowItem"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
-
-	 	};
-	 	
-	 	tvListBoxStr+='<ul id="tvListBox" class="tvListBox">'+_tvShowsItem+'</ul>';
-	 	_tvShowsItem="";
-	 	// console.log(tvListBoxStr);
-
-	 }; 
-	 _dateStr='<ul id="weekBox" class=" weekBox ">'+_dateStr+'</ul>';
-	 $(".detailTabContentBox").append(_dateStr);
-	 $(" .weekBox  .weekItem").eq(0).addClass("on") ;
-	 contentBox.append(tvListBoxStr);
-	 $(".tvListBox").eq(0).addClass("show");
-	 var _height=$(window).height()-260;
-	 $(".tvListBox").height(_height);
-	
-
-}
-//==================================================================
-function getBackShowsList(){
-	req=$.ajax({
-	  type: 'GET',
-	  url: serverAddress+'/utvgoClient/interfaces/tvShow_listPlayBackTvShow.action?tvId='+contentId+'&userId=',
-	  // data to be added to query string:
-	  data: {},
-	  // type of data we are expecting in return:
-	  dataType: 'json',
-	  success: function(data){
-  		var _data=data.result||[];
-	  	if (data.status==0) {
-	  		BackShowsList_render(_data);
-	  	};
-
-	  },
-	  error: function(xhr, type){
-	    alert('network error!');
-	  }
-	});
-
-}
-
-function BackShowsList_render(dataArr){
-	var contentBox= $("#detailTabContentBox_1");
-	var _dataArr=dataArr;
-	var _tvShowDate="";
-	var _tvShows="";
-	var _tvShowsItem="";
-	var tvListBoxStr="";
-	for (var i = 0,_dataLen=_dataArr.length; i < _dataLen; i++) {
-	 	_tvShowDate=_dataArr[i].showDate.split("-").slice(1).join("-");
-	 	_tvShows=_dataArr[i].playBackShows;
-	 	for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
-
-	 		_tvShowsItem+='<li data-playurl="'+_tvShows[j].cliPlayUrl+'" data-showId="'+_tvShows[j].showId+'" class="listItem on"> <div class="icon "><b class="top"></b><b class="bottom"></b><i></i><span class="playTipsText"></span></div> <div class="tvShowItem"> <span class="tvShowtime">'+_tvShows[j].showTime+'&nbsp;&nbsp;'+_tvShows[j].showName+'</span> </div> </li>';
-
-	 	};
-	 	
-	 	tvListBoxStr+='<ul id="tvListBox" class="tvListBox">'+_tvShowsItem+'</ul>';
-	 	_tvShowsItem="";
-	 	// console.log(tvListBoxStr);
-
-	 }; 
-	 contentBox.append(tvListBoxStr);
-	 $(".tvListBox").eq(0).addClass("show");
-	  var _height=$(window).height()-260;
-	 $(".tvListBox").height(_height);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).on("touchstart",".detailTabItem ",function(){
-	var _this=$(this);
-	_this.addClass("on").siblings().removeClass("on");
-	$(".detailTabContentBox").eq(_this.index()).addClass("show").siblings().filter(".detailTabContentBox").removeClass("show");
-})
-.on("touchstart",".weekItem",function(){
-	var _this=$(this);
-	_this.addClass("on").siblings().removeClass("on");	
-	_this.parent().siblings().filter(".tvListBox").removeClass("show").eq(_this.index()).addClass("show");	
-})
-.on("touchstart","#detailTabContentBox_1 .listItem",function(){
-	var _this=$(this);
-	if (_this.hasClass("onPlay")) {
-		return false;
-	};
-	$("#videoView").attr("src",_this.attr("data-playurl")) ;
-	window.document.title="playName";	
-	_this.addClass("onPlay").siblings().removeClass("onPlay").find(".playTipsText").html("");
-	_this.find(".playTipsText").html("正在<br>播放");
-
-})
-
-
-
-function setPlayTipsText(el){
-
-}
 
 	</script>
 </body>
