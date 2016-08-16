@@ -46,13 +46,33 @@
 	background-image: none;
 
 }
+.listItem .icon i {
+    border-radius: 50%;
+     background-color: #FFFFFF; 
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-right: -20px;
+    background:url(res/images/gb_dt_playing_off@2x.png) center no-repeat;
+    background-size: 50%;
+}
 
 .detailTabContentBox:nth-child(1) .listItem.isOver {
     color: #ABABAB;
     background-image: none
 }
 .detailTabContentBox:nth-child(1) .listItem.onPlay {
-    color: #ABABAB;
+    color: #F05E00;
+    background-image: none
+
+}
+.listItem.onPlay  .icon i {
+	background:url(res/images/gb_dt_playing@2x.png) center no-repeat;
+    background-size: 50%;
+}
+.detailTabContentBox:nth-child(1) .listItem.notStart {
+    color: #000000;
     background-image: none
 }
 
@@ -62,6 +82,14 @@
 .detailTabContentBox {
     padding-top: 0px;
 }
+.video-play-img{
+	background-image:url(res/images/gb_bg.png);
+}
+.video-play-img.on{
+	background-image:url(res/images/gb_bg_on.gif);
+}
+
+
 		
     </style>
     <script type="text/javascript">
@@ -71,7 +99,7 @@
 <body style="" class="overflowHidden">
 
 	<div class="video-play-wrapper">
-		<audeo id="videoView" poster="" src="" controls webkit-playsinline="true" x-webkit-airplay></audeo>
+		<audio id="videoView" poster="" src="" controls webkit-playsinline="true" x-webkit-airplay></audio>
 		<div class="video-play-img"></div>
 		<div class="video-play-play-icon"></div>
 		<div class="video-top-bar">

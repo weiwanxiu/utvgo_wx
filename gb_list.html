@@ -187,9 +187,9 @@ var dataFlag={};
 var req=null;
 var urlParaObj={};//
 var areaId="";	
-var typeIndex=""||0;	
+var typeIndex=""||0;
+showLoading();	
 $(document).ready(function () {
-	showLoading();
 	urlParaObj=getUrlPara();//
 	areaId=urlParaObj.areaId||"";//
 	mainId=parseInt(urlParaObj.mainId)||0;//
@@ -224,6 +224,7 @@ function loadTVlistByType(activeIndex,fun){
 			req.abort();
 			req=null
 		};
+
 		req=$.ajax({
 		  type: 'GET',
 		  url: serverAddress+'/utvgoClient/interfaces/getRadio_list.action?pageNo=1&pageSize=1000&areaId='+areaId,
@@ -330,6 +331,7 @@ $("#container2Wrapper").on("tap",".zb-item-logo",function(){
 	
 })
 function getTvTypes(back){
+	showLoading();
 	req=$.ajax({
 	  type: 'GET',
 	  url: serverAddress+'/utvgoClient/interfaces/getFilterWords_list.action?channelId=10056',

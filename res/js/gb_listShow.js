@@ -11,8 +11,9 @@ var showName=decodeURIComponent(urlParaObj.showName)||"";//contentId=31996
 var playUrl=decodeURIComponent(urlParaObj.playUrl)||"";//contentId=31996
 var islive=false;
 var liveAuth='?id=utvgo&uid=3a163d973ed4c23a8e150212099db671&user=vrrvrmnuwsihilggucfnhhchjidjbjijafgej&appid=10057&uuid=13BD6592188244D0A92C156532C06D372566000006566B00C122';
+showLoading();
 $(document).ready(function(){
-    init()
+    init();
 });
 
 function init(){
@@ -24,11 +25,13 @@ function init(){
         $(".video-play-title").text(_result.radioName);
         window.document.title=_result.radioName;
         renderRadioShow(data);
+        initPlayEvent();
     });
 
-      
+        
 }
 function GetRadioDetailInfo(back){
+    showLoading();
     $.ajax({
         type: 'GET',
         url: serverAddress+'/utvgoClient/interfaces/getRadio_detailInfo.action?id='+contentId+'&fetchRadioId='+fetchRadioId,
@@ -43,7 +46,7 @@ function GetRadioDetailInfo(back){
                     back(_data);
                 };
             };
-
+            hideLoading();
         },
         error: function(xhr, type){
             //alert('network error!');
@@ -61,13 +64,17 @@ function renderRadioShow(data){
     var _tvShowsItem="";
     var tvListBoxStr="";
     var isOverTips="";
+    var today=new Date();
+    var showTime="";
+    var isOver="";
 
         for (var j = 0,_subListLen=_tvShows.length; j < _subListLen; j++) {
-            var isOver=new Date(_tvShows[j].startTime.replace(/-/g, "/"))-new Date();
+             isOver=new Date(today.toString().replace(today.toString().split(" ")[4],_tvShows[j].startTime))-today;
+             console.log(isOver);
             if (isOver<0) {
                 isOverClass="isOver";
                 // isOverTips="已结束";
-            }else if (_tvShows[j].showId==contentId) {
+            }else if (0<=isOver&&isOver<=_tvShows[j].duration*1000) {
                 isOverClass="onPlay";
                 // isOverTips="正在<br>播放";
             }else{
@@ -91,6 +98,27 @@ function renderRadioShow(data){
     var _height=$(window).height()-($(window).height()*0.37)-20;
     $("#detailTabContentBox_0 .tvListBox").height(_height);
 
+
+}
+
+function initPlayEvent(){
+    var videoView=document.getElementById("videoView");
+    var videoViewImg=$(".video-play-img");
+    // videoView.onPlay=function(){
+    //     videoViewImg.addClass("on");
+    // }
+    // videoView.onpause =function(){
+    //     videoViewImg.removeClass("on");
+    // } 
+    $(".video-play-play-icon").on("tap",function(){
+        if (videoViewImg.hasClass("on")) {
+             videoView.pause();
+             videoViewImg.removeClass("on")
+        }else{
+             videoView.play();
+             videoViewImg.addClass("on")            
+        };
+    });
 
 }
 

@@ -46,13 +46,33 @@
 	background-image: none;
 
 }
+.listItem .icon i {
+    border-radius: 50%;
+     background-color: #FFFFFF; 
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-right: -20px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaBAMAAABbZFH9AAAAD1BMVEUAAACtra2tra2tra2tra09nUoQAAAABHRSTlMAVtTWUUZDYgAAACtJREFUGNNjGHRAyEkAwWF0cXFE8JhcXJwQPBYXFxdUOVz6GISdBRgGHgAARMIEx1WcOuUAAAAASUVORK5CYII=) center no-repeat;
+    background-size: 50%;
+}
 
 .detailTabContentBox:nth-child(1) .listItem.isOver {
     color: #ABABAB;
     background-image: none
 }
 .detailTabContentBox:nth-child(1) .listItem.onPlay {
-    color: #ABABAB;
+    color: #F05E00;
+    background-image: none
+
+}
+.listItem.onPlay  .icon i {
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAXVBMVEUAAADrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQDrYQAN9CQkAAAAHnRSTlMA+gm+wz/I5pmCLhKO5+DXzSgNm3d2Jhu3sktCNgX8/ONeAAAAu0lEQVQoz32SWRKEIAxEG6MjuO+z5/7HnKrBGKTU90c9lk4IhGWm3Jic5gV7spQ30gxKYnmHTcSUN464lesZNer8uZEPGP8J2EOuC10GQLIBX2eCnEDBmwI+rboCLlRIKhYcSFWdFsC7kbeRq2I21YDh6dc5TKiYW+Du1yZWnaroQpegfMiFpKqhHnjJXorCD1bD70vOmrBkbZTUK43S9nZVG7cXlg+wF195PgDnY3M9bEo/UW1MTVOPlR8UpzMQoUDWkAAAAABJRU5ErkJggg==) center no-repeat;
+    background-size: 50%;
+}
+.detailTabContentBox:nth-child(1) .listItem.notStart {
+    color: #000000;
     background-image: none
 }
 
@@ -62,6 +82,14 @@
 .detailTabContentBox {
     padding-top: 0px;
 }
+.video-play-img{
+	background-image:url(res/images/gb_bg.png?v=d3cb1600f4);
+}
+.video-play-img.on{
+	background-image:url(res/images/gb_bg_on.gif?v=5502b9fef1);
+}
+
+
 		
     </style>
     <script type="text/javascript">
@@ -71,7 +99,7 @@
 <body style="" class="overflowHidden">
 
 	<div class="video-play-wrapper">
-		<audeo id="videoView" poster="" src="" controls webkit-playsinline="true" x-webkit-airplay></audeo>
+		<audio id="videoView" poster="" src="" controls webkit-playsinline="true" x-webkit-airplay></audio>
 		<div class="video-play-img"></div>
 		<div class="video-play-play-icon"></div>
 		<div class="video-top-bar">
@@ -102,7 +130,7 @@
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
 	<script type="text/javascript" src="./res/js/main.js?v=ef9aaed63f"></script>
-	<script type="text/javascript" src="./res/js/gb_listShow.js?v=990b56a0fd"></script>
+	<script type="text/javascript" src="./res/js/gb_listShow.js?v=e33a186b99"></script>
 
 	<script>
 
