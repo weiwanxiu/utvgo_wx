@@ -17,7 +17,7 @@ body,html{
 	left: 0%;
 	transform: translateX(0px);
 	transition: left 0.3s;
-	
+	box-shadow: 0px 0px 30px 2px #bbb;
 }
 #sideMenu{
 	height: 100%;
@@ -741,4 +741,79 @@ body,html{
 }
 .rdzx-item img{
 	width: 100%;
+}
+
+
+.usercenterMain{
+
+
+}
+.usercenter-header{
+	min-height: 142px;
+	max-height: 200px;
+	background: url(../images/center_bg@2x.jpg) no-repeat top center;
+	background-size: cover;
+	#menuBt{
+		background-image: url(../images/center_menu@3x.png);
+		height:46px;
+	}
+	.usercenter-header-bt{
+		float: left;
+	    width: 100%;
+	    padding: 15px;
+	}
+	.loginNameShow{
+		color: #fff;
+		line-height: 58px;
+    	font-size: 20px;
+	}
+	.rightBt{
+		float: right;
+		border-radius: 10px;
+		padding: 6px 15px;
+		background-color: #eb6100;
+		color: #fff;
+		margin-top: 18px;
+		&.catvBinded{
+			background-color: #f3b983;
+		}
+	}
+
+}
+.usercenter-record{
+	padding: 12px;
+	background-color: #fff;	
+	border-bottom: 1px #ddd solid;
+	margin-bottom: 12px;
+	.recordItem{
+		width: 50%;
+		float: left;
+		text-align: center;
+		display: block;
+		img{
+
+		}
+		p{
+			padding: 5px;
+		}
+	}
+}
+.usercenter-other{
+
+	padding: 12px 40px;
+	background-color: #fff;	
+	border-bottom: 1px #ddd solid;
+	margin-bottom: 12px;
+	.otherItem{
+		width: 50%;
+		float: left;
+		text-align: left;
+		display: block;
+
+    	padding: 20px 0px;
+	}
+	.text{
+		padding-left: 10px;
+		line-height: 31px;
+	}
 }

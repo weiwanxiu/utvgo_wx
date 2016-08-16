@@ -58,3 +58,58 @@ http://app.utvgo.com:8099/utvgoClient/interfaces/searchRelated_list.action?conte
 
 0是全部  2是电影   3剧集
 
+广播
+http://app.utvgo.com:8099/utvgoClient/interfaces/getFilterWords_list.action?channelId=10056
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/getRadio_list.action?pageNo=1&pageSize=40&areaId=22
+
+地区和频道
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/getRadio_detailInfo.action?id=201&fetchRadioId=1260
+播放页节目名称
+
+
+
+登录与注册
+http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_login.action?catvid=13800138006&userPsw=e10adc3949ba59abbe56e057f20f883e&clientType=2&version=1.0&extra=extra&loginFlag=ED5A45612056431FA8ACEBC17B35A0A12584000006824238122B&name=%E6%AC%A7%E9%98%B3%E7%9A%84+iPhone&userType=Utvgo_User
+密码md5加密了
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_userRegister.action?userName=mamamia&userPsw=e10adc3949ba59abbe56e057f20f883e&email=409342535@qq.com&userType=Utvgo_User
+
+
+apiBasePath+'interfaces/smartGateway_wxBindingCheck.action'//	微信号绑定验证;參數?openid
+http://app.utvgo.com:8099/utvgoClient/interfaces/smartGateway_wxBindingCheck.action?openid=oWsght58hM_Qmob9pVlJ8N73Q1bk
+{
+"errors": [],
+"extra": {
+"idCardNo": "",
+"catvId": "",
+"userName": "节目部",
+"branchNo": "GZ",
+"isBindBank": "N",
+"keyNo": "8002002601164715"
+},
+"result": "微信号已绑定用户信息，keyNo=8002002601164715branchNo=GZ",
+"status": 0
+}
+
+
+apiBasePath+'interfaces/smartGateway_wxBindingKeyNo.action'//	微信号绑定keyNo;參數?openid/keyNo/catvId/branchNo/userName
+
+http://app.utvgo.com:8099/utvgoClient/interfaces/smartGateway_wxBindingKeyNo.action?openid=oWsght58hM_Qmob9pVlJ8N73Q1bk&keyNo=8002002601164715&catvId=&branchNo=GZ&userName=节目部
+
+
+贺卡
+http://192.168.2.244/wap-card/gCard.jsp?openid=oWsghtwU8QHCoKeSoGF_n2xbUcis
+
+
+//获取openId
+http://wechat.utvmall.cn/wechat/wechat-goLogin/GoLogin?rqType=Login&after_login_url=http://app.utvgo.com:8099/utvgoClient/utvgo_wx/dest/index.html
+//只有携带openid到after_login_url
+
+
+
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+请注意，如果你的页面启用了https，务必引入 https://res.wx.qq.com/open/js/jweixin-1.0.0.js ，否则将无法在iOS9.0以上系统中成功使用JSSDK
+
+如需使用摇一摇周边功能，请引入 jweixin-1.1.0.js
