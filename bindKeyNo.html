@@ -27,7 +27,7 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>账户信息</title>
+    <title>认证广电用户</title>
     <link rel="stylesheet" href="./res/css/base.css" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
@@ -42,70 +42,62 @@
     
     </script>
 </head>
-<body style="" class="userInfo">
+<body style="" class="userInfo deleteKeyNo">
 	
 	<div class="login-wrapper">
-		<div class="login-input-item groupTitle">登录信息</div>
 		<div class="login-input-item">
 			<div class="login-input-lable username-icon">用户名</div>
 			<div class="login-input-wrapper">
-				<span id="username"><!-- ivan2 --></span>
+				<input type="text" id="username"  placeholder="报装机顶盒的姓名" />
 			</div>
 		</div>
 		<div class="login-input-item">
-			<div class="login-input-lable password-icon">密码</div>
+			<div class="login-input-lable addr-icon">装机地区</div>
 			<div class="login-input-wrapper">
-				<span id="password">*******</span>
+				<select id="addr">
+					<option value="GZ">广州</option>
+					<option value="SZ">深圳</option>
+					<option value="ZH">珠海</option>
+					<option value="ST">汕头</option>
+					<option value="FS">佛山</option>
+					<option value="SG">韶关</option>
+					<option value="ZJ">湛江</option>
+					<option value="ZQ">肇庆</option>
+					<option value="JM">江门</option>
+					<option value="MM">茂名</option>
+					<option value="HZ">惠州</option>
+					<option value="MZ">梅州</option>
+					<option value="SW">汕尾</option>
+					<option value="HY">河源</option>
+					<option value="YJ">阳江</option>
+					<option value="QY">清远</option>
+					<option value="DG">东莞</option>
+					<option value="ZS">中山</option>
+					<option value="CZ">潮州</option>
+					<option value="JY">揭阳</option>
+					<option value="YF">云浮</option>
+				</select>
+			</div>
+		</div>
+		<div class="login-input-item">
+			<div class="login-input-lable catvId-icon">广电号</div>
+			<div class="login-input-wrapper">
+				<input type="number" id="catvId"  placeholder="11位广电号" />
+			</div>
+		</div>
+		<div class="login-input-item">
+			<div class="login-input-lable keyNo-icon">智能卡号</div>
+			<div class="login-input-wrapper">
+				<input type="number" id="keyNo"  placeholder="11-16位智能卡号" />
 			</div>
 		</div>
 	</div>
 
-	<div class="login-wrapper catv-wrapper">
-		<div class="login-input-item groupTitle">广电认证信息</div>
-		<a href="deleteKeyNo.html" class="login-input-item">
-			<div class="login-input-lable username-icon">广电帐号</div>
-			<div class="login-input-wrapper">
-				<span id="catvId"><!-- 13800138006 --></span>
-			</div>
-		</a>
-	</div>
 
-	<div class="login-wrapper">
-		<div class="login-input-item groupTitle">个人资料<a class="editUserInfoOther" href="editUserInfo.html">编辑</a></div>
-		<div class="login-input-item">
-			<div class="login-input-lable email-icon">邮箱</div>
-			<div class="login-input-wrapper">
-				<span id="email"><!-- 555@qq.com --></span>
-			</div>
-		</div>
-		<div class="login-input-item">
-			<div class="login-input-lable wx-icon">微信号</div>
-			<div class="login-input-wrapper">
-				<span id="wxId"><!-- 555@qq.com --></span>
-			</div>
-		</div>
-		<div class="login-input-item">
-			<div class="login-input-lable borthdate-icon">出生日期</div>
-			<div class="login-input-wrapper">
-				<span id="borthdate"><!-- 1665-06-24 --></span>
-			</div>
-		</div>
-		<div class="login-input-item">
-			<div class="login-input-lable sex-icon">性别</div>
-			<div class="login-input-wrapper">
-				<span id="sex"><!-- 男 --></span>
-			</div>
-		</div>
-		<div class="login-input-item">
-			<div class="login-input-lable phone-icon">联系电话</div>
-			<div class="login-input-wrapper">
-				<span id="phone"><!-- 133266566 --></span>
-			</div>
-		</div>
-	</div>
 
-	<button class="login-submit">退出登录</button>
+	<button class="login-submit">提交</button>
 
+<div class="loadingTip"><div class="loadingTipImg"></div></div>
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
 	<script type="text/javascript" src="./res/js/lib/fx.js"></script>
@@ -117,31 +109,64 @@
 	<script type="text/javascript" src="./res/js/main.js"></script>
 
 	<script>
-		
-		//退出登录
+		hideLoading();
+		//解除绑定
 		$('.login-submit').on('tap',function(e){
-			localStorage.removeItem('account',null);
-			location.href='index.html';
-		});
-		function showUserInfo(){
-			var account=localStorage.getItem('account');
-			var accountObj=JSON.parse(account);
-			if(!!account&&!!accountObj){
-				$('#username').html(accountObj.userName||'');
-				$('#catvId').html(accountObj.actvId||'');
-				$('#email').html(accountObj.email||'');
-				$('#wxId').html(accountObj.openId||'');
-				$('#phone').html(accountObj.phoneNumber||'');
-				$('#sex').html(accountObj.sex||'');
-				$('#borthdate').html(accountObj.birthday||'');
-				if(!!!accountObj.actvId){
-					//还没绑定广电号
-					$('.catv-wrapper').hide();
-				}
+			var username=$('#username').val();
+			var catvId=$('#catvId').val();
+			var addr=$('#addr').val();
+			var keyNo=$('#keyNo').val();
+			if(!!!username||!!!catvId||!!!addr||!!!keyNo){
+				alert('请完善绑定信息');
+				return;
 			}
+			var reg = /^\d{11}$/; //11位广电号
+			if(!reg.test(catvId)){
+				alert('请输入11位广电号');
+				return
+			}
+			var reg1 = /^\d{16}$/;//11-16位智能卡号
+			if(reg.test(keyNo)||reg1.test(keyNo)){
 
-		}
-		showUserInfo();
+			}else{
+				alert('请输入11-16位智能卡号');
+				return;
+			}
+			showLoading();
+			$.ajax({
+				type: 'GET',
+				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_bindKeyNoUser.action',
+				// data to be added to query string:
+				data: {
+					userId:userId,
+					branchNO:addr,
+					keyNO:keyNo,
+					userName:username,
+					catvId:catvId
+				},
+				// type of data we are expecting in return:
+				dataType: 'json',
+				success: function(data){
+					hideLoading();
+					if(data.status==0){
+						//成功
+						accountObj.keyUserName=username;
+						accountObj.actvId=catvId;
+						accountObj.branchNo=addr;
+						accountObj.keyNO=keyNo;
+						localStorage.setItem('account',JSON.stringify(accountObj));
+						alert('绑定成功');
+						history.back();
+
+					}else{
+						alert(data.result.msg);
+					}
+				},
+				error: function(xhr, type){
+					
+				}
+			});
+		});
 	</script>
 </body>
 

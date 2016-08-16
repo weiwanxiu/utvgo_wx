@@ -27,52 +27,77 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>注册</title>
+    <title>广电用户信息</title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
     <link rel="stylesheet" href="./res/css/main.css?v=b0892edef1" />
     <link rel="stylesheet" href="./res/css/login.css?v=ffdf2b3414" />
+    <link rel="stylesheet" href="./res/css/userInfo.css?v=207377ec88" />
     <style type="text/css">
 		html,body{
-			background-color: #fff;
+			
 		}
     </style>
     <script type="text/javascript">
     
     </script>
 </head>
-<body style="" class="">
+<body style="" class="userInfo deleteKeyNo">
 	
 	<div class="login-wrapper">
 		<div class="login-input-item">
-			<div class="login-input-lable email-icon">邮箱</div>
-			<div class="login-input-wrapper">
-				<input id="email" type="email" placeholder="输入邮箱" />
-			</div>
-		</div>
-		<div class="login-input-item">
 			<div class="login-input-lable username-icon">用户名</div>
 			<div class="login-input-wrapper">
-				<input id="username" type="text" placeholder="输入用户名" />
+				<span id="username"><!-- ivan2 --></span>
 			</div>
 		</div>
 		<div class="login-input-item">
-			<div class="login-input-lable password-icon">密码</div>
+			<div class="login-input-lable addr-icon">装机地区</div>
 			<div class="login-input-wrapper">
-				<input id="password" type="password" />
+				<select id="addr" disabled="true">
+					<option value="GZ">广州</option>
+					<option value="SZ">深圳</option>
+					<option value="ZH">珠海</option>
+					<option value="ST">汕头</option>
+					<option value="FS">佛山</option>
+					<option value="SG">韶关</option>
+					<option value="ZJ">湛江</option>
+					<option value="ZQ">肇庆</option>
+					<option value="JM">江门</option>
+					<option value="MM">茂名</option>
+					<option value="HZ">惠州</option>
+					<option value="MZ">梅州</option>
+					<option value="SW">汕尾</option>
+					<option value="HY">河源</option>
+					<option value="YJ">阳江</option>
+					<option value="QY">清远</option>
+					<option value="DG">东莞</option>
+					<option value="ZS">中山</option>
+					<option value="CZ">潮州</option>
+					<option value="JY">揭阳</option>
+					<option value="YF">云浮</option>
+				</select>
 			</div>
 		</div>
 		<div class="login-input-item">
-			<div class="login-input-lable password-icon">确认密码</div>
+			<div class="login-input-lable catvId-icon">广电号</div>
 			<div class="login-input-wrapper">
-				<input id="password2" type="password" />
+				<span id="catvId"></span>
 			</div>
 		</div>
-		<div class="xieyi-wrapper">
-			<span class="on">我已阅读并接受</span><a href="#">《用户协议》</a>
+		<div class="login-input-item">
+			<div class="login-input-lable keyNo-icon">智能卡号</div>
+			<div class="login-input-wrapper">
+				<span id="keyNo"></span>
+			</div>
 		</div>
-		<button class="login-submit">注册</button>
 	</div>
+
+
+
+	<button class="login-submit">解除绑定</button>
+
+<div class="loadingTip"><div class="loadingTipImg"></div></div>
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
 	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
@@ -84,62 +109,49 @@
 	<script type="text/javascript" src="./res/js/main.js?v=98c8cfd568"></script>
 
 	<script>
+		hideLoading();
+		
+		//解除绑定
 		$('.login-submit').on('tap',function(e){
-			var $el=$(this);
-			var username,password,email,password2;
-			username=$('#username').val();
-			password=''+$('#password').val();
-			password2=''+$('#password2').val();
-			email=$('#email').val();
-			if(!!!username||!!!password||!!!password2||!!!email){
-				alert('请完善注册信息');
-				return;
-			}
-			var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-			if (filter.test(email)){
-
-			}else {
-				alert('您的电子邮件格式不正确');
-				return;
-			}
-
-			if(password!=password2){
-				alert('两次密码输入不对');
-				return;
-			}
-			if($el.html()=='注册中...'){
-				//注册中...
-				return;
-			}
-			$el.html('注册中...');
+			showLoading();
 			$.ajax({
 				type: 'GET',
-				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_userRegister.action',
+				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_unBindKeyNOUser.action',
 				// data to be added to query string:
 				data: {
-					userName:username,
-					userPsw:hex_md5(password),
-					email:email,
-					userType:'Utvgo_User'
+					userId:userId
 				},
 				// type of data we are expecting in return:
 				dataType: 'json',
 				success: function(data){
-					$el.html('注册');
+					hideLoading();
 					if(data.status==0){
 						//成功
-						userId=data.result.id;
-						localStorage.setItem('account',JSON.stringify({userId:data.result.id}));
-						location.replace('./index.html');
+						accountObj.keyUserName='';
+						accountObj.actvId='';
+						accountObj.branchNo='';
+						accountObj.keyNO='';
+						localStorage.setItem('account',JSON.stringify(accountObj));
+						alert('解绑成功');
+						history.back();
+
 					}else{
 						alert(data.result.msg);
 					}
 				},
 				error: function(xhr, type){
-					$el.html('注册');
+					
 				}
 			});
 		});
+		function userInfoInit(){
+			$('#username').html(accountObj.keyUserName||'');
+			$('#catvId').html(accountObj.actvId||'');
+			$('#addr').val(accountObj.branchNo||'');
+			$('#keyNo').html(accountObj.keyNO||'');
+
+		}
+		userInfoInit();
 
 	</script>
 </body>

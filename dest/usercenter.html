@@ -30,7 +30,7 @@
     <title>个人中心</title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=ebdae3634b" />
+    <link rel="stylesheet" href="./res/css/main.css?v=b0892edef1" />
     <style type="text/css">
 
     </style>
@@ -124,11 +124,11 @@
 			</div>
 			
 			<div class="usercenter-record clearfix">
-				<a href="#" class="recordItem">
+				<a href="recordList.html" class="recordItem">
 					<img src="./res/images/center_record@2x.png?v=05f836ee44" width="37" />
 					<p>播放记录</p>
 				</a>
-				<a href="#" class="recordItem">
+				<a href="collectList.html" class="recordItem">
 					<img src="./res/images/center_collection@2x.png?v=93b4dbb324" width="37" />
 					<p>我的收藏</p>
 				</a>
@@ -167,7 +167,7 @@
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
 	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
-	<script type="text/javascript" src="./res/js/main.js?v=fab4adbfb7"></script>
+	<script type="text/javascript" src="./res/js/main.js?v=98c8cfd568"></script>
 	<script type="text/javascript">
 	function showUsername(){
 		var s='';
@@ -176,9 +176,9 @@
 		if(!!account&&!!accountObj&&!!accountObj.userName){
 			//已登录
 			s='<a href="userInfo.html"><img src="./res/images/center_touxiang@2x.png?v=56ee505833" width="58" /> <span class="loginNameShow">'+accountObj.userName+'</span> </a>';
-			if(accountObj.keyNo||accountObj.keyNO){
+			if(accountObj.keyNo||accountObj.keyNO||accountObj.actvId){
 				//已认证
-				s+=' <a href="#" class="rightBt catvBinded"> 广电用户 </a>';
+				s+=' <a class="rightBt catvBinded"> 广电用户 </a>';
 			}else{
 				s+=' <a href="bindKeyNo.html" class="rightBt"> 认证广电用户 </a>';
 			}

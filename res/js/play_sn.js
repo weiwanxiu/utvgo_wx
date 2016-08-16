@@ -42,6 +42,33 @@
 			isDuoji=true;
 		}
 	}
+	//添加播放记录到本地
+	function addRecord(playUrl,playName,playImg,contentId){
+		var o={
+			contentId:contentId,
+			name:playName,
+			remark:playName,
+			playUrl:playUrl,
+			mediaNumber:1,
+			img:playImg
+		};
+		var rl=localStorage.getItem('recordList')||'';
+		if(!rl){
+			rl=[];
+		}else{
+			rl=JSON.parse(rl);
+		}
+		for(var i=0,len=rl.length;i<len;i++){
+			if(contentId==rl[i].contentId){
+				return;
+			}
+		}
+		if(rl.length>20){
+			rl.pop();
+		}
+		rl.unshift(o);
+		localStorage.setItem('recordList',JSON.stringify(rl));
+	}
 
 	function getLikeList(){
 		showLoading();
@@ -87,6 +114,7 @@
 			setVideoInfo(playUrl,playImg);
 			setVideoIntroduce(likeDataList[i].remark||playName);
 			document.getElementById('videoView').play();
+			addRecord(playUrl,playName,playImg,contentId);
 			$('.video-play-play-icon').hide();
 			$('.video-play-img').hide();
 			if(isDuoji&&duojiType=='ji'){
@@ -252,6 +280,7 @@
 		$('.video-play-play-icon').hide();
 		$('.video-play-img').hide();
 		document.getElementById('videoView').play();
+		addRecord(playUrl,playName,playImg,contentId);
 	});
 	$('.video-top-bar-back').on('tap',function(e){
 		//alert('t');
