@@ -30,7 +30,7 @@
     <title>个人中心</title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=b5084889c0" />
+    <link rel="stylesheet" href="./res/css/main.css?v=ebdae3634b" />
     <style type="text/css">
 
     </style>
@@ -114,7 +114,7 @@
 				<button id="menuBt"></button>
 				<div class="usercenter-header-bt">
 					<!-- <a href="login.html">
-						<img src="./res/images/center_touxiang@2x.png" width="58" />
+						<img src="./res/images/center_touxiang@2x.png?v=56ee505833" width="58" />
 						<span class="loginNameShow">未登录</span>
 					</a>
 					<a href="login.html" class="rightBt">
@@ -125,30 +125,30 @@
 			
 			<div class="usercenter-record clearfix">
 				<a href="#" class="recordItem">
-					<img src="./res/images/center_record@2x.png" width="37" />
+					<img src="./res/images/center_record@2x.png?v=05f836ee44" width="37" />
 					<p>播放记录</p>
 				</a>
 				<a href="#" class="recordItem">
-					<img src="./res/images/center_collection@2x.png" width="37" />
+					<img src="./res/images/center_collection@2x.png?v=93b4dbb324" width="37" />
 					<p>我的收藏</p>
 				</a>
 			</div>
 			
 			<div class="usercenter-other clearfix">
 				<a href="#" class="otherItem">
-					<img src="./res/images/center_card@2x.png" width="31">
+					<img src="./res/images/center_card@2x.png?v=7c3bb212e8" width="31">
 					<span class="text">贺卡</span>
 				</a>
 				<a href="#" class="otherItem">
-					<img src="./res/images/center_friend@2x.png" width="31">
+					<img src="./res/images/center_friend@2x.png?v=8710330a3a" width="31">
 					<span class="text">我的好友</span>
 				</a>
 				<a href="#" class="otherItem">
-					<img src="./res/images/center_about@2x.png" width="31">
+					<img src="./res/images/center_about@2x.png?v=8c30e4674a" width="31">
 					<span class="text">关于我们</span>
 				</a>
 				<a href="#" class="otherItem">
-					<img src="./res/images/center_feedback@2x.png" width="31">
+					<img src="./res/images/center_feedback@2x.png?v=78a9b03ecd" width="31">
 					<span class="text">意见反馈</span>
 				</a>
 			</div>
@@ -175,7 +175,7 @@
 		var accountObj=JSON.parse(account);
 		if(!!account&&!!accountObj&&!!accountObj.userName){
 			//已登录
-			s='<a href="userInfo.html"><img src="./res/images/center_touxiang@2x.png" width="58" /> <span class="loginNameShow">'+accountObj.userName+'</span> </a>';
+			s='<a href="userInfo.html"><img src="./res/images/center_touxiang@2x.png?v=56ee505833" width="58" /> <span class="loginNameShow">'+accountObj.userName+'</span> </a>';
 			if(accountObj.keyNo||accountObj.keyNO){
 				//已认证
 				s+=' <a href="#" class="rightBt catvBinded"> 广电用户 </a>';
@@ -184,7 +184,7 @@
 			}
 		}else{
 			//未登录
-			s='<a href="login.html"><img src="./res/images/center_touxiang@2x.png" width="58" /> <span class="loginNameShow">未登录</span> </a> <a href="login.html" class="rightBt"> 登录/注册 </a>';
+			s='<a href="login.html"><img src="./res/images/center_touxiang@2x.png?v=56ee505833" width="58" /> <span class="loginNameShow">未登录</span> </a> <a href="login.html" class="rightBt"> 登录/注册 </a>';
 		}
 		$('.usercenter-header-bt').html(s);
 		hideLoading();

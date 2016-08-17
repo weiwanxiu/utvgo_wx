@@ -27,96 +27,59 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>登录</title>
+    <title>收藏</title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=ebdae3634b" />
-    <link rel="stylesheet" href="./res/css/login.css?v=475d5d9831" />
+    <link rel="stylesheet" href="./res/css/main.css?v=b0892edef1" />
     <style type="text/css">
-		html,body{
-			background-color: #fff;
-		}
+
     </style>
     <script type="text/javascript">
+
     
     </script>
 </head>
-<body style="" class="">
-	
-	<div class="login-wrapper">
-		<div class="login-input-item">
-			<div class="login-input-lable username-icon">用户名</div>
-			<div class="login-input-wrapper">
-				<input id="username" type="text" placeholder="输入用户名" />
+<body style="" class="overflow-scroll-y">
+	<div id="main" class="overflowHidden">
+		
+
+		<div class="main-scroll list-page-main collectList-page overflow-scroll-y" style="height:100%;">
+			
+			<div id="listContent">
+				<div id="listContentBox" class="clearfix indexContentBox">
+					<!-- <div class="commonList-item">
+						<a href="#" class="commonList-item-link clearfix">
+							<div class="commonList-item-img">
+								<img src="./res/images/3.jpg?v=e4a168b45e" />
+							</div>
+							<div class="commonList-item-text-wrapper">
+								<p class="commonList-item-text">高考确定键三闾 高考确定键三闾 高考确定键三闾高考确定键三闾高考确定键三闾</p>
+								<span class="commonList-item-type-text">2015-03-05&nbsp;&nbsp;&nbsp;社会 国内</span>
+							</div>
+						</a>
+					</div> -->
+				</div>
+				<!--<button class="list-more-bt">更多</button>-->
 			</div>
 		</div>
-		<div class="login-input-item">
-			<div class="login-input-lable password-icon">密码</div>
-			<div class="login-input-wrapper">
-				<input id="password" type="password" />
-			</div>
-		</div>
-		<div class="forgetPassword"><a href="#">忘记密码></a></div>
-		<button class="login-submit">登录</button>
+		
 	</div>
-	<div class="goRegBt-wrapper"><a href="register.html">快速注册></a></div>
+
+	<div class="loadingTip"><div class="loadingTipImg"></div></div>
+
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
 	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
 	<script type="text/javascript" src="./res/js/lib/fx_methods.js?v=2aabbf9887"></script>
 	<script type="text/javascript" src="./res/js/lib/idangerous.swiper.js?v=e61af1cb6a"></script>
-	<script type="text/javascript" src="./res/js/lib/md5.js?v=09d5406a36"></script>
 	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 	<script type="text/javascript" src="./res/js/main.js?v=fab4adbfb7"></script>
+	<script type="text/javascript" src="./res/js/collectList.js"></script>
+	<script type="text/javascript">
 
-	<script>
-		$('.login-submit').on('tap',function(e){
-			var $el=$(this);
-			var username,password;
-			username=$('#username').val();
-			password=''+$('#password').val();
-			if(!!!username||!!!password){
-				alert('请输入用户名和密码');
-				return;
-			}
-			if($el.html()=='登录中...'){
-				//登录中...
-				return;
-			}
-			$el.html('登录中...');
-			$.ajax({
-				type: 'GET',
-				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_login.action',
-				// data to be added to query string:
-				data: {
-					catvid:username,
-					userPsw:hex_md5(password),
-					clientType:2,
-					version:'1.0',
-					extra:'extra',
-					loginFlag:'wx',
-					name:'wx',
-					userType:'Utvgo_User'
-				},
-				// type of data we are expecting in return:
-				dataType: 'json',
-				success: function(data){
-					$el.html('登录');
-					if(data.status==0){
-						//成功
-						userId=data.result.userId;
-						localStorage.setItem('account',JSON.stringify(data.result));
-						location.replace('./index.html');
-					}else{
-						alert(data.result.msg);
-					}
-				},
-				error: function(xhr, type){
-					$el.html('登录');
-				}
-			});
-		});
+		//hideLoading();
+
 
 	</script>
 </body>

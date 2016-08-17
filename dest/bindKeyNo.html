@@ -27,39 +27,77 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>登录</title>
+    <title>认证广电用户</title>
     <link rel="stylesheet" href="./res/css/base.css?v=f64bdde28d" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css?v=a769a5281c" />
-    <link rel="stylesheet" href="./res/css/main.css?v=ebdae3634b" />
-    <link rel="stylesheet" href="./res/css/login.css?v=475d5d9831" />
+    <link rel="stylesheet" href="./res/css/main.css?v=b0892edef1" />
+    <link rel="stylesheet" href="./res/css/login.css?v=ffdf2b3414" />
+    <link rel="stylesheet" href="./res/css/userInfo.css?v=207377ec88" />
     <style type="text/css">
 		html,body{
-			background-color: #fff;
+			
 		}
     </style>
     <script type="text/javascript">
     
     </script>
 </head>
-<body style="" class="">
+<body style="" class="userInfo deleteKeyNo">
 	
 	<div class="login-wrapper">
 		<div class="login-input-item">
 			<div class="login-input-lable username-icon">用户名</div>
 			<div class="login-input-wrapper">
-				<input id="username" type="text" placeholder="输入用户名" />
+				<input type="text" id="username"  placeholder="报装机顶盒的姓名" />
 			</div>
 		</div>
 		<div class="login-input-item">
-			<div class="login-input-lable password-icon">密码</div>
+			<div class="login-input-lable addr-icon">装机地区</div>
 			<div class="login-input-wrapper">
-				<input id="password" type="password" />
+				<select id="addr">
+					<option value="GZ">广州</option>
+					<option value="SZ">深圳</option>
+					<option value="ZH">珠海</option>
+					<option value="ST">汕头</option>
+					<option value="FS">佛山</option>
+					<option value="SG">韶关</option>
+					<option value="ZJ">湛江</option>
+					<option value="ZQ">肇庆</option>
+					<option value="JM">江门</option>
+					<option value="MM">茂名</option>
+					<option value="HZ">惠州</option>
+					<option value="MZ">梅州</option>
+					<option value="SW">汕尾</option>
+					<option value="HY">河源</option>
+					<option value="YJ">阳江</option>
+					<option value="QY">清远</option>
+					<option value="DG">东莞</option>
+					<option value="ZS">中山</option>
+					<option value="CZ">潮州</option>
+					<option value="JY">揭阳</option>
+					<option value="YF">云浮</option>
+				</select>
 			</div>
 		</div>
-		<div class="forgetPassword"><a href="#">忘记密码></a></div>
-		<button class="login-submit">登录</button>
+		<div class="login-input-item">
+			<div class="login-input-lable catvId-icon">广电号</div>
+			<div class="login-input-wrapper">
+				<input type="number" id="catvId"  placeholder="11位广电号" />
+			</div>
+		</div>
+		<div class="login-input-item">
+			<div class="login-input-lable keyNo-icon">智能卡号</div>
+			<div class="login-input-wrapper">
+				<input type="number" id="keyNo"  placeholder="11-16位智能卡号" />
+			</div>
+		</div>
 	</div>
-	<div class="goRegBt-wrapper"><a href="register.html">快速注册></a></div>
+
+
+
+	<button class="login-submit">提交</button>
+
+<div class="loadingTip"><div class="loadingTipImg"></div></div>
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js?v=8155cb4235"></script>
 	<script type="text/javascript" src="./res/js/lib/fx.js?v=ca467e4b03"></script>
@@ -71,53 +109,64 @@
 	<script type="text/javascript" src="./res/js/main.js?v=fab4adbfb7"></script>
 
 	<script>
+		hideLoading();
+		//解除绑定
 		$('.login-submit').on('tap',function(e){
-			var $el=$(this);
-			var username,password;
-			username=$('#username').val();
-			password=''+$('#password').val();
-			if(!!!username||!!!password){
-				alert('请输入用户名和密码');
+			var username=$('#username').val();
+			var catvId=$('#catvId').val();
+			var addr=$('#addr').val();
+			var keyNo=$('#keyNo').val();
+			if(!!!username||!!!catvId||!!!addr||!!!keyNo){
+				alert('请完善绑定信息');
 				return;
 			}
-			if($el.html()=='登录中...'){
-				//登录中...
+			var reg = /^\d{11}$/; //11位广电号
+			if(!reg.test(catvId)){
+				alert('请输入11位广电号');
+				return
+			}
+			var reg1 = /^\d{16}$/;//11-16位智能卡号
+			if(reg.test(keyNo)||reg1.test(keyNo)){
+
+			}else{
+				alert('请输入11-16位智能卡号');
 				return;
 			}
-			$el.html('登录中...');
+			showLoading();
 			$.ajax({
 				type: 'GET',
-				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_login.action',
+				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_bindKeyNoUser.action',
 				// data to be added to query string:
 				data: {
-					catvid:username,
-					userPsw:hex_md5(password),
-					clientType:2,
-					version:'1.0',
-					extra:'extra',
-					loginFlag:'wx',
-					name:'wx',
-					userType:'Utvgo_User'
+					userId:userId,
+					branchNO:addr,
+					keyNO:keyNo,
+					userName:username,
+					catvId:catvId
 				},
 				// type of data we are expecting in return:
 				dataType: 'json',
 				success: function(data){
-					$el.html('登录');
+					hideLoading();
 					if(data.status==0){
 						//成功
-						userId=data.result.userId;
-						localStorage.setItem('account',JSON.stringify(data.result));
-						location.replace('./index.html');
+						accountObj.keyUserName=username;
+						accountObj.actvId=catvId;
+						accountObj.branchNo=addr;
+						accountObj.keyNO=keyNo;
+						localStorage.setItem('account',JSON.stringify(accountObj));
+						alert('绑定成功');
+						history.back();
+
 					}else{
 						alert(data.result.msg);
 					}
 				},
 				error: function(xhr, type){
-					$el.html('登录');
+					
 				}
 			});
 		});
-
 	</script>
 </body>
 
