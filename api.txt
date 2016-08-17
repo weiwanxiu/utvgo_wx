@@ -159,3 +159,11 @@ userId=%@&pageNo=%ld&pageSize=%ld
 
 <!-- 用户反馈 -->
 <UserFeedback>/interfaces/userFeedback_SaveFeedback.action</UserFeedback>
+用户反馈post 
+_inputTextView.text, @"feedback",
+userID, @"userId",
+versionNum, @"clientVersion",
+appName, @"programName",
+sysVersion, @"sysVersion",
+type, @"clientType",
+strCarrierName, @"netType",
