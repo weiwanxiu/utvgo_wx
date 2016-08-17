@@ -124,11 +124,11 @@
 			</div>
 			
 			<div class="usercenter-record clearfix">
-				<a href="#" class="recordItem">
+				<a href="recordList.html" class="recordItem">
 					<img src="./res/images/center_record@2x.png" width="37" />
 					<p>播放记录</p>
 				</a>
-				<a href="#" class="recordItem">
+				<a href="collectList.html" class="recordItem">
 					<img src="./res/images/center_collection@2x.png" width="37" />
 					<p>我的收藏</p>
 				</a>
@@ -176,9 +176,9 @@
 		if(!!account&&!!accountObj&&!!accountObj.userName){
 			//已登录
 			s='<a href="userInfo.html"><img src="./res/images/center_touxiang@2x.png" width="58" /> <span class="loginNameShow">'+accountObj.userName+'</span> </a>';
-			if(accountObj.keyNo||accountObj.keyNO){
+			if(accountObj.keyNo||accountObj.keyNO||accountObj.actvId){
 				//已认证
-				s+=' <a href="#" class="rightBt catvBinded"> 广电用户 </a>';
+				s+=' <a class="rightBt catvBinded"> 广电用户 </a>';
 			}else{
 				s+=' <a href="bindKeyNo.html" class="rightBt"> 认证广电用户 </a>';
 			}

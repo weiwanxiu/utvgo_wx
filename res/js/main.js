@@ -4,10 +4,13 @@ var hostName='http://app.utvgo.com';//http://120.31.66.15';//http://app.utvgo.co
 var hostPort=8099;
 var serverAddress=hostName+':'+hostPort;
 
-
-
-var userId=1517; //用户帐号 用于测试
-
+var account=localStorage.getItem('account');
+var accountObj=JSON.parse(account);
+var userId=''; 
+if(!!account&&!!accountObj){
+	userId=accountObj.userId||'1517';
+}
+//userId=1517;//用户帐号 用于测试
 
 function checkWxBind(openid,fn,noBind){
 	if(!!!openid){
@@ -311,6 +314,8 @@ function detailTabInitShow(){
 
 			}
 		});
+
+		wx.hideOptionMenu();//隐藏右上角菜单按钮
 	});
 
 

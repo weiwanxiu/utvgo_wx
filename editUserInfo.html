@@ -27,7 +27,7 @@
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta name="touch-fullscreen" content="yes"/>
 	
-    <title>账户信息</title>
+    <title>修改信息</title>
     <link rel="stylesheet" href="./res/css/base.css" />
     <link rel="stylesheet" href="./res/css/idangerous.swiper.css" />
     <link rel="stylesheet" href="./res/css/main.css" />
@@ -42,69 +42,46 @@
     
     </script>
 </head>
-<body style="" class="userInfo">
-	
-	<div class="login-wrapper">
-		<div class="login-input-item groupTitle">登录信息</div>
-		<div class="login-input-item">
-			<div class="login-input-lable username-icon">用户名</div>
-			<div class="login-input-wrapper">
-				<span id="username"><!-- ivan2 --></span>
-			</div>
-		</div>
-		<div class="login-input-item">
-			<div class="login-input-lable password-icon">密码</div>
-			<div class="login-input-wrapper">
-				<span id="password">*******</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="login-wrapper catv-wrapper">
-		<div class="login-input-item groupTitle">广电认证信息</div>
-		<a href="deleteKeyNo.html" class="login-input-item">
-			<div class="login-input-lable username-icon">广电帐号</div>
-			<div class="login-input-wrapper">
-				<span id="catvId"><!-- 13800138006 --></span>
-			</div>
-		</a>
-	</div>
+<body style="" class="userInfo userInfoEdit">
 
 	<div class="login-wrapper">
-		<div class="login-input-item groupTitle">个人资料<a class="editUserInfoOther" href="editUserInfo.html">编辑</a></div>
 		<div class="login-input-item">
 			<div class="login-input-lable email-icon">邮箱</div>
 			<div class="login-input-wrapper">
-				<span id="email"><!-- 555@qq.com --></span>
+				<input type="email" id="email" placeholder="邮箱" />
 			</div>
 		</div>
 		<div class="login-input-item">
 			<div class="login-input-lable wx-icon">微信号</div>
 			<div class="login-input-wrapper">
-				<span id="wxId"><!-- 555@qq.com --></span>
+				<input type="text" id="wxId" placeholder="微信号" />
 			</div>
 		</div>
 		<div class="login-input-item">
 			<div class="login-input-lable borthdate-icon">出生日期</div>
 			<div class="login-input-wrapper">
-				<span id="borthdate"><!-- 1665-06-24 --></span>
+				<input type="date" id="borthdate" />
 			</div>
 		</div>
 		<div class="login-input-item">
 			<div class="login-input-lable sex-icon">性别</div>
 			<div class="login-input-wrapper">
-				<span id="sex"><!-- 男 --></span>
+				<!-- <input type="text" id="sex" placeholder="性别" /> -->
+				<select id="sex">
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
 			</div>
 		</div>
 		<div class="login-input-item">
 			<div class="login-input-lable phone-icon">联系电话</div>
 			<div class="login-input-wrapper">
-				<span id="phone"><!-- 133266566 --></span>
+				<input type="number" id="phone" placeholder="联系电话" />
 			</div>
 		</div>
 	</div>
 
-	<button class="login-submit">退出登录</button>
+	<button class="login-submit">提交</button>
 
 
 	<script type="text/javascript" src="./res/js/lib/zepto-1.1.6.js"></script>
@@ -117,31 +94,67 @@
 	<script type="text/javascript" src="./res/js/main.js"></script>
 
 	<script>
-		
-		//退出登录
-		$('.login-submit').on('tap',function(e){
-			localStorage.removeItem('account',null);
-			location.href='index.html';
-		});
-		function showUserInfo(){
-			var account=localStorage.getItem('account');
-			var accountObj=JSON.parse(account);
-			if(!!account&&!!accountObj){
-				$('#username').html(accountObj.userName||'');
-				$('#catvId').html(accountObj.actvId||'');
-				$('#email').html(accountObj.email||'');
-				$('#wxId').html(accountObj.openId||'');
-				$('#phone').html(accountObj.phoneNumber||'');
-				$('#sex').html(accountObj.sex||'');
-				$('#borthdate').html(accountObj.birthday||'');
-				if(!!!accountObj.actvId){
-					//还没绑定广电号
-					$('.catv-wrapper').hide();
-				}
-			}
+		function userInfoInit(){
+			$('#email').val(accountObj.email||'');
+			$('#wxId').val(accountObj.openId||'');
+			$('#phone').val(accountObj.phoneNumber||'');
+			$('#sex').val(accountObj.sex||'');
+			$('#borthdate').val(accountObj.birthday||'');
 
 		}
-		showUserInfo();
+		userInfoInit();
+		//提交
+		$('.login-submit').on('tap',function(e){
+			var $el=$(this);
+			var userName=accountObj.userName;
+			var email=$('#email').val();
+			var openId=$('#wxId').val();
+			var sex=$('#sex').val();
+			var birthday=$('#borthdate').val();
+			var phoneNumber=$('#phone').val();
+
+			if($el.html()=='提交中...'){
+				//提交中...
+				return;
+			}
+			$el.html('提交中...');
+			$.ajax({
+				type: 'GET',
+				url: serverAddress+'/utvgoClient/interfaces/utvgoUser_updateUnitedUserInfo.action',
+				// data to be added to query string:
+				data: {
+					userId:userId,
+					email:email,
+					openId:openId,
+					sex:sex,
+					birthday:birthday,
+					phoneNumber:phoneNumber,
+					userName:userName
+				},
+				// type of data we are expecting in return:
+				dataType: 'json',
+				success: function(data){
+					$el.html('提交');
+					if(data.status==0){
+						//成功
+						accountObj.email=email;
+						accountObj.openId=openId;
+						accountObj.birthday=birthday;
+						accountObj.sex=sex;
+						accountObj.phoneNumber=phoneNumber;
+						localStorage.setItem('account',JSON.stringify(accountObj));
+						alert('更新成功');
+						history.back();
+
+					}else{
+						alert(data.result.msg);
+					}
+				},
+				error: function(xhr, type){
+					$el.html('提交');
+				}
+			});
+		});
 	</script>
 </body>
 

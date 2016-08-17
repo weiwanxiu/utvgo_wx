@@ -113,3 +113,57 @@ http://wechat.utvmall.cn/wechat/wechat-goLogin/GoLogin?rqType=Login&after_login_
 请注意，如果你的页面启用了https，务必引入 https://res.wx.qq.com/open/js/jweixin-1.0.0.js ，否则将无法在iOS9.0以上系统中成功使用JSSDK
 
 如需使用摇一摇周边功能，请引入 jweixin-1.1.0.js
+
+
+完善个人信息
+http://app.utvgo.com:8099/utvgoClient/interfaces/utvgoUser_updateUnitedUserInfo.action
+参数
+userId=%@&email=%@&openId=%@&sex=%@&birthday=%@&phoneNumber=%@&userName=%@
+
+<!--绑定智能卡号 addBy zhangbin 20159030-->
+<bindKeyNoUser>/interfaces/utvgoUser_bindKeyNoUser.action</bindKeyNoUser>
+<!--解绑智能卡号  addBy zhangbin 20159030-->
+<unBindKeyNOUser>/interfaces/utvgoUser_unBindKeyNOUser.action</unBindKeyNOUser>
+解绑的userId=%@  绑定 catvid=&userName=&keyNO=%@&branchNO=%@&userId=%@
+
+绑定返回结果
+{"errors":[],"extra":{},"result":{"memberType":"1"},"status":0}
+
+
+
+
+<!-- 用户重置密码 -->
+<UserResetPsw>/interfaces/utvgoUser_userResetPsw.action</UserResetPsw>
+<!-- 用户修改密码 -->
+<UserUpdatePsw>/interfaces/utvgoUser_userUpdatePsw.action</UserUpdatePsw>
+参数（密码不需要md5了，post提交）
+userId, @"userId",
+userName,@"userName",
+oldPsw,@"oldpsw",
+newPsw,@"newpsw",
+@"Utvgo_User",@"userType"
+
+
+<!-- 添加收藏 -->
+<UserAddFavor>/interfaces/userCollect_manage.action</UserAddFavor>
+<!-- 删除收藏 -->
+<UserDeleteFavor>/interfaces/userCollect_batchDelete.action</UserDeleteFavor>
+参数
+userId=%@&contentIds=  多个  用|隔开
+
+<!-- 获取收藏 -->
+<GetUserFavorList>/interfaces/userCollect_list.action</GetUserFavorList>
+参数
+userId=%@&pageNo=%ld&pageSize=%ld
+
+
+<!-- 用户反馈 -->
+<UserFeedback>/interfaces/userFeedback_SaveFeedback.action</UserFeedback>
+用户反馈post 
+_inputTextView.text, @"feedback",
+userID, @"userId",
+versionNum, @"clientVersion",
+appName, @"programName",
+sysVersion, @"sysVersion",
+type, @"clientType",
+strCarrierName, @"netType",

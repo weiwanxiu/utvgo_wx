@@ -2,6 +2,8 @@
 
 	.login-wrapper{
 		padding: 0;
+	    background-color: #fff;
+	    margin-bottom: 10px;
 	}
 
 	.login-input-item{
@@ -9,21 +11,80 @@
 	    padding: 5px 15px;
 	    height: 40px;
 	    line-height: 39px;
+	    display: block;
+	    position: relative;
 	    .login-input-lable{
-	    	
+
 	    }
 	    .login-input-wrapper{
 	    	width: 100%;
 	    	text-align: right;
-	    	padding-right: 10px;
+	    	padding-right: 20px;
 	    }
 	}
+	a.login-input-item:after{
+		position: absolute;
+		right: 5px;
+		top: 12px;
+		content: '';
+		width: 13px;
+		height: 13px;
+		background: url(../images/arrow@2x.png) no-repeat center center;
+		background-size: contain;
+	}
 
+	.groupTitle{
+		color: #e66002;
+	    font-size: 13px;
+	    font-weight: bold;
+	}
 
+	.editUserInfoOther{
+		float: right;
+		padding-left: 20px;
+		background: url(../images/edit-icon@2x.png) no-repeat left center;
+		background-size: 12px;
+	    height: 100%;
+	    line-height: 29px;
+	    color: #666;
+	}
 
+	.login-submit{
+		margin-bottom: 20px;
+	}
 
+	select{
+		display: block;
+		border:0;width: 100%;
+		text-align: right;
+	}
+	option{
+		display: block;
+		width: 100%;
+		text-align: right;
+	}
+}
 
+.userInfoEdit{
+	.login-input-wrapper{
+		padding-left: 110px;
+	}
+	.login-input-wrapper input{
+		width: 100%;
+	}
+	select{
+		display: block;
+		border:0;
+		width: 100%;
+	}
+	option{
+		display: block;
+		width: 100%;
+	}
+}
 
-
-
+.deleteKeyNo{
+	.login-input-wrapper{
+		padding-left: 110px;
+	}
 }
